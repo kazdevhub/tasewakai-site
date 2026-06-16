@@ -3,435 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <meta name="description" content="TASEWAKAI is an international Japanese-learning, gaming, culture, and community Discord server founded by Kazu." />
-  <meta name="keywords" content="TASEWAKAI, Japanese learning, Discord server, Kazu, kana trainer, N5 kanji, Japan map, gaming community" />
-  <meta name="author" content="TASEWAKAI" />
-
   <title>TASEWAKAI 会 — Japanese × Gaming × Culture</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <div class="preloader" id="preloader">
-    <div class="loader-circle">
-      <span>⛩️</span>
-      <div class="loader-ring"></div>
-      <div class="loader-ring second"></div>
-    </div>
-    <p>TASEWAKAI 会</p>
-    <small>pre-alpha 0.2 loading...</small>
+    <div class="loader-circle"><span>⛩️</span><div class="loader-ring"></div><div class="loader-ring second"></div></div>
+    <p>TASEWAKAI 会</p><small>pre-alpha 0.3 loading economy...</small>
   </div>
 
-  <div class="noise"></div>
-  <div class="orb orb-one"></div>
-  <div class="orb orb-two"></div>
-  <img class="decor-sakura decor-one" src="assets/sakura.png" alt="" />
-  <img class="decor-sakura decor-two" src="assets/petals.png" alt="" />
-  <img class="decor-sakura decor-three" src="assets/flower.png" alt="" />
-  <div class="sakura-layer" id="sakuraLayer"></div>
-  <div class="cursor-sakura-layer" id="cursorSakuraLayer"></div>
+  <div class="noise"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
+  <div class="sakura-layer" id="sakuraLayer"></div><div class="cursor-sakura-layer" id="cursorSakuraLayer"></div>
 
   <header class="navbar">
     <a class="brand" href="#home">⛩️ TASEWAKAI 会</a>
-
-    <nav>
-      <a href="#about">About</a>
-      <a href="#website">Website</a>
-      <a href="#team">Team</a>
-      <a href="#media">Media</a>
-      <button class="nav-support" onclick="openSupport()">Support</button>
-    </nav>
+    <nav><a href="#about">About</a><a href="#website">Website</a><a href="#team">Team</a><a href="#media">Media</a><button class="nav-support" onclick="openSupport()">Support</button></nav>
   </header>
 
   <main>
     <section id="home" class="hero">
       <div class="hero-ring"></div>
-
       <div class="hero-glass reveal">
-        <div class="version-badge">pre-alpha 0.2</div>
+        <div class="version-badge">pre-alpha 0.3</div>
         <p class="eyebrow">日本語 × Gaming × Culture × Community</p>
         <h1>TASEWAKAI 会</h1>
-
-        <p class="hero-text">
-          An international Discord community for Japanese learning, gaming, cultural exchange,
-          creative projects, and real community moments.
-        </p>
-
+        <p class="hero-text">An international Discord community for Japanese learning, gaming, cultural exchange, creative projects, and real community moments.</p>
         <div class="hero-stats">
-          <div>
-            <strong class="counter" data-target="911">0</strong>
-            <span>Members</span>
-          </div>
-          <div>
-            <strong>Kazu</strong>
-            <span>Founder</span>
-          </div>
-          <div>
-            <strong class="counter" data-target="1000">0</strong>
-            <span>Next Milestone</span>
-          </div>
+          <div><strong class="counter" data-target="911">0</strong><span>Members</span></div>
+          <div><strong>Kazu</strong><span>Founder</span></div>
+          <div><strong class="counter" data-target="1000">0</strong><span>Next Milestone</span></div>
         </div>
-
         <div class="hero-buttons">
-          <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
-            <img src="assets/discord.png" alt="" /> Join Discord
-          </a>
+          <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Join Discord</a>
           <button class="btn ghost-btn" onclick="openGuide()">What can I do here?</button>
         </div>
       </div>
 
       <div class="home-side-card reveal">
-        <p class="mini-label">Featured member</p>
-        <h3>Christa</h3>
-        <strong>Funniest Member</strong>
+        <img src="assets/icon-cat.png" alt="" />
+        <p class="mini-label">Featured member</p><h3>Christa</h3><strong>Funniest Member</strong>
         <p>The official chaos spark of TASEWAKAI. Certified community mood booster.</p>
       </div>
 
       <div class="home-tools reveal">
-        <button class="tool-card" onclick="openTool('trainer')">
-          <span>あ</span>
-          <strong>Kana Trainer</strong>
-          <small>Practice kana and earn EXP</small>
-        </button>
-
-        <button class="tool-card" onclick="openTool('n5')">
-          <span>漢</span>
-          <strong>N5 Trainer</strong>
-          <small>Basic kanji and words</small>
-        </button>
-
-        <button class="tool-card" onclick="openTool('map')">
-          <span>🗾</span>
-          <strong>Japan Map</strong>
-          <small>Clickable prefecture preview</small>
-        </button>
+        <button class="tool-card" onclick="openTool('trainer')"><img src="assets/icon-beginner.png" alt="" /><strong>Kana Trainer</strong><small>Earn YEN and EXP</small></button>
+        <button class="tool-card" onclick="openTool('n5')"><img src="assets/icon-jp.png" alt="" /><strong>N5 Trainer</strong><small>Basic kanji and words</small></button>
+        <button class="tool-card" onclick="openTool('map')"><img src="assets/icon-shrine.png" alt="" /><strong>Japan Map</strong><small>Centered prefecture preview</small></button>
       </div>
     </section>
 
     <section id="about" class="section reveal">
-      <p class="section-label">About the server</p>
-      <h2>What is TASEWAKAI?</h2>
-
-      <div class="text-grid">
-        <div>
-          <p>
-            TASEWAKAI is a community project founded by <strong>Kazu</strong>. It was created for people
-            who want to learn Japanese through real social interaction, not only through textbooks.
-          </p>
-          <p>
-            The server combines Japanese learning, gaming, culture, content creation, events, and
-            international friendships. It is meant to feel like a community hub rather than a strict classroom.
-          </p>
-        </div>
-
-        <div class="quote-card">
-          「ただ勉強する場所ではなく、人と出会い、話し、成長する場所。」
-          <span>Not only a place to study, but a place to meet people, speak, and grow.</span>
-        </div>
-      </div>
+      <p class="section-label">About the server</p><h2>What is TASEWAKAI?</h2>
+      <div class="text-grid"><div><p>TASEWAKAI is a community project founded by <strong>Kazu</strong>. It was created for people who want to learn Japanese through real social interaction, not only through textbooks.</p><p>The server combines Japanese learning, gaming, culture, content creation, events, and international friendships. It feels like a community hub rather than a strict classroom.</p></div><div class="quote-card">「ただ勉強する場所ではなく、人と出会い、話し、成長する場所。」<span>Not only a place to study, but a place to meet people, speak, and grow.</span></div></div>
     </section>
 
     <section id="website" class="section reveal">
-      <p class="section-label">About this website</p>
-      <h2>What is this website for?</h2>
-
+      <p class="section-label">About this website</p><h2>What is this website for?</h2>
       <div class="feature-grid">
-        <article class="feature-card">
-          <div class="feature-icon">⛩️</div>
-          <h3>Official Home</h3>
-          <p>This website explains what TASEWAKAI is, who runs it, and where people can join safely.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">👥</div>
-          <h3>Team Identity</h3>
-          <p>It gives outsiders a clear view of the founder, staff members, helpers, and community direction.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">🧭</div>
-          <h3>Navigation</h3>
-          <p>Visitors can find the Discord, social media, support contacts, and learning tools in one place.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">📚</div>
-          <h3>Learning Tools</h3>
-          <p>Small Japanese tools like kana, N5 words, and kanji trainers can help new learners start.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">🌐</div>
-          <h3>Public Presence</h3>
-          <p>The site makes TASEWAKAI easier for search engines, AI systems, and new members to understand.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">🎮</div>
-          <h3>Community Brand</h3>
-          <p>It helps TASEWAKAI feel like a real community project, not just a Discord invite link.</p>
-        </article>
+        <article class="feature-card"><img src="assets/icon-shrine.png" alt="" /><h3>Official Home</h3><p>Explains what TASEWAKAI is, who runs it, and where people can join safely.</p></article>
+        <article class="feature-card"><img src="assets/icon-support.png" alt="" /><h3>Support Path</h3><p>Visitors can quickly see who to contact and what they can do on the site.</p></article>
+        <article class="feature-card"><img src="assets/icon-yen.png" alt="" /><h3>YEN Economy</h3><p>Learning tools now reward local YEN, EXP, streaks, and level progress.</p></article>
+        <article class="feature-card"><img src="assets/icon-beginner.png" alt="" /><h3>Learning Tools</h3><p>Kana, N5 words, and kanji trainers help new learners start practicing.</p></article>
+        <article class="feature-card"><img src="assets/icon-fan.png" alt="" /><h3>Japanese Atmosphere</h3><p>Petals, glow effects, shrine visuals, and smooth motion create a Japanese mood.</p></article>
+        <article class="feature-card"><img src="assets/icon-tools.png" alt="" /><h3>Pre-alpha Project</h3><p>The website is being built like a real project with versions and patches.</p></article>
       </div>
     </section>
 
     <section id="team" class="section reveal">
-      <p class="section-label">People behind the project</p>
-      <h2>Meet the Team</h2>
-
+      <p class="section-label">People behind the project</p><h2>Meet the Team</h2>
       <div class="team-grid">
-        <article class="team-card founder-card">
-          <div class="avatar">和</div>
-          <h3>Kazu</h3>
-          <p class="role">Founder & Community Director</p>
-          <p>
-            Kazu is the founder of TASEWAKAI and the main person behind the server direction,
-            community systems, growth, identity, content, and collaborations.
-          </p>
-          <a class="mini-link" href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">
-            Kazu's Steam
-          </a>
-        </article>
-
-        <article class="team-card">
-          <div class="avatar">聡</div>
-          <h3>Satoshi</h3>
-          <p class="username">satoshi______</p>
-          <p class="role">Project Helper & Japanese Support</p>
-          <p>
-            Satoshi is calm, friendly, and reliable. He helps with the project, enjoys gaming,
-            has strong Japanese ability, and supports the server with useful ideas and cultural knowledge.
-          </p>
-        </article>
-
-        <article class="team-card">
-          <div class="avatar">勇</div>
-          <h3>Arthur</h3>
-          <p class="username">arturio8949</p>
-          <p class="role">Staff Member & Content Collaborator</p>
-          <p>
-            Arthur is encouraging, positive, and kind. He learns Japanese with confidence,
-            supports staff work, joins content collaboration, and brings strong friendly energy.
-          </p>
-        </article>
-
-        <article class="team-card">
-          <div class="avatar">美</div>
-          <h3>David</h3>
-          <p class="username">miku_fravery.</p>
-          <p class="role">Moderator & Creative Helper</p>
-          <p>
-            David is a serious and dependable moderator. He supports the team, communicates well,
-            and has experience with Steam Workshop modding and graphic design.
-          </p>
-        </article>
+        <article class="team-card founder-card"><div class="avatar">和</div><h3>Kazu</h3><p class="role">Founder & Community Director</p><p>Kazu is the founder of TASEWAKAI and the main person behind the server direction, systems, growth, identity, content, and collaborations.</p><a class="mini-link" href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">Kazu's Steam</a></article>
+        <article class="team-card"><div class="avatar">聡</div><h3>Satoshi</h3><p class="username">satoshi______</p><p class="role">Project Helper & Japanese Support</p><p>Satoshi is calm, friendly, reliable, enjoys gaming, has strong Japanese ability, and supports the server with ideas and cultural knowledge.</p></article>
+        <article class="team-card"><div class="avatar">勇</div><h3>Arthur</h3><p class="username">arturio8949</p><p class="role">Staff Member & Content Collaborator</p><p>Arthur is encouraging, positive, and kind. He supports staff work, joins content collaboration, and brings friendly energy.</p></article>
+        <article class="team-card"><div class="avatar">美</div><h3>David</h3><p class="username">miku_fravery.</p><p class="role">Moderator & Creative Helper</p><p>David is a serious and dependable moderator with experience in Steam Workshop modding and graphic design.</p></article>
       </div>
     </section>
 
     <section id="media" class="section reveal">
-      <p class="section-label">Official links</p>
-      <h2>Media & Socials</h2>
-
+      <p class="section-label">Official links</p><h2>Media & Socials</h2>
       <div class="link-grid">
-        <a class="social-card" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
-          <img src="assets/discord.png" alt="Discord" /><span>Discord</span>
-        </a>
-        <a class="social-card" href="https://www.instagram.com/tasewakai_hub/" target="_blank" rel="noopener">
-          <img src="assets/instagram.png" alt="Instagram" /><span>Instagram</span>
-        </a>
-        <a class="social-card" href="https://www.tiktok.com/@kasameya.media" target="_blank" rel="noopener">
-          <img src="assets/tiktok.png" alt="TikTok" /><span>TikTok</span>
-        </a>
-        <a class="social-card" href="https://www.youtube.com/@tasewakai" target="_blank" rel="noopener">
-          <img src="assets/youtube.png" alt="YouTube" /><span>YouTube</span>
-        </a>
-        <a class="social-card" href="https://www.twitch.tv/tasewakai_kazu" target="_blank" rel="noopener">
-          <img src="assets/twitch.png" alt="Twitch" /><span>Twitch</span>
-        </a>
-        <a class="social-card" href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">
-          <img src="assets/steam.png" alt="Steam" /><span>Kazu Steam</span>
-        </a>
+        <a class="social-card" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="Discord" /><span>Discord</span></a>
+        <a class="social-card" href="https://www.instagram.com/tasewakai_hub/" target="_blank" rel="noopener"><img src="assets/instagram.png" alt="Instagram" /><span>Instagram</span></a>
+        <a class="social-card" href="https://www.tiktok.com/@kasameya.media" target="_blank" rel="noopener"><img src="assets/tiktok.png" alt="TikTok" /><span>TikTok</span></a>
+        <a class="social-card" href="https://www.youtube.com/@tasewakai" target="_blank" rel="noopener"><img src="assets/youtube.png" alt="YouTube" /><span>YouTube</span></a>
+        <a class="social-card" href="https://www.twitch.tv/tasewakai_kazu" target="_blank" rel="noopener"><img src="assets/twitch.png" alt="Twitch" /><span>Twitch</span></a>
+        <a class="social-card" href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener"><img src="assets/steam.png" alt="Steam" /><span>Kazu Steam</span></a>
       </div>
     </section>
 
-    <section class="cta reveal">
-      <h2>Ready to enter TASEWAKAI?</h2>
-      <p>Join the community, meet people, practice Japanese, and become part of the road to 1000 members.</p>
-      <a class="btn join-btn big" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
-        <img src="assets/discord.png" alt="" /> Join TASEWAKAI
-      </a>
-    </section>
+    <section class="cta reveal"><h2>Ready to enter TASEWAKAI?</h2><p>Join the community, meet people, practice Japanese, and become part of the road to 1000 members.</p><a class="btn join-btn big" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Join TASEWAKAI</a></section>
   </main>
 
-  <footer>
-    <p>© 2026 TASEWAKAI 会 — Founded by Kazu · pre-alpha 0.2</p>
-  </footer>
-
+  <footer><p>© 2026 TASEWAKAI 会 — Founded by Kazu · pre-alpha 0.3</p></footer>
   <button class="floating-help" onclick="openGuide()">?</button>
 
-  <div class="guide-transition" id="guideTransition">
-    <span>風</span>
-    <span>鈴</span>
-    <span>✦</span>
-  </div>
+  <div class="guide-transition" id="guideTransition"><span>風</span><span>鈴</span><span>✦</span></div>
+  <div class="modal-bg" id="guideModal"><div class="modal guide-modal"><button class="close" onclick="closeGuide()">×</button><div class="wind-chimes"><span></span><span></span><span></span></div><p class="mini-label">Website guide</p><h2>Welcome to TASEWAKAI 会</h2><p>This is the public home of TASEWAKAI. You can learn what the server is, meet the team, open trainers, earn YEN, explore Japan, and find official links.</p><div class="guide-grid"><div><img src="assets/icon-shrine.png" alt="" /><strong>Read</strong><span>Learn about the server</span></div><div><img src="assets/icon-beginner.png" alt="" /><strong>Train</strong><span>Practice kana and N5</span></div><div><img src="assets/icon-yen.png" alt="" /><strong>Earn</strong><span>Get YEN and EXP</span></div><div><img src="assets/icon-support.png" alt="" /><strong>Contact</strong><span>Find support contacts</span></div></div><div class="helper-actions"><a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Join Discord</a><button class="btn ghost-btn" onclick="hideGuideForever()">Don’t show again</button></div></div></div>
 
-  <div class="modal-bg" id="guideModal">
-    <div class="modal guide-modal">
-      <button class="close" onclick="closeGuide()">×</button>
-
-      <div class="wind-chimes">
-        <span></span><span></span><span></span>
-      </div>
-
-      <p class="mini-label">Website guide</p>
-      <h2>Welcome to TASEWAKAI 会</h2>
-      <p>
-        This is the public home of TASEWAKAI. You can learn what the server is,
-        meet the team, open learning tools, explore Japan, and find official links.
-      </p>
-
-      <div class="guide-grid">
-        <div><strong>1</strong><span>Read about the server</span></div>
-        <div><strong>2</strong><span>Try Kana / N5 trainers</span></div>
-        <div><strong>3</strong><span>Explore the Japan map</span></div>
-        <div><strong>4</strong><span>Join the Discord community</span></div>
-      </div>
-
-      <div class="helper-actions">
-        <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
-          <img src="assets/discord.png" alt="" /> Join Discord
-        </a>
-        <button class="btn ghost-btn" onclick="hideGuideForever()">Don’t show again</button>
-      </div>
+  <div class="modal-bg" id="toolModal"><div class="modal tool-modal"><button class="close" onclick="closeTool()">×</button>
+    <div id="trainerTool" class="tool-view">
+      <p class="mini-label">Learning tool</p><h2>Kana Trainer</h2><p class="tool-desc">Practice kana and earn local YEN + EXP. One name can be used, and it can only be changed once per week.</p>
+      <div class="trainer-layout"><aside class="profile-panel"><p class="mini-label">Your economy</p><h3 id="trainerNameDisplay">Guest Learner</h3><label class="name-label" for="trainerName">Display name</label><div class="name-row"><input id="trainerName" placeholder="Enter name" maxlength="18" /><button class="btn ghost-btn small-btn" onclick="saveTrainerName()">Save</button></div><p class="name-lock-info" id="nameLockInfo">Name can be changed once per week.</p><div class="economy-box"><div><img src="assets/icon-yen.png" alt="" /><strong><span id="trainerYen">0</span> YEN</strong></div><div><strong><span id="trainerPoints">0</span> pts</strong><span>Level <b id="trainerLevel">1</b> · Streak <b id="trainerStreak">0</b></span></div><div class="exp-bar"><div id="expFill"></div></div><small>EXP <b id="trainerExp">0</b>/<b id="trainerNextExp">100</b></small></div><p class="security-note" id="securityStatus">Economy integrity: checking...</p><button class="btn ghost-btn full" onclick="resetTrainerProgress()">Reset local progress</button></aside>
+      <div class="quiz-panel"><div class="trainer-tabs"><button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button><button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button><button class="tab" data-mode="logs" onclick="setTrainerMode('logs')">Name Logs</button></div><div id="quizView"><p class="mini-label" id="quizModeLabel">Kana Trainer</p><div class="quiz-character" id="quizPrompt">あ</div><p class="quiz-question" id="quizQuestion">Choose the correct reading.</p><div class="answer-grid" id="answerGrid"></div><p class="quiz-feedback" id="quizFeedback">Pick an answer to begin.</p></div><div id="leaderboardView" class="leaderboard hidden"><p class="mini-label">Local leaderboard</p><h3>Top Learners</h3><div id="leaderboardList"></div></div><div id="logsView" class="leaderboard hidden"><p class="mini-label">Local name logs</p><h3>Name Changes</h3><div id="nameLogsList"></div></div></div></div>
     </div>
-  </div>
 
-  <div class="modal-bg" id="toolModal">
-    <div class="modal tool-modal">
-      <button class="close" onclick="closeTool()">×</button>
+    <div id="n5Tool" class="tool-view hidden"><p class="mini-label">Learning tool</p><h2>N5 Kanji & Words Trainer</h2><p class="tool-desc">Practice basic N5 kanji and vocabulary. Correct answers earn YEN + EXP with streak bonuses.</p><div class="quiz-panel standalone-quiz"><div class="trainer-tabs"><button class="tab active" data-mode="kanji" onclick="setTrainerMode('kanji')">N5 Kanji</button><button class="tab" data-mode="words" onclick="setTrainerMode('words')">N5 Words</button><button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button></div><div id="n5QuizMount"></div></div></div>
 
-      <div id="trainerTool" class="tool-view">
-        <p class="mini-label">Learning tool</p>
-        <h2>Kana Trainer</h2>
-        <p class="tool-desc">Practice kana and earn local EXP. One name can be used, and it can only be changed once per week.</p>
+    <div id="mapTool" class="tool-view hidden"><p class="mini-label">Japan tool</p><h2>Centered Japan Map</h2><p class="tool-desc">This version centers the PNG map properly and uses lighter markers so it doesn't look like a screenshot inside a screenshot.</p><div class="map-controls"><button class="btn ghost-btn small-btn" onclick="toggleMapLabels()">Toggle labels</button><button class="btn ghost-btn small-btn" onclick="randomPrefecture()">Random prefecture</button></div><div class="map-layout-clean"><div class="uploaded-map-card map-click-card"><div class="map-stage"><img src="assets/japan-map.png" alt="Map of Japan with prefecture borders" /><div class="map-pin-layer" id="mapPinLayer"></div></div></div><aside class="map-list"><p class="mini-label">Selected</p><h3 id="prefRomaji">Tokyo</h3><h4 id="prefJapanese">東京</h4><p id="prefCities">Tokyo, Hachiōji, Machida</p><p class="pref-note">Marker overlay preview. Full prefecture shape clicking requires a real SVG with separate prefecture paths.</p></aside></div></div>
+  </div></div>
 
-        <div class="trainer-layout">
-          <aside class="profile-panel">
-            <p class="mini-label">Your progress</p>
-            <h3 id="trainerNameDisplay">Guest Learner</h3>
-
-            <label class="name-label" for="trainerName">Display name</label>
-            <div class="name-row">
-              <input id="trainerName" placeholder="Enter name" maxlength="18" />
-              <button class="btn ghost-btn small-btn" onclick="saveTrainerName()">Save</button>
-            </div>
-            <p class="name-lock-info" id="nameLockInfo">Name can be changed once per week.</p>
-
-            <div class="exp-box">
-              <strong><span id="trainerPoints">0</span> pts</strong>
-              <span>Level <b id="trainerLevel">1</b> · EXP <b id="trainerExp">0</b>/<b id="trainerNextExp">100</b></span>
-              <div class="exp-bar"><div id="expFill"></div></div>
-            </div>
-
-            <button class="btn ghost-btn full" onclick="resetTrainerProgress()">Reset local progress</button>
-          </aside>
-
-          <div class="quiz-panel">
-            <div class="trainer-tabs">
-              <button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button>
-              <button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button>
-              <button class="tab" data-mode="logs" onclick="setTrainerMode('logs')">Name Logs</button>
-            </div>
-
-            <div id="quizView">
-              <p class="mini-label" id="quizModeLabel">Kana Trainer</p>
-              <div class="quiz-character" id="quizPrompt">あ</div>
-              <p class="quiz-question" id="quizQuestion">Choose the correct reading.</p>
-              <div class="answer-grid" id="answerGrid"></div>
-              <p class="quiz-feedback" id="quizFeedback">Pick an answer to begin.</p>
-            </div>
-
-            <div id="leaderboardView" class="leaderboard hidden">
-              <p class="mini-label">Local leaderboard</p>
-              <h3>Top Learners</h3>
-              <div id="leaderboardList"></div>
-            </div>
-
-            <div id="logsView" class="leaderboard hidden">
-              <p class="mini-label">Local name logs</p>
-              <h3>Name Changes</h3>
-              <div id="nameLogsList"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="n5Tool" class="tool-view hidden">
-        <p class="mini-label">Learning tool</p>
-        <h2>N5 Kanji & Words Trainer</h2>
-        <p class="tool-desc">Practice basic N5 kanji and vocabulary. This uses the same local EXP system.</p>
-
-        <div class="quiz-panel standalone-quiz">
-          <div class="trainer-tabs">
-            <button class="tab active" data-mode="kanji" onclick="setTrainerMode('kanji')">N5 Kanji</button>
-            <button class="tab" data-mode="words" onclick="setTrainerMode('words')">N5 Words</button>
-            <button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button>
-          </div>
-
-          <div id="n5QuizMount"></div>
-        </div>
-      </div>
-
-      <div id="mapTool" class="tool-view hidden">
-        <p class="mini-label">Japan tool</p>
-        <h2>Clickable Japan Map</h2>
-        <p class="tool-desc">
-          Click the glowing markers to preview prefecture information. Toggle labels if the map feels too crowded.
-        </p>
-
-        <div class="map-controls">
-          <button class="btn ghost-btn small-btn" onclick="toggleMapLabels()">Toggle labels</button>
-          <button class="btn ghost-btn small-btn" onclick="randomPrefecture()">Random prefecture</button>
-        </div>
-
-        <div class="map-layout-clean">
-          <div class="uploaded-map-card map-click-card">
-            <img src="assets/japan-map.png" alt="Map of Japan with prefecture borders" />
-            <div class="map-pin-layer" id="mapPinLayer"></div>
-          </div>
-
-          <aside class="map-list">
-            <p class="mini-label">Selected</p>
-            <h3 id="prefRomaji">Tokyo</h3>
-            <h4 id="prefJapanese">東京</h4>
-            <p id="prefCities">Tokyo, Hachiōji, Machida</p>
-            <p class="pref-note">Marker overlay preview. Later we can upgrade this to true prefecture-shape clicking with an SVG.</p>
-          </aside>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="supportModal">
-    <div class="modal">
-      <button class="close" onclick="closeSupport()">×</button>
-      <p class="mini-label">Need help?</p>
-      <h2>⛩️ TASEWAKAI Support</h2>
-      <p>If something happens in the Discord server and you are not sure who to contact, use this list.</p>
-
-      <div class="support-list">
-        <div><strong>Kazu</strong><span>Founder — serious problems, partnerships, server direction, content and collaborations.</span><code>Discord: kazu.kai</code></div>
-        <div><strong>Satoshi</strong><span>Project help, Japanese support, community help, and general guidance.</span><code>Discord: satoshi______</code></div>
-        <div><strong>Arthur</strong><span>Staff support, encouragement, community help, and content collaboration.</span><code>Discord: arturio8949</code></div>
-        <div><strong>David</strong><span>Moderation, reports, team support, design/modding-related help.</span><code>Discord: miku_fravery.</code></div>
-      </div>
-
-      <a class="btn join-btn full" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
-        <img src="assets/discord.png" alt="" /> Open Discord
-      </a>
-    </div>
-  </div>
-
+  <div class="modal-bg" id="supportModal"><div class="modal"><button class="close" onclick="closeSupport()">×</button><p class="mini-label">Need help?</p><h2>⛩️ TASEWAKAI Support</h2><p>If something happens in the Discord server and you are not sure who to contact, use this list.</p><div class="support-list"><div><strong>Kazu</strong><span>Founder — serious problems, partnerships, server direction, content and collaborations.</span><code>Discord: kazu.kai</code></div><div><strong>Satoshi</strong><span>Project help, Japanese support, community help, and general guidance.</span><code>Discord: satoshi______</code></div><div><strong>Arthur</strong><span>Staff support, encouragement, community help, and content collaboration.</span><code>Discord: arturio8949</code></div><div><strong>David</strong><span>Moderation, reports, team support, design/modding-related help.</span><code>Discord: miku_fravery.</code></div></div><a class="btn join-btn full" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Open Discord</a></div></div>
   <script src="script.js"></script>
 </body>
 </html>
