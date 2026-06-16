@@ -14,8 +14,13 @@
 
 <body>
   <div class="preloader" id="preloader">
-    <div class="torii-loader">⛩️</div>
-    <p>Entering TASEWAKAI...</p>
+    <div class="loader-circle">
+      <span>⛩️</span>
+      <div class="loader-ring"></div>
+      <div class="loader-ring second"></div>
+    </div>
+    <p>TASEWAKAI 会</p>
+    <small>pre-alpha 0.1 loading...</small>
   </div>
 
   <div class="noise"></div>
@@ -41,6 +46,7 @@
       <div class="hero-ring"></div>
 
       <div class="hero-glass reveal">
+        <div class="version-badge">pre-alpha 0.1</div>
         <p class="eyebrow">日本語 × Gaming × Culture × Community</p>
         <h1>TASEWAKAI 会</h1>
 
@@ -72,6 +78,13 @@
         </div>
       </div>
 
+      <div class="home-side-card reveal">
+        <p class="mini-label">Featured member</p>
+        <h3>Christa</h3>
+        <strong>Funniest Member</strong>
+        <p>The official chaos spark of TASEWAKAI. Certified community mood booster.</p>
+      </div>
+
       <div class="home-tools reveal">
         <button class="tool-card" onclick="openTool('trainer')">
           <span>あ</span>
@@ -88,7 +101,7 @@
         <button class="tool-card" onclick="openTool('map')">
           <span>🗾</span>
           <strong>Japan Map</strong>
-          <small>Prefecture learning preview</small>
+          <small>Clickable prefecture preview</small>
         </button>
       </div>
     </section>
@@ -217,23 +230,23 @@
       <h2>Media & Socials</h2>
 
       <div class="link-grid">
-        <a href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
+        <a class="social-card" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
           <img src="assets/discord.png" alt="Discord" /><span>Discord</span>
         </a>
-        <a href="https://www.instagram.com/tasewakai_hub/" target="_blank" rel="noopener">
+        <a class="social-card" href="https://www.instagram.com/tasewakai_hub/" target="_blank" rel="noopener">
           <img src="assets/instagram.png" alt="Instagram" /><span>Instagram</span>
         </a>
-        <a href="https://www.tiktok.com/@kasameya.media" target="_blank" rel="noopener">
-          <span class="tiktok-icon">♪</span><span>TikTok</span>
+        <a class="social-card" href="https://www.tiktok.com/@kasameya.media" target="_blank" rel="noopener">
+          <img src="assets/tiktok.png" alt="TikTok" /><span>TikTok</span>
         </a>
-        <a href="https://www.youtube.com/@tasewakai" target="_blank" rel="noopener">
+        <a class="social-card" href="https://www.youtube.com/@tasewakai" target="_blank" rel="noopener">
           <img src="assets/youtube.png" alt="YouTube" /><span>YouTube</span>
         </a>
-        <a href="https://www.twitch.tv/tasewakai_kazu" target="_blank" rel="noopener">
+        <a class="social-card" href="https://www.twitch.tv/tasewakai_kazu" target="_blank" rel="noopener">
           <img src="assets/twitch.png" alt="Twitch" /><span>Twitch</span>
         </a>
-        <a href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">
-          <img src="assets/steam.svg" alt="Steam" /><span>Kazu Steam</span>
+        <a class="social-card" href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">
+          <img src="assets/steam.png" alt="Steam" /><span>Kazu Steam</span>
         </a>
       </div>
     </section>
@@ -248,7 +261,7 @@
   </main>
 
   <footer>
-    <p>© 2026 TASEWAKAI 会 — Founded by Kazu</p>
+    <p>© 2026 TASEWAKAI 会 — Founded by Kazu · pre-alpha 0.1</p>
   </footer>
 
   <button class="floating-help" onclick="openHelper()">?</button>
@@ -260,7 +273,7 @@
       <div id="trainerTool" class="tool-view">
         <p class="mini-label">Learning tool</p>
         <h2>Kana Trainer</h2>
-        <p class="tool-desc">Practice kana and earn local EXP. Your name and points are saved in your browser.</p>
+        <p class="tool-desc">Practice kana and earn local EXP. One name can be used, and it can only be changed once per week.</p>
 
         <div class="trainer-layout">
           <aside class="profile-panel">
@@ -272,6 +285,7 @@
               <input id="trainerName" placeholder="Enter name" maxlength="18" />
               <button class="btn ghost-btn small-btn" onclick="saveTrainerName()">Save</button>
             </div>
+            <p class="name-lock-info" id="nameLockInfo">Name can be changed once per week.</p>
 
             <div class="exp-box">
               <strong><span id="trainerPoints">0</span> pts</strong>
@@ -286,6 +300,7 @@
             <div class="trainer-tabs">
               <button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button>
               <button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button>
+              <button class="tab" data-mode="logs" onclick="setTrainerMode('logs')">Name Logs</button>
             </div>
 
             <div id="quizView">
@@ -300,6 +315,12 @@
               <p class="mini-label">Local leaderboard</p>
               <h3>Top Learners</h3>
               <div id="leaderboardList"></div>
+            </div>
+
+            <div id="logsView" class="leaderboard hidden">
+              <p class="mini-label">Local name logs</p>
+              <h3>Name Changes</h3>
+              <div id="nameLogsList"></div>
             </div>
           </div>
         </div>
@@ -323,31 +344,28 @@
 
       <div id="mapTool" class="tool-view hidden">
         <p class="mini-label">Japan tool</p>
-        <h2>Japan Map</h2>
+        <h2>Clickable Japan Map</h2>
         <p class="tool-desc">
-          This uses your uploaded Japan map image as the visual base. For full clickable prefectures later,
-          the best file is an SVG map where every prefecture is a separate shape.
+          Click the glowing markers to preview prefecture information. Toggle labels if the map feels too crowded.
         </p>
 
+        <div class="map-controls">
+          <button class="btn ghost-btn small-btn" onclick="toggleMapLabels()">Toggle labels</button>
+          <button class="btn ghost-btn small-btn" onclick="randomPrefecture()">Random prefecture</button>
+        </div>
+
         <div class="map-layout-clean">
-          <div class="uploaded-map-card">
-            <img src="assets/japan-map.png" alt="Map of Japan" />
+          <div class="uploaded-map-card map-click-card">
+            <img src="assets/japan-prefectures.png" alt="Map of Japan with prefecture borders" />
+            <div class="map-pin-layer" id="mapPinLayer"></div>
           </div>
 
           <aside class="map-list">
-            <h3>Prefecture examples</h3>
-            <button onclick="showPref('Tokyo','東京','Tokyo, Hachiōji, Machida')">Tokyo / 東京</button>
-            <button onclick="showPref('Osaka','大阪','Osaka, Sakai, Higashiōsaka')">Osaka / 大阪</button>
-            <button onclick="showPref('Kyoto','京都','Kyoto, Uji, Maizuru')">Kyoto / 京都</button>
-            <button onclick="showPref('Hokkaidō','北海道','Sapporo, Asahikawa, Hakodate')">Hokkaidō / 北海道</button>
-            <button onclick="showPref('Okinawa','沖縄','Naha, Okinawa City, Uruma')">Okinawa / 沖縄</button>
-
-            <div class="pref-display">
-              <p class="mini-label">Selected</p>
-              <h3 id="prefRomaji">Tokyo</h3>
-              <h4 id="prefJapanese">東京</h4>
-              <p id="prefCities">Tokyo, Hachiōji, Machida</p>
-            </div>
+            <p class="mini-label">Selected</p>
+            <h3 id="prefRomaji">Tokyo</h3>
+            <h4 id="prefJapanese">東京</h4>
+            <p id="prefCities">Tokyo, Hachiōji, Machida</p>
+            <p class="pref-note">This is a clickable preview using overlay markers. Full prefecture-shape clicking needs a proper SVG map.</p>
           </aside>
         </div>
       </div>
