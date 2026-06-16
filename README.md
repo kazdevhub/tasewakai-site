@@ -1,37 +1,27 @@
-# TASEWAKAI Website V2
+# TASEWAKAI Website V3
 
-Updated working version of the TASEWAKAI official website.
+Updated website with interactive Japan map and stronger visual effects.
 
-## Included
+## New in V3
 
-- Updated Discord invite: https://discord.gg/P26h5nPSXD
-- 911+ member count
-- Founder description for Kazu
-- Team descriptions for Satoshi, Arthur, and David
-- Support popup
-- First-time visitor helper popup
-- More animations and effects
-- Shiny Join button hover
-- Sections: Home, About, Features, Team, Timeline, Media
+- Interactive Japan prefecture map
+- Prefecture names in Japanese and romaji
+- Major city list for every prefecture
+- Animated member counter
+- Stronger Japanese aesthetics
+- Sakura falling particles
+- Sakura/cursor trail effect
+- Better mobile design
+- Kazu Steam link
+- Loading screen
 
-## Files
+## Upload to GitHub
 
-- `index.html`
-- `style.css`
-- `script.js`
-- `README.md`
-
-## How to test
-
-Double-click `index.html`.
-
-## How to upload to GitHub
-
-Upload these files directly into the repository root:
+Replace your current files with these:
 
 - `index.html`
 - `style.css`
 - `script.js`
 - `README.md`
 
-Do not upload the ZIP itself.
+Commit changes, wait 1–2 minutes, and GitHub Pages will update.
