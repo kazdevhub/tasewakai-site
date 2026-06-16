@@ -20,12 +20,15 @@
       <div class="loader-ring second"></div>
     </div>
     <p>TASEWAKAI 会</p>
-    <small>pre-alpha 0.1 loading...</small>
+    <small>pre-alpha 0.2 loading...</small>
   </div>
 
   <div class="noise"></div>
   <div class="orb orb-one"></div>
   <div class="orb orb-two"></div>
+  <img class="decor-sakura decor-one" src="assets/sakura.png" alt="" />
+  <img class="decor-sakura decor-two" src="assets/petals.png" alt="" />
+  <img class="decor-sakura decor-three" src="assets/flower.png" alt="" />
   <div class="sakura-layer" id="sakuraLayer"></div>
   <div class="cursor-sakura-layer" id="cursorSakuraLayer"></div>
 
@@ -46,7 +49,7 @@
       <div class="hero-ring"></div>
 
       <div class="hero-glass reveal">
-        <div class="version-badge">pre-alpha 0.1</div>
+        <div class="version-badge">pre-alpha 0.2</div>
         <p class="eyebrow">日本語 × Gaming × Culture × Community</p>
         <h1>TASEWAKAI 会</h1>
 
@@ -74,7 +77,7 @@
           <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
             <img src="assets/discord.png" alt="" /> Join Discord
           </a>
-          <button class="btn ghost-btn" onclick="openHelper()">First time here?</button>
+          <button class="btn ghost-btn" onclick="openGuide()">What can I do here?</button>
         </div>
       </div>
 
@@ -261,10 +264,47 @@
   </main>
 
   <footer>
-    <p>© 2026 TASEWAKAI 会 — Founded by Kazu · pre-alpha 0.1</p>
+    <p>© 2026 TASEWAKAI 会 — Founded by Kazu · pre-alpha 0.2</p>
   </footer>
 
-  <button class="floating-help" onclick="openHelper()">?</button>
+  <button class="floating-help" onclick="openGuide()">?</button>
+
+  <div class="guide-transition" id="guideTransition">
+    <span>風</span>
+    <span>鈴</span>
+    <span>✦</span>
+  </div>
+
+  <div class="modal-bg" id="guideModal">
+    <div class="modal guide-modal">
+      <button class="close" onclick="closeGuide()">×</button>
+
+      <div class="wind-chimes">
+        <span></span><span></span><span></span>
+      </div>
+
+      <p class="mini-label">Website guide</p>
+      <h2>Welcome to TASEWAKAI 会</h2>
+      <p>
+        This is the public home of TASEWAKAI. You can learn what the server is,
+        meet the team, open learning tools, explore Japan, and find official links.
+      </p>
+
+      <div class="guide-grid">
+        <div><strong>1</strong><span>Read about the server</span></div>
+        <div><strong>2</strong><span>Try Kana / N5 trainers</span></div>
+        <div><strong>3</strong><span>Explore the Japan map</span></div>
+        <div><strong>4</strong><span>Join the Discord community</span></div>
+      </div>
+
+      <div class="helper-actions">
+        <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
+          <img src="assets/discord.png" alt="" /> Join Discord
+        </a>
+        <button class="btn ghost-btn" onclick="hideGuideForever()">Don’t show again</button>
+      </div>
+    </div>
+  </div>
 
   <div class="modal-bg" id="toolModal">
     <div class="modal tool-modal">
@@ -356,7 +396,7 @@
 
         <div class="map-layout-clean">
           <div class="uploaded-map-card map-click-card">
-            <img src="assets/japan-prefectures.png" alt="Map of Japan with prefecture borders" />
+            <img src="assets/japan-map.png" alt="Map of Japan with prefecture borders" />
             <div class="map-pin-layer" id="mapPinLayer"></div>
           </div>
 
@@ -365,28 +405,9 @@
             <h3 id="prefRomaji">Tokyo</h3>
             <h4 id="prefJapanese">東京</h4>
             <p id="prefCities">Tokyo, Hachiōji, Machida</p>
-            <p class="pref-note">This is a clickable preview using overlay markers. Full prefecture-shape clicking needs a proper SVG map.</p>
+            <p class="pref-note">Marker overlay preview. Later we can upgrade this to true prefecture-shape clicking with an SVG.</p>
           </aside>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="helperModal">
-    <div class="modal helper-modal">
-      <button class="close" onclick="closeHelper()">×</button>
-      <p class="mini-label">First time here?</p>
-      <h2>Welcome to TASEWAKAI 会</h2>
-      <p>
-        This website is the public home of TASEWAKAI. It explains the server, the team,
-        official links, support contacts, and small Japanese learning tools.
-      </p>
-
-      <div class="helper-actions">
-        <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
-          <img src="assets/discord.png" alt="" /> Join Discord
-        </a>
-        <button class="btn ghost-btn" onclick="hideHelperForever()">Hide this</button>
       </div>
     </div>
   </div>

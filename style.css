@@ -137,6 +137,35 @@ a {
   animation-delay: 2s;
 }
 
+.decor-sakura {
+  position: fixed;
+  z-index: 1;
+  opacity: 0.17;
+  pointer-events: none;
+  filter: drop-shadow(0 0 16px rgba(255, 100, 180, 0.28));
+}
+
+.decor-one {
+  width: 160px;
+  left: 3%;
+  top: 14%;
+  animation: floatDecor 8s ease-in-out infinite;
+}
+
+.decor-two {
+  width: 210px;
+  right: 5%;
+  top: 20%;
+  animation: floatDecor 10s ease-in-out infinite reverse;
+}
+
+.decor-three {
+  width: 130px;
+  right: 14%;
+  bottom: 13%;
+  animation: floatDecor 9s ease-in-out infinite;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -707,7 +736,7 @@ input {
 }
 
 .uploaded-map-card {
-  min-height: 620px;
+  min-height: 720px;
   display: grid;
   place-items: center;
   background:
@@ -721,7 +750,7 @@ input {
 
 .map-click-card img {
   max-width: 100%;
-  max-height: 760px;
+  max-height: 820px;
   object-fit: contain;
   filter: drop-shadow(0 18px 30px rgba(0,0,0,0.45));
 }
@@ -896,6 +925,40 @@ footer {
   box-shadow: 0 0 28px rgba(255, 63, 145, 0.45);
 }
 
+.guide-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 58;
+  pointer-events: none;
+  display: none;
+  place-items: center;
+  background: radial-gradient(circle, rgba(255,63,145,0.18), rgba(0,0,0,0.72));
+  backdrop-filter: blur(8px);
+}
+
+.guide-transition.active {
+  display: grid;
+  animation: guideFlash 0.85s ease forwards;
+}
+
+.guide-transition span {
+  position: absolute;
+  font-size: clamp(2rem, 9vw, 5rem);
+  color: rgba(255,255,255,0.7);
+  filter: drop-shadow(0 0 20px rgba(255,63,145,0.9));
+  animation: ghostDownload 0.75s ease forwards;
+}
+
+.guide-transition span:nth-child(2) {
+  animation-delay: 0.08s;
+  transform: translateX(-70px);
+}
+
+.guide-transition span:nth-child(3) {
+  animation-delay: 0.16s;
+  transform: translateX(70px);
+}
+
 .modal-bg {
   position: fixed;
   inset: 0;
@@ -925,6 +988,78 @@ footer {
   border: 1px solid var(--border);
   box-shadow: 0 0 75px rgba(255, 63, 145, 0.20);
   animation: popIn 0.25s ease both;
+}
+
+.guide-modal {
+  overflow: hidden;
+}
+
+.guide-modal::before {
+  content: "";
+  position: absolute;
+  inset: -80px;
+  background-image: url("assets/petal-wind.png");
+  background-size: 280px;
+  background-repeat: no-repeat;
+  background-position: right top;
+  opacity: 0.18;
+  pointer-events: none;
+  animation: floatDecor 7s ease-in-out infinite;
+}
+
+.wind-chimes {
+  position: absolute;
+  right: 40px;
+  top: 24px;
+  display: flex;
+  gap: 10px;
+}
+
+.wind-chimes span {
+  width: 4px;
+  height: 54px;
+  background: linear-gradient(var(--gold), transparent);
+  border-radius: 999px;
+  animation: chimeSwing 2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+.wind-chimes span:nth-child(2) {
+  height: 42px;
+  animation-delay: 0.2s;
+}
+
+.wind-chimes span:nth-child(3) {
+  height: 62px;
+  animation-delay: 0.4s;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 26px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.guide-grid div {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+}
+
+.guide-grid strong {
+  display: block;
+  color: var(--gold);
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.guide-grid span {
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .tool-modal {
@@ -985,11 +1120,12 @@ footer {
 
 .sakura {
   position: fixed;
-  top: -30px;
+  top: -40px;
   z-index: 1;
   pointer-events: none;
-  color: rgba(255, 150, 210, 0.82);
-  animation: fall linear forwards;
+  width: 32px;
+  opacity: 0.8;
+  animation: fallGraphic linear forwards;
 }
 
 .cursor-petal {
@@ -1011,8 +1147,8 @@ footer {
   transform: translateY(0);
 }
 
-@keyframes fall {
-  to { transform: translateY(112vh) rotate(380deg); opacity: 0.12; }
+@keyframes fallGraphic {
+  to { transform: translateY(112vh) rotate(380deg); opacity: 0.1; }
 }
 
 @keyframes cursorPetal {
@@ -1037,6 +1173,28 @@ footer {
   to { transform: rotate(360deg); }
 }
 
+@keyframes floatDecor {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(18px) rotate(4deg); }
+}
+
+@keyframes chimeSwing {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@keyframes guideFlash {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes ghostDownload {
+  0% { opacity: 0; transform: translateY(-30px) scale(0.7); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(80px) scale(1.25); }
+}
+
 @media (max-width: 1280px) {
   .home-side-card {
     position: static;
@@ -1055,7 +1213,8 @@ footer {
   .link-grid,
   .trainer-layout,
   .map-layout-clean,
-  .text-grid {
+  .text-grid,
+  .guide-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1072,7 +1231,8 @@ footer {
   .noise,
   .hero-ring,
   .cursor-sakura-layer,
-  .cursor-petal {
+  .cursor-petal,
+  .decor-sakura {
     display: none !important;
   }
 
@@ -1126,7 +1286,8 @@ footer {
   .trainer-layout,
   .map-layout-clean,
   .text-grid,
-  .home-tools {
+  .home-tools,
+  .guide-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1160,16 +1321,20 @@ footer {
   }
 
   .uploaded-map-card {
-    min-height: 520px;
+    min-height: 560px;
   }
 
   .pref-pin {
-    transform: translate(-50%, -50%) scale(0.82);
+    transform: translate(-50%, -50%) scale(0.78);
   }
 
   .pref-pin:hover,
   .pref-pin.active {
-    transform: translate(-50%, -50%) scale(0.92);
+    transform: translate(-50%, -50%) scale(0.88);
+  }
+
+  .wind-chimes {
+    right: 58px;
   }
 }
 
@@ -1183,10 +1348,10 @@ footer {
   }
 
   .uploaded-map-card {
-    min-height: 430px;
+    min-height: 460px;
   }
 
   .pref-pin span {
-    font-size: 0.58rem;
+    font-size: 0.56rem;
   }
 }

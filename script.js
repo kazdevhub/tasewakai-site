@@ -1,4 +1,5 @@
-const helperModal = document.getElementById("helperModal");
+const guideModal = document.getElementById("guideModal");
+const guideTransition = document.getElementById("guideTransition");
 const supportModal = document.getElementById("supportModal");
 const toolModal = document.getElementById("toolModal");
 const sakuraLayer = document.getElementById("sakuraLayer");
@@ -8,7 +9,7 @@ const preloader = document.getElementById("preloader");
 const kanaQuestions = [{"q": "あ", "a": "a"}, {"q": "い", "a": "i"}, {"q": "う", "a": "u"}, {"q": "え", "a": "e"}, {"q": "お", "a": "o"}, {"q": "か", "a": "ka"}, {"q": "き", "a": "ki"}, {"q": "く", "a": "ku"}, {"q": "け", "a": "ke"}, {"q": "こ", "a": "ko"}, {"q": "さ", "a": "sa"}, {"q": "し", "a": "shi"}, {"q": "す", "a": "su"}, {"q": "せ", "a": "se"}, {"q": "そ", "a": "so"}, {"q": "た", "a": "ta"}, {"q": "ち", "a": "chi"}, {"q": "つ", "a": "tsu"}, {"q": "て", "a": "te"}, {"q": "と", "a": "to"}, {"q": "な", "a": "na"}, {"q": "に", "a": "ni"}, {"q": "ぬ", "a": "nu"}, {"q": "ね", "a": "ne"}, {"q": "の", "a": "no"}, {"q": "は", "a": "ha"}, {"q": "ひ", "a": "hi"}, {"q": "ふ", "a": "fu"}, {"q": "へ", "a": "he"}, {"q": "ほ", "a": "ho"}, {"q": "ま", "a": "ma"}, {"q": "み", "a": "mi"}, {"q": "む", "a": "mu"}, {"q": "め", "a": "me"}, {"q": "も", "a": "mo"}, {"q": "や", "a": "ya"}, {"q": "ゆ", "a": "yu"}, {"q": "よ", "a": "yo"}, {"q": "ら", "a": "ra"}, {"q": "り", "a": "ri"}, {"q": "る", "a": "ru"}, {"q": "れ", "a": "re"}, {"q": "ろ", "a": "ro"}, {"q": "わ", "a": "wa"}, {"q": "を", "a": "wo"}, {"q": "ん", "a": "n"}, {"q": "ア", "a": "a"}, {"q": "イ", "a": "i"}, {"q": "ウ", "a": "u"}, {"q": "エ", "a": "e"}, {"q": "オ", "a": "o"}, {"q": "カ", "a": "ka"}, {"q": "キ", "a": "ki"}, {"q": "ク", "a": "ku"}, {"q": "ケ", "a": "ke"}, {"q": "コ", "a": "ko"}, {"q": "サ", "a": "sa"}, {"q": "シ", "a": "shi"}, {"q": "ス", "a": "su"}, {"q": "セ", "a": "se"}, {"q": "ソ", "a": "so"}, {"q": "タ", "a": "ta"}, {"q": "チ", "a": "chi"}, {"q": "ツ", "a": "tsu"}, {"q": "テ", "a": "te"}, {"q": "ト", "a": "to"}];
 const kanjiQuestions = [{"q": "日", "a": "sun / day"}, {"q": "月", "a": "moon / month"}, {"q": "火", "a": "fire"}, {"q": "水", "a": "water"}, {"q": "木", "a": "tree"}, {"q": "金", "a": "gold / money"}, {"q": "土", "a": "earth / soil"}, {"q": "人", "a": "person"}, {"q": "山", "a": "mountain"}, {"q": "川", "a": "river"}, {"q": "田", "a": "rice field"}, {"q": "口", "a": "mouth"}, {"q": "目", "a": "eye"}, {"q": "耳", "a": "ear"}, {"q": "手", "a": "hand"}, {"q": "足", "a": "foot"}, {"q": "力", "a": "power"}, {"q": "男", "a": "man"}, {"q": "女", "a": "woman"}, {"q": "子", "a": "child"}, {"q": "学", "a": "study"}, {"q": "生", "a": "life / student"}, {"q": "先", "a": "previous / ahead"}, {"q": "大", "a": "big"}, {"q": "小", "a": "small"}, {"q": "中", "a": "middle"}, {"q": "上", "a": "up"}, {"q": "下", "a": "down"}, {"q": "左", "a": "left"}, {"q": "右", "a": "right"}, {"q": "一", "a": "one"}, {"q": "二", "a": "two"}, {"q": "三", "a": "three"}];
 const wordQuestions = [{"q": "こんにちは", "a": "hello"}, {"q": "ありがとう", "a": "thank you"}, {"q": "日本", "a": "Japan"}, {"q": "学生", "a": "student"}, {"q": "先生", "a": "teacher"}, {"q": "学校", "a": "school"}, {"q": "水", "a": "water"}, {"q": "火曜日", "a": "Tuesday"}, {"q": "今日", "a": "today"}, {"q": "明日", "a": "tomorrow"}, {"q": "昨日", "a": "yesterday"}, {"q": "友達", "a": "friend"}, {"q": "犬", "a": "dog"}, {"q": "猫", "a": "cat"}, {"q": "本", "a": "book"}, {"q": "車", "a": "car"}, {"q": "電車", "a": "train"}, {"q": "駅", "a": "station"}, {"q": "食べる", "a": "to eat"}, {"q": "飲む", "a": "to drink"}, {"q": "行く", "a": "to go"}, {"q": "見る", "a": "to see"}, {"q": "聞く", "a": "to listen"}, {"q": "話す", "a": "to speak"}];
-const prefPins = [{"romaji": "Hokkaidō", "jp": "北海道", "cities": "Sapporo, Asahikawa, Hakodate", "x": 70, "y": 12}, {"romaji": "Aomori", "jp": "青森", "cities": "Aomori, Hirosaki, Hachinohe", "x": 66, "y": 28}, {"romaji": "Iwate", "jp": "岩手", "cities": "Morioka, Ichinoseki, Hanamaki", "x": 69, "y": 34}, {"romaji": "Miyagi", "jp": "宮城", "cities": "Sendai, Ishinomaki, Ōsaki", "x": 68, "y": 41}, {"romaji": "Akita", "jp": "秋田", "cities": "Akita, Yokote, Daisen", "x": 63, "y": 34}, {"romaji": "Yamagata", "jp": "山形", "cities": "Yamagata, Tsuruoka, Sakata", "x": 64, "y": 42}, {"romaji": "Fukushima", "jp": "福島", "cities": "Fukushima, Kōriyama, Iwaki", "x": 65, "y": 49}, {"romaji": "Tokyo", "jp": "東京", "cities": "Tokyo, Hachiōji, Machida", "x": 61, "y": 64}, {"romaji": "Kanagawa", "jp": "神奈川", "cities": "Yokohama, Kawasaki, Sagamihara", "x": 59, "y": 67}, {"romaji": "Chiba", "jp": "千葉", "cities": "Chiba, Funabashi, Kashiwa", "x": 66, "y": 64}, {"romaji": "Saitama", "jp": "埼玉", "cities": "Saitama, Kawaguchi, Kawagoe", "x": 60, "y": 61}, {"romaji": "Niigata", "jp": "新潟", "cities": "Niigata, Nagaoka, Jōetsu", "x": 55, "y": 49}, {"romaji": "Nagano", "jp": "長野", "cities": "Nagano, Matsumoto, Ueda", "x": 52, "y": 58}, {"romaji": "Shizuoka", "jp": "静岡", "cities": "Shizuoka, Hamamatsu, Fuji", "x": 52, "y": 70}, {"romaji": "Aichi", "jp": "愛知", "cities": "Nagoya, Toyota, Toyohashi", "x": 45, "y": 70}, {"romaji": "Kyoto", "jp": "京都", "cities": "Kyoto, Uji, Maizuru", "x": 35, "y": 68}, {"romaji": "Osaka", "jp": "大阪", "cities": "Osaka, Sakai, Higashiōsaka", "x": 34, "y": 72}, {"romaji": "Hyōgo", "jp": "兵庫", "cities": "Kobe, Himeji, Nishinomiya", "x": 29, "y": 69}, {"romaji": "Hiroshima", "jp": "広島", "cities": "Hiroshima, Fukuyama, Kure", "x": 19, "y": 74}, {"romaji": "Fukuoka", "jp": "福岡", "cities": "Fukuoka, Kitakyūshū, Kurume", "x": 10, "y": 80}, {"romaji": "Kumamoto", "jp": "熊本", "cities": "Kumamoto, Yatsushiro, Amakusa", "x": 10, "y": 89}, {"romaji": "Kagoshima", "jp": "鹿児島", "cities": "Kagoshima, Kirishima, Kanoya", "x": 9, "y": 96}, {"romaji": "Okinawa", "jp": "沖縄", "cities": "Naha, Okinawa City, Uruma", "x": 25, "y": 94}];
+const prefPins = [{"romaji": "Hokkaidō", "jp": "北海道", "cities": "Sapporo, Asahikawa, Hakodate", "x": 72, "y": 12}, {"romaji": "Aomori", "jp": "青森", "cities": "Aomori, Hirosaki, Hachinohe", "x": 67, "y": 28}, {"romaji": "Iwate", "jp": "岩手", "cities": "Morioka, Ichinoseki, Hanamaki", "x": 69, "y": 34}, {"romaji": "Miyagi", "jp": "宮城", "cities": "Sendai, Ishinomaki, Ōsaki", "x": 67, "y": 41}, {"romaji": "Akita", "jp": "秋田", "cities": "Akita, Yokote, Daisen", "x": 62, "y": 34}, {"romaji": "Yamagata", "jp": "山形", "cities": "Yamagata, Tsuruoka, Sakata", "x": 63, "y": 42}, {"romaji": "Fukushima", "jp": "福島", "cities": "Fukushima, Kōriyama, Iwaki", "x": 65, "y": 49}, {"romaji": "Ibaraki", "jp": "茨城", "cities": "Mito, Tsukuba, Hitachi", "x": 66, "y": 58}, {"romaji": "Tochigi", "jp": "栃木", "cities": "Utsunomiya, Oyama, Nikkō", "x": 61, "y": 55}, {"romaji": "Gunma", "jp": "群馬", "cities": "Maebashi, Takasaki, Isesaki", "x": 57, "y": 55}, {"romaji": "Saitama", "jp": "埼玉", "cities": "Saitama, Kawaguchi, Kawagoe", "x": 59, "y": 61}, {"romaji": "Chiba", "jp": "千葉", "cities": "Chiba, Funabashi, Kashiwa", "x": 66, "y": 64}, {"romaji": "Tokyo", "jp": "東京", "cities": "Tokyo, Hachiōji, Machida", "x": 61, "y": 65}, {"romaji": "Kanagawa", "jp": "神奈川", "cities": "Yokohama, Kawasaki, Sagamihara", "x": 59, "y": 68}, {"romaji": "Niigata", "jp": "新潟", "cities": "Niigata, Nagaoka, Jōetsu", "x": 54, "y": 49}, {"romaji": "Toyama", "jp": "富山", "cities": "Toyama, Takaoka, Uozu", "x": 47, "y": 59}, {"romaji": "Ishikawa", "jp": "石川", "cities": "Kanazawa, Komatsu, Hakusan", "x": 43, "y": 61}, {"romaji": "Fukui", "jp": "福井", "cities": "Fukui, Sabae, Tsuruga", "x": 39, "y": 66}, {"romaji": "Yamanashi", "jp": "山梨", "cities": "Kōfu, Kai, Fujiyoshida", "x": 54, "y": 65}, {"romaji": "Nagano", "jp": "長野", "cities": "Nagano, Matsumoto, Ueda", "x": 52, "y": 58}, {"romaji": "Gifu", "jp": "岐阜", "cities": "Gifu, Takayama, Ōgaki", "x": 45, "y": 66}, {"romaji": "Shizuoka", "jp": "静岡", "cities": "Shizuoka, Hamamatsu, Fuji", "x": 52, "y": 72}, {"romaji": "Aichi", "jp": "愛知", "cities": "Nagoya, Toyota, Toyohashi", "x": 45, "y": 71}, {"romaji": "Mie", "jp": "三重", "cities": "Tsu, Yokkaichi, Suzuka", "x": 42, "y": 75}, {"romaji": "Shiga", "jp": "滋賀", "cities": "Ōtsu, Hikone, Kusatsu", "x": 38, "y": 69}, {"romaji": "Kyoto", "jp": "京都", "cities": "Kyoto, Uji, Maizuru", "x": 34, "y": 69}, {"romaji": "Osaka", "jp": "大阪", "cities": "Osaka, Sakai, Higashiōsaka", "x": 34, "y": 73}, {"romaji": "Hyōgo", "jp": "兵庫", "cities": "Kobe, Himeji, Nishinomiya", "x": 28, "y": 70}, {"romaji": "Nara", "jp": "奈良", "cities": "Nara, Kashihara, Ikoma", "x": 37, "y": 74}, {"romaji": "Wakayama", "jp": "和歌山", "cities": "Wakayama, Tanabe, Hashimoto", "x": 35, "y": 78}, {"romaji": "Tottori", "jp": "鳥取", "cities": "Tottori, Yonago, Kurayoshi", "x": 24, "y": 68}, {"romaji": "Shimane", "jp": "島根", "cities": "Matsue, Izumo, Hamada", "x": 18, "y": 71}, {"romaji": "Okayama", "jp": "岡山", "cities": "Okayama, Kurashiki, Tsuyama", "x": 24, "y": 73}, {"romaji": "Hiroshima", "jp": "広島", "cities": "Hiroshima, Fukuyama, Kure", "x": 18, "y": 75}, {"romaji": "Yamaguchi", "jp": "山口", "cities": "Yamaguchi, Shimonoseki, Ube", "x": 12, "y": 79}, {"romaji": "Tokushima", "jp": "徳島", "cities": "Tokushima, Anan, Naruto", "x": 31, "y": 81}, {"romaji": "Kagawa", "jp": "香川", "cities": "Takamatsu, Marugame, Mitoyo", "x": 28, "y": 78}, {"romaji": "Ehime", "jp": "愛媛", "cities": "Matsuyama, Imabari, Uwajima", "x": 20, "y": 82}, {"romaji": "Kōchi", "jp": "高知", "cities": "Kōchi, Shimanto, Nankoku", "x": 24, "y": 86}, {"romaji": "Fukuoka", "jp": "福岡", "cities": "Fukuoka, Kitakyūshū, Kurume", "x": 10, "y": 82}, {"romaji": "Saga", "jp": "佐賀", "cities": "Saga, Karatsu, Tosu", "x": 7, "y": 85}, {"romaji": "Nagasaki", "jp": "長崎", "cities": "Nagasaki, Sasebo, Isahaya", "x": 4, "y": 88}, {"romaji": "Kumamoto", "jp": "熊本", "cities": "Kumamoto, Yatsushiro, Amakusa", "x": 10, "y": 91}, {"romaji": "Ōita", "jp": "大分", "cities": "Ōita, Beppu, Nakatsu", "x": 15, "y": 86}, {"romaji": "Miyazaki", "jp": "宮崎", "cities": "Miyazaki, Miyakonjō, Nobeoka", "x": 15, "y": 94}, {"romaji": "Kagoshima", "jp": "鹿児島", "cities": "Kagoshima, Kirishima, Kanoya", "x": 9, "y": 97}, {"romaji": "Okinawa", "jp": "沖縄", "cities": "Naha, Okinawa City, Uruma", "x": 26, "y": 95}];
 
 let trainerMode = "kana";
 let currentQuestion = null;
@@ -31,16 +32,26 @@ window.addEventListener("load", () => {
   loadTrainer();
   animateCounters();
 
-  if (localStorage.getItem("tasewakaiHelperHidden") !== "true") {
-    setTimeout(openHelper, 1600);
+  if (localStorage.getItem("tasewakaiGuideHidden") !== "true") {
+    setTimeout(openGuide, 1300);
   }
 });
 
-function openHelper() { helperModal.classList.add("active"); }
-function closeHelper() { helperModal.classList.remove("active"); }
-function hideHelperForever() {
-  localStorage.setItem("tasewakaiHelperHidden", "true");
-  closeHelper();
+function openGuide() {
+  guideTransition.classList.add("active");
+  setTimeout(() => {
+    guideTransition.classList.remove("active");
+    guideModal.classList.add("active");
+  }, 780);
+}
+
+function closeGuide() {
+  guideModal.classList.remove("active");
+}
+
+function hideGuideForever() {
+  localStorage.setItem("tasewakaiGuideHidden", "true");
+  closeGuide();
 }
 
 function openSupport() { supportModal.classList.add("active"); }
@@ -68,7 +79,7 @@ function openTool(tool) {
 
 function closeTool() { toolModal.classList.remove("active"); }
 
-[helperModal, supportModal, toolModal].forEach(modal => {
+[guideModal, supportModal, toolModal].forEach(modal => {
   modal.addEventListener("click", event => {
     if (event.target === modal) modal.classList.remove("active");
   });
@@ -76,26 +87,26 @@ function closeTool() { toolModal.classList.remove("active"); }
 
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") {
-    closeHelper();
+    closeGuide();
     closeSupport();
     closeTool();
   }
 });
 
 function createSakura() {
-  const petal = document.createElement("div");
-  const symbols = ["✦", "✧", "❀", "✿", "❁"];
+  const petal = document.createElement("img");
+  const images = ["assets/sakura.png", "assets/petals.png", "assets/flower.png"];
   petal.className = "sakura";
-  petal.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+  petal.src = images[Math.floor(Math.random() * images.length)];
   petal.style.left = Math.random() * 100 + "vw";
-  petal.style.fontSize = Math.random() * 13 + 10 + "px";
-  petal.style.animationDuration = Math.random() * 5 + 6 + "s";
-  petal.style.opacity = Math.random() * 0.65 + 0.22;
+  petal.style.width = Math.random() * 18 + 22 + "px";
+  petal.style.animationDuration = Math.random() * 5 + 7 + "s";
+  petal.style.opacity = Math.random() * 0.45 + 0.22;
   sakuraLayer.appendChild(petal);
-  setTimeout(() => petal.remove(), 12000);
+  setTimeout(() => petal.remove(), 13000);
 }
 
-setInterval(createSakura, 460);
+setInterval(createSakura, 620);
 
 let lastCursorPetal = 0;
 document.addEventListener("mousemove", event => {
@@ -156,7 +167,8 @@ function createMapPins() {
     layer.appendChild(btn);
   });
 
-  selectPref(prefPins.find(p => p.romaji === "Tokyo") || prefPins[0], layer.querySelector(".pref-pin"));
+  const tokyoIndex = prefPins.findIndex(p => p.romaji === "Tokyo");
+  selectPref(prefPins[tokyoIndex], layer.children[tokyoIndex]);
 }
 
 function selectPref(pref, btn) {
@@ -173,9 +185,9 @@ function toggleMapLabels() {
 }
 
 function randomPrefecture() {
-  const pref = prefPins[Math.floor(Math.random() * prefPins.length)];
+  const index = Math.floor(Math.random() * prefPins.length);
+  const pref = prefPins[index];
   const pins = Array.from(document.querySelectorAll(".pref-pin"));
-  const index = prefPins.indexOf(pref);
   selectPref(pref, pins[index]);
 }
 
