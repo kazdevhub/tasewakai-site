@@ -124,3 +124,47 @@ document.addEventListener("keydown", (event) => {
     tryBetaCode();
   }
 });
+
+
+/* === pre-alpha 0.5 wind particle patch === */
+const windParticleLayer = document.getElementById("windParticleLayer");
+const windPetalImages = [
+  "assets/bg-sakura-branch.png",
+  "assets/icon-fan.png",
+  "assets/manga-effect.png"
+];
+
+function spawnWindPetal() {
+  if (!windParticleLayer) return;
+
+  const petal = document.createElement("div");
+  petal.className = "wind-petal";
+  petal.style.top = (Math.random() * 78 + 8) + "vh";
+  petal.style.left = "-8vw";
+  petal.style.width = (Math.random() * 13 + 12) + "px";
+  petal.style.height = petal.style.width;
+  petal.style.animationDuration = (Math.random() * 4 + 7) + "s";
+  petal.style.animationDelay = (Math.random() * 0.8) + "s";
+  petal.style.backgroundImage = `url("${Math.random() > 0.72 ? "assets/manga-effect.png" : "assets/bg-sakura-branch.png"}")`;
+  petal.style.backgroundSize = Math.random() > 0.72 ? "contain" : "520px";
+  petal.style.backgroundPosition = Math.random() > 0.5 ? "right top" : "left bottom";
+
+  windParticleLayer.appendChild(petal);
+  setTimeout(() => petal.remove(), 12000);
+}
+
+function spawnWindLine() {
+  if (!windParticleLayer || window.innerWidth <= 820) return;
+
+  const line = document.createElement("div");
+  line.className = "wind-streak";
+  line.style.top = (Math.random() * 72 + 12) + "vh";
+  line.style.left = "-10vw";
+  line.style.animationDuration = (Math.random() * 2.5 + 4.5) + "s";
+
+  windParticleLayer.appendChild(line);
+  setTimeout(() => line.remove(), 8000);
+}
+
+setInterval(spawnWindPetal, 950);
+setInterval(spawnWindLine, 1300);
