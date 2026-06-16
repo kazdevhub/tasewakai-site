@@ -61,9 +61,7 @@ function openTool(tool) {
   }
 }
 
-function closeTool() {
-  toolModal.classList.remove("active");
-}
+function closeTool() { toolModal.classList.remove("active"); }
 
 [helperModal, supportModal, toolModal].forEach(modal => {
   modal.addEventListener("click", event => {

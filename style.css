@@ -270,6 +270,14 @@ h1 {
   overflow: hidden;
 }
 
+.btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
 .btn:hover {
   transform: translateY(-4px);
 }
@@ -344,13 +352,6 @@ h1 {
   margin-top: 4px;
 }
 
-.scroll-hint {
-  position: absolute;
-  bottom: 12px;
-  color: rgba(255,255,255,0.58);
-  animation: bounce 1.7s infinite;
-}
-
 .section {
   max-width: 1180px;
   margin: 0 auto;
@@ -419,7 +420,7 @@ h1 {
 .profile-panel,
 .quiz-panel,
 .map-list,
-.simple-japan {
+.uploaded-map-card {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 26px;
@@ -433,7 +434,8 @@ h1 {
 .team-card:hover,
 .link-grid a:hover,
 .profile-panel:hover,
-.quiz-panel:hover {
+.quiz-panel:hover,
+.uploaded-map-card:hover {
   transform: translateY(-7px);
   border-color: rgba(255, 63, 145, 0.55);
   box-shadow: 0 0 38px rgba(255, 63, 145, 0.12);
@@ -587,11 +589,6 @@ input {
   font-weight: 900;
 }
 
-.answer-btn:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255,63,145,0.6);
-}
-
 .answer-btn.correct {
   background: rgba(53, 219, 139, 0.24);
   border-color: rgba(53, 219, 139, 0.85);
@@ -621,69 +618,26 @@ input {
 
 .map-layout-clean {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 0.9fr;
   gap: 22px;
   margin-top: 22px;
 }
 
-.simple-japan {
-  min-height: 540px;
-  position: relative;
+.uploaded-map-card {
+  min-height: 520px;
+  display: grid;
+  place-items: center;
   background:
-    radial-gradient(circle at 70% 25%, rgba(104,247,255,0.08), transparent 28%),
+    radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 60%),
     rgba(255,255,255,0.04);
 }
 
-.island {
-  position: absolute;
-  background: linear-gradient(135deg, rgba(123,69,255,0.55), rgba(255,63,145,0.30));
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 0 30px rgba(255,63,145,0.14);
-}
-
-.hokkaido {
-  width: 170px;
-  height: 120px;
-  border-radius: 55% 45% 50% 50%;
-  right: 10%;
-  top: 8%;
-  transform: rotate(-10deg);
-}
-
-.honshu {
-  width: 380px;
-  height: 150px;
-  border-radius: 60% 40% 55% 45%;
-  right: 18%;
-  top: 35%;
-  transform: rotate(132deg);
-}
-
-.shikoku {
-  width: 120px;
-  height: 55px;
-  border-radius: 55%;
-  left: 35%;
-  bottom: 28%;
-  transform: rotate(-12deg);
-}
-
-.kyushu {
-  width: 145px;
-  height: 120px;
-  border-radius: 50% 44% 58% 43%;
-  left: 16%;
-  bottom: 12%;
-  transform: rotate(18deg);
-}
-
-.okinawa {
-  width: 80px;
-  height: 34px;
-  border-radius: 999px;
-  right: 18%;
-  bottom: 9%;
-  transform: rotate(-8deg);
+.uploaded-map-card img {
+  max-width: 100%;
+  max-height: 680px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,0.45));
+  border-radius: 18px;
 }
 
 .map-list button {
@@ -723,19 +677,26 @@ input {
   display: grid;
   place-items: center;
   gap: 10px;
-  min-height: 110px;
+  min-height: 118px;
 }
 
-.link-grid i {
-  font-size: 1.8rem;
+.link-grid img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 
-.link-grid .fa-discord { color: #5865F2; }
-.link-grid .fa-instagram { color: #E4405F; }
-.link-grid .fa-tiktok { color: #ffffff; }
-.link-grid .fa-youtube { color: #FF0000; }
-.link-grid .fa-twitch { color: #9146FF; }
-.link-grid .fa-steam { color: #c7d5e0; }
+.tiktok-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #000;
+  color: #fff;
+  font-size: 2rem;
+  text-shadow: 2px 0 #fe2c55, -2px 0 #25f4ee;
+}
 
 .cta {
   margin: 40px auto 80px;
@@ -912,11 +873,6 @@ footer {
   to { transform: rotate(360deg); }
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
 @keyframes popIn {
   from { opacity: 0; transform: scale(0.94); }
   to { opacity: 1; transform: scale(1); }
@@ -1014,10 +970,6 @@ footer {
     width: 100%;
   }
 
-  .scroll-hint {
-    display: none;
-  }
-
   .section {
     padding: 70px 5%;
   }
@@ -1036,6 +988,10 @@ footer {
   .modal {
     padding: 30px 20px;
   }
+
+  .uploaded-map-card {
+    min-height: 360px;
+  }
 }
 
 @media (max-width: 460px) {
@@ -1046,14 +1002,4 @@ footer {
   .btn {
     width: 100%;
   }
-
-  .simple-japan {
-    min-height: 380px;
-  }
-
-  .hokkaido { width: 100px; height: 75px; }
-  .honshu { width: 220px; height: 95px; }
-  .shikoku { width: 80px; height: 38px; }
-  .kyushu { width: 90px; height: 82px; }
-  .okinawa { width: 55px; height: 24px; }
 }

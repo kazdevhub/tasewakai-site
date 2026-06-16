@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta name="description" content="TASEWAKAI is an international Japanese-learning, gaming, culture, and community Discord server founded by Kazu." />
-  <meta name="keywords" content="TASEWAKAI, Japanese learning, Discord server, Kazu, kana trainer, N5 kanji, Japanese community" />
+  <meta name="keywords" content="TASEWAKAI, Japanese learning, Discord server, Kazu, kana trainer, N5 kanji, Japan map, gaming community" />
   <meta name="author" content="TASEWAKAI" />
 
   <title>TASEWAKAI 会 — Japanese × Gaming × Culture</title>
-
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
@@ -68,7 +66,7 @@
 
         <div class="hero-buttons">
           <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
-            <i class="fa-brands fa-discord"></i> Join Discord
+            <img src="assets/discord.png" alt="" /> Join Discord
           </a>
           <button class="btn ghost-btn" onclick="openHelper()">First time here?</button>
         </div>
@@ -90,11 +88,9 @@
         <button class="tool-card" onclick="openTool('map')">
           <span>🗾</span>
           <strong>Japan Map</strong>
-          <small>Prefectures and cities</small>
+          <small>Prefecture learning preview</small>
         </button>
       </div>
-
-      <div class="scroll-hint">Scroll to explore ↓</div>
     </section>
 
     <section id="about" class="section reveal">
@@ -177,7 +173,7 @@
             community systems, growth, identity, content, and collaborations.
           </p>
           <a class="mini-link" href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">
-            <i class="fa-brands fa-steam"></i> Kazu's Steam
+            Kazu's Steam
           </a>
         </article>
 
@@ -221,12 +217,24 @@
       <h2>Media & Socials</h2>
 
       <div class="link-grid">
-        <a href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i><span>Discord</span></a>
-        <a href="https://www.instagram.com/tasewakai_hub/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
-        <a href="https://www.tiktok.com/@kasameya.media" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i><span>TikTok</span></a>
-        <a href="https://www.youtube.com/@tasewakai" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a>
-        <a href="https://www.twitch.tv/tasewakai_kazu" target="_blank" rel="noopener"><i class="fa-brands fa-twitch"></i><span>Twitch</span></a>
-        <a href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener"><i class="fa-brands fa-steam"></i><span>Kazu Steam</span></a>
+        <a href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
+          <img src="assets/discord.png" alt="Discord" /><span>Discord</span>
+        </a>
+        <a href="https://www.instagram.com/tasewakai_hub/" target="_blank" rel="noopener">
+          <img src="assets/instagram.png" alt="Instagram" /><span>Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@kasameya.media" target="_blank" rel="noopener">
+          <span class="tiktok-icon">♪</span><span>TikTok</span>
+        </a>
+        <a href="https://www.youtube.com/@tasewakai" target="_blank" rel="noopener">
+          <img src="assets/youtube.png" alt="YouTube" /><span>YouTube</span>
+        </a>
+        <a href="https://www.twitch.tv/tasewakai_kazu" target="_blank" rel="noopener">
+          <img src="assets/twitch.png" alt="Twitch" /><span>Twitch</span>
+        </a>
+        <a href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">
+          <img src="assets/steam.svg" alt="Steam" /><span>Kazu Steam</span>
+        </a>
       </div>
     </section>
 
@@ -234,7 +242,7 @@
       <h2>Ready to enter TASEWAKAI?</h2>
       <p>Join the community, meet people, practice Japanese, and become part of the road to 1000 members.</p>
       <a class="btn join-btn big" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
-        <i class="fa-brands fa-discord"></i> Join TASEWAKAI
+        <img src="assets/discord.png" alt="" /> Join TASEWAKAI
       </a>
     </section>
   </main>
@@ -315,19 +323,15 @@
 
       <div id="mapTool" class="tool-view hidden">
         <p class="mini-label">Japan tool</p>
-        <h2>Japan Prefecture Map</h2>
+        <h2>Japan Map</h2>
         <p class="tool-desc">
-          This is a clean learning preview. For a truly accurate clickable prefecture map,
-          upload a proper Japan SVG/PNG map and I can wire it into this panel.
+          This uses your uploaded Japan map image as the visual base. For full clickable prefectures later,
+          the best file is an SVG map where every prefecture is a separate shape.
         </p>
 
         <div class="map-layout-clean">
-          <div class="simple-japan">
-            <div class="island hokkaido"></div>
-            <div class="island honshu"></div>
-            <div class="island shikoku"></div>
-            <div class="island kyushu"></div>
-            <div class="island okinawa"></div>
+          <div class="uploaded-map-card">
+            <img src="assets/japan-map.png" alt="Map of Japan" />
           </div>
 
           <aside class="map-list">
@@ -361,7 +365,9 @@
       </p>
 
       <div class="helper-actions">
-        <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">Join Discord</a>
+        <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
+          <img src="assets/discord.png" alt="" /> Join Discord
+        </a>
         <button class="btn ghost-btn" onclick="hideHelperForever()">Hide this</button>
       </div>
     </div>
@@ -381,7 +387,9 @@
         <div><strong>David</strong><span>Moderation, reports, team support, design/modding-related help.</span><code>Discord: miku_fravery.</code></div>
       </div>
 
-      <a class="btn join-btn full" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">Open Discord</a>
+      <a class="btn join-btn full" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">
+        <img src="assets/discord.png" alt="" /> Open Discord
+      </a>
     </div>
   </div>
 
