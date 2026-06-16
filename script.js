@@ -13,7 +13,7 @@ function economyHash(p=progress){const raw=[p.name,p.points,p.exp,p.level,p.yen,
 function verifyEconomy(){if(!progress.economyHash){progress.economyHash=economyHash();saveProgress();return true}return progress.economyHash===economyHash()}
 function sealEconomy(){progress.economyHash=economyHash()}
 function openGuide(){guideTransition.classList.add("active");setTimeout(()=>{guideTransition.classList.remove("active");guideModal.classList.add("active")},780)}function closeGuide(){guideModal.classList.remove("active")}function hideGuideForever(){localStorage.setItem("tasewakaiGuideHidden","true");closeGuide()}function openSupport(){supportModal.classList.add("active")}function closeSupport(){supportModal.classList.remove("active")}
-function openTool(tool){toolModal.classList.add("active");document.querySelectorAll(".tool-view").forEach(v=>v.classList.add("hidden"));if(tool==="trainer"){document.getElementById("trainerTool").classList.remove("hidden");setTrainerMode("kana")}if(tool==="n5"){document.getElementById("n5Tool").classList.remove("hidden");mountN5Quiz();setTrainerMode("kanji")}if(tool==="map")document.getElementById("mapTool").classList.remove("hidden")}function closeTool(){toolModal.classList.remove("active")}
+function openTool(tool){toolModal.classList.add("active");document.querySelectorAll(".tool-view").forEach(v=>v.classList.add("hidden"));if(tool==="trainer"){document.getElementById("trainerTool").classList.remove("hidden");setTrainerMode("kana")}if(tool==="n5"){document.getElementById("n5Tool").classList.remove("hidden");mountN5Quiz();setTrainerMode("kanji")}if(tool==="map"){document.getElementById("mapTool").classList.remove("hidden");renderBetaGate()}}function closeTool(){toolModal.classList.remove("active")}
 [guideModal,supportModal,toolModal].forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("active")}));document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeGuide();closeSupport();closeTool()}});
 function createSakura(){const petal=document.createElement("img");const imgs=["assets/icon-fan.png","assets/icon-fishcake.png","assets/icon-onsen.png"];petal.className="sakura";petal.src=imgs[Math.floor(Math.random()*imgs.length)];petal.style.left=Math.random()*100+"vw";petal.style.width=Math.random()*14+20+"px";petal.style.animationDuration=Math.random()*5+7+"s";petal.style.opacity=Math.random()*.38+.18;sakuraLayer.appendChild(petal);setTimeout(()=>petal.remove(),13000)}setInterval(createSakura,760);
 let lastCursorPetal=0;document.addEventListener("mousemove",e=>{if(window.innerWidth<=820)return;const now=Date.now();if(now-lastCursorPetal<60)return;lastCursorPetal=now;const p=document.createElement("div");p.className="cursor-petal";p.textContent=Math.random()>.5?"桜":"✿";p.style.left=e.clientX+(Math.random()*16-8)+"px";p.style.top=e.clientY+(Math.random()*16-8)+"px";p.style.fontSize=Math.random()*8+10+"px";cursorSakuraLayer.appendChild(p);setTimeout(()=>p.remove(),900)});
@@ -38,3 +38,89 @@ function getQuestionPool(){if(trainerMode==="kanji")return kanjiQuestions;if(tra
 function nextQuestion(){lockAnswer=false;const pool=getQuestionPool();currentQuestion=pool[Math.floor(Math.random()*pool.length)];const label=trainerMode==="kana"?"Kana Trainer":trainerMode==="kanji"?"N5 Kanji Trainer":"N5 Words Trainer";const question=trainerMode==="kana"?"Choose the correct reading.":"Choose the correct meaning.";document.getElementById("quizModeLabel").textContent=label;document.getElementById("quizPrompt").textContent=currentQuestion.q;document.getElementById("quizQuestion").textContent=question;document.getElementById("quizFeedback").textContent="Pick the correct answer.";const answers=createAnswers(pool,currentQuestion.a),grid=document.getElementById("answerGrid");grid.innerHTML="";answers.forEach(answer=>{const btn=document.createElement("button");btn.className="answer-btn";btn.textContent=answer;btn.onclick=()=>checkAnswer(btn,answer);grid.appendChild(btn)})}
 function createAnswers(pool,correct){const wrong=pool.map(item=>item.a).filter(answer=>answer!==correct).sort(()=>Math.random()-.5).slice(0,3);return[correct,...wrong].sort(()=>Math.random()-.5)}
 function checkAnswer(button,answer){if(lockAnswer)return;lockAnswer=true;document.querySelectorAll(".answer-btn").forEach(btn=>{if(btn.textContent===currentQuestion.a)btn.classList.add("correct")});if(answer===currentQuestion.a){const r=reward(true);document.getElementById("quizFeedback").textContent=`Correct! +${r.expGain} EXP · +${r.yenGain} YEN`;}else{button.classList.add("wrong");reward(false);document.getElementById("quizFeedback").textContent=`Wrong. Correct answer: ${currentQuestion.a}`;}setTimeout(nextQuestion,1000)}
+
+
+/* === pre-alpha 0.4 beta map access patch === */
+const BETA_MAP_CODE = "ksdfgb23jw4hg239";
+
+function hasBetaAccess() {
+  return localStorage.getItem("tasewakaiBetaMapAccess") === "true";
+}
+
+function renderBetaGate() {
+  const gate = document.getElementById("mapGate");
+  const unlocked = document.getElementById("mapUnlocked");
+  if (!gate || !unlocked) return;
+
+  if (hasBetaAccess()) {
+    gate.classList.add("hidden");
+    unlocked.classList.remove("hidden");
+    unlocked.classList.add("map-access-flash");
+    setTimeout(() => unlocked.classList.remove("map-access-flash"), 800);
+    createMapPins();
+  } else {
+    gate.classList.remove("hidden");
+    unlocked.classList.add("hidden");
+  }
+}
+
+function tryBetaCode() {
+  const input = document.getElementById("betaCodeInput");
+  const message = document.getElementById("betaAccessMessage");
+  const lockStage = document.getElementById("lockStage");
+  const lockIcon = document.getElementById("lockMainIcon");
+  const code = (input?.value || "").trim();
+
+  lockStage.classList.remove("unlocking", "denied");
+  void lockStage.offsetWidth;
+
+  if (code === BETA_MAP_CODE) {
+    message.textContent = "Access granted. Beta map unlocked.";
+    message.className = "access-message ok";
+    lockIcon.src = "assets/icon-unlock.png";
+    lockStage.classList.add("unlocking");
+    localStorage.setItem("tasewakaiBetaMapAccess", "true");
+    spawnUnlockPetals();
+
+    setTimeout(() => {
+      renderBetaGate();
+    }, 950);
+  } else {
+    message.textContent = "Wrong beta key. Access denied.";
+    message.className = "access-message bad";
+    lockIcon.src = "assets/icon-lock-cancel.png";
+    lockStage.classList.add("denied");
+    setTimeout(() => {
+      lockIcon.src = "assets/icon-lock-password.png";
+    }, 900);
+  }
+}
+
+function lockBetaMap() {
+  localStorage.removeItem("tasewakaiBetaMapAccess");
+  const input = document.getElementById("betaCodeInput");
+  if (input) input.value = "";
+  renderBetaGate();
+}
+
+function spawnUnlockPetals() {
+  const symbols = ["✿", "❀", "✦", "桜", "✧"];
+  for (let i = 0; i < 34; i++) {
+    const petal = document.createElement("div");
+    petal.className = "unlock-burst";
+    petal.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    petal.style.left = (50 + (Math.random() * 34 - 17)) + "vw";
+    petal.style.top = (42 + (Math.random() * 20 - 10)) + "vh";
+    petal.style.animationDelay = (Math.random() * 0.35) + "s";
+    petal.style.fontSize = (Math.random() * 12 + 14) + "px";
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 1500);
+  }
+}
+
+document.addEventListener("keydown", (event) => {
+  const betaInput = document.getElementById("betaCodeInput");
+  if (event.key === "Enter" && document.activeElement === betaInput) {
+    tryBetaCode();
+  }
+});
