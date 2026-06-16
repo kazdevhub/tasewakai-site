@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -37,6 +38,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .preloader {
@@ -98,14 +103,6 @@ a {
   animation-delay: 2s;
 }
 
-.orb-three {
-  left: 40%;
-  top: 55%;
-  background: var(--gold);
-  opacity: 0.12;
-  animation-delay: 1s;
-}
-
 .navbar {
   position: fixed;
   top: 0;
@@ -115,7 +112,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 18px 8%;
-  background: rgba(7, 7, 17, 0.72);
+  background: rgba(7, 7, 17, 0.78);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
@@ -123,6 +120,7 @@ a {
 .brand {
   font-weight: 900;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 nav {
@@ -173,19 +171,6 @@ footer {
     0 0 70px rgba(255,63,145,0.15),
     inset 0 0 70px rgba(123,69,255,0.12);
   animation: ringSpin 18s linear infinite;
-}
-
-.hero-ring::before,
-.hero-ring::after {
-  content: "鳥居 ・ 桜 ・ 日本語 ・ ゲーム ・ 文化";
-  position: absolute;
-  inset: 34px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: rgba(255,255,255,0.11);
-  letter-spacing: 6px;
-  animation: ringSpin 25s linear reverse infinite;
 }
 
 .hero-glass {
@@ -293,14 +278,16 @@ h1 {
   transform: translateY(-4px);
 }
 
-.join-btn {
+.join-btn,
+.map-btn-inline {
   background: linear-gradient(135deg, var(--pink), var(--purple));
   box-shadow:
     0 0 20px rgba(255, 63, 145, 0.35),
     0 0 42px rgba(123, 69, 255, 0.18);
 }
 
-.join-btn::before {
+.join-btn::before,
+.map-btn-inline::before {
   content: "";
   position: absolute;
   inset: -2px;
@@ -311,19 +298,62 @@ h1 {
   transition: 0.55s;
 }
 
-.join-btn:hover {
+.join-btn:hover,
+.map-btn-inline:hover {
   box-shadow:
     0 0 26px rgba(255, 63, 145, 0.72),
     0 0 60px rgba(123, 69, 255, 0.42);
 }
 
-.join-btn:hover::before {
+.join-btn:hover::before,
+.map-btn-inline:hover::before {
   left: 130%;
 }
 
 .ghost-btn {
   background: rgba(255,255,255,0.075);
   border: 1px solid var(--border);
+}
+
+.floating-map-card {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 32;
+  width: 190px;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 24px;
+  padding: 16px;
+  color: white;
+  background:
+    linear-gradient(135deg, rgba(255,63,145,0.18), rgba(123,69,255,0.20)),
+    rgba(12, 10, 24, 0.78);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  box-shadow: 0 0 28px rgba(123,69,255,0.22);
+  transition: 0.25s;
+}
+
+.floating-map-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,63,145,0.55);
+  box-shadow: 0 0 36px rgba(255,63,145,0.26);
+}
+
+.floating-map-card span {
+  display: block;
+  font-size: 1.8rem;
+}
+
+.floating-map-card strong,
+.floating-map-card small {
+  display: block;
+}
+
+.floating-map-card small {
+  color: var(--muted);
+  margin-top: 3px;
 }
 
 .scroll-hint {
@@ -397,8 +427,9 @@ h1 {
 .feature-card,
 .team-card,
 .link-grid a,
-.timeline-item,
-.map-info {
+.map-info,
+.profile-panel,
+.quiz-panel {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 26px;
@@ -410,8 +441,9 @@ h1 {
 
 .feature-card::after,
 .team-card::after,
-.timeline-item::after,
-.map-info::after {
+.map-info::after,
+.profile-panel::after,
+.quiz-panel::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -423,8 +455,9 @@ h1 {
 .feature-card:hover,
 .team-card:hover,
 .link-grid a:hover,
-.timeline-item:hover,
-.map-info:hover {
+.map-info:hover,
+.profile-panel:hover,
+.quiz-panel:hover {
   transform: translateY(-7px);
   border-color: rgba(255, 63, 145, 0.55);
   box-shadow: 0 0 38px rgba(255, 63, 145, 0.12);
@@ -432,8 +465,9 @@ h1 {
 
 .feature-card:hover::after,
 .team-card:hover::after,
-.timeline-item:hover::after,
-.map-info:hover::after {
+.map-info:hover::after,
+.profile-panel:hover::after,
+.quiz-panel:hover::after {
   opacity: 1;
 }
 
@@ -448,21 +482,6 @@ h1 {
   box-shadow: 0 0 25px rgba(255, 63, 145, 0.28);
   margin-bottom: 18px;
   font-weight: 900;
-}
-
-.feature-card h3,
-.team-card h3,
-.timeline-item h3 {
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 2;
-}
-
-.feature-card p,
-.team-card p,
-.timeline-item p {
-  position: relative;
-  z-index: 2;
 }
 
 .role {
@@ -487,29 +506,180 @@ h1 {
   z-index: 3;
 }
 
-.mini-link:hover {
-  color: white;
-  text-shadow: 0 0 12px var(--gold);
-}
-
-.founder-card {
-  border-color: rgba(255, 210, 122, 0.30);
-}
-
-.map-layout {
+.trainer-layout {
   display: grid;
-  grid-template-columns: 1.4fr 0.8fr;
-  gap: 24px;
-  align-items: stretch;
+  grid-template-columns: 0.75fr 1.35fr;
+  gap: 22px;
   margin-top: 34px;
 }
 
- japan-map, .japan-map {}
+.name-label {
+  display: block;
+  color: var(--muted);
+  margin: 20px 0 8px;
+}
 
-.japan-map {
+.name-row {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.25);
+  color: white;
+  border-radius: 999px;
+  padding: 13px 16px;
+  outline: none;
+}
+
+input:focus {
+  border-color: rgba(255,63,145,0.65);
+  box-shadow: 0 0 18px rgba(255,63,145,0.18);
+}
+
+.exp-box {
+  margin: 22px 0;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+}
+
+.exp-box strong,
+.exp-box span {
+  display: block;
+}
+
+.exp-box strong {
+  font-size: 1.45rem;
+  margin-bottom: 8px;
+}
+
+.exp-bar {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.10);
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+.exp-bar div {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--pink), var(--gold));
+  transition: 0.4s;
+}
+
+.trainer-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
   position: relative;
-  min-height: 760px;
-  border-radius: 34px;
+  z-index: 4;
+}
+
+.tab {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  color: white;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  border-color: transparent;
+}
+
+.quiz-character {
+  font-size: clamp(5rem, 14vw, 9rem);
+  font-weight: 900;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 30px rgba(255,63,145,0.55);
+  margin: 12px 0;
+}
+
+.quiz-question,
+.quiz-feedback {
+  text-align: center;
+}
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+  position: relative;
+  z-index: 5;
+}
+
+.answer-btn {
+  border: 1px solid var(--border);
+  color: white;
+  background: rgba(255,255,255,0.07);
+  padding: 16px;
+  border-radius: 18px;
+  cursor: pointer;
+  font-weight: 900;
+  transition: 0.2s;
+}
+
+.answer-btn:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,63,145,0.6);
+}
+
+.answer-btn.correct {
+  background: rgba(53, 219, 139, 0.24);
+  border-color: rgba(53, 219, 139, 0.85);
+}
+
+.answer-btn.wrong {
+  background: rgba(255, 52, 94, 0.22);
+  border-color: rgba(255, 52, 94, 0.80);
+}
+
+.leaderboard h3 {
+  font-size: 2rem;
+  margin: 8px 0 18px;
+}
+
+.leaderboard-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.leaderboard-row strong {
+  color: white;
+}
+
+.real-map-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 24px;
+}
+
+.map-modal {
+  width: min(1180px, 96vw);
+}
+
+.real-japan-map {
+  position: relative;
+  min-height: 720px;
+  border-radius: 30px;
   border: 1px solid var(--border);
   background:
     radial-gradient(circle at 60% 20%, rgba(104,247,255,0.09), transparent 25%),
@@ -518,24 +688,33 @@ h1 {
   box-shadow: inset 0 0 90px rgba(123,69,255,0.10);
 }
 
-.map-background-shape {
+.japan-svg {
   position: absolute;
-  inset: 35px;
-  border-radius: 54% 46% 58% 42% / 46% 38% 62% 54%;
-  border: 1px solid rgba(104,247,255,0.10);
-  background:
-    linear-gradient(165deg, transparent 0 18%, rgba(104,247,255,0.045) 18% 22%, transparent 22% 100%),
-    radial-gradient(circle at 65% 25%, rgba(255,255,255,0.04), transparent 18%);
-  transform: rotate(9deg);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 22px rgba(255,63,145,0.16));
+}
+
+.island {
+  fill: url(#islandGlow);
+  stroke: rgba(104,247,255,0.23);
+  stroke-width: 2;
+  filter: url(#softGlow);
+}
+
+.pin-layer {
+  position: absolute;
+  inset: 0;
 }
 
 .map-pin {
   position: absolute;
   transform: translate(-50%, -50%);
   border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(7,7,17,0.68);
+  background: rgba(7,7,17,0.72);
   color: white;
-  min-width: 42px;
+  min-width: 40px;
   padding: 6px 8px;
   border-radius: 999px;
   cursor: pointer;
@@ -547,15 +726,15 @@ h1 {
 }
 
 .map-pin span {
-  font-size: 0.77rem;
+  font-size: 0.73rem;
   white-space: nowrap;
 }
 
 .map-pin:hover,
 .map-pin.active {
-  background: linear-gradient(135deg, rgba(255,63,145,0.90), rgba(123,69,255,0.90));
+  background: linear-gradient(135deg, rgba(255,63,145,0.94), rgba(123,69,255,0.94));
   border-color: rgba(255,255,255,0.55);
-  transform: translate(-50%, -50%) scale(1.18);
+  transform: translate(-50%, -50%) scale(1.16);
   box-shadow:
     0 0 16px rgba(255,63,145,0.70),
     0 0 35px rgba(123,69,255,0.32);
@@ -563,26 +742,32 @@ h1 {
 }
 
 .map-info {
-  min-height: 330px;
   align-self: start;
   position: sticky;
-  top: 120px;
+  top: 100px;
 }
 
 .map-info h3 {
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   margin: 10px 0;
 }
 
 .map-info h4 {
-  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
   color: var(--gold);
   text-shadow: 0 0 20px rgba(255,210,122,0.24);
   margin-bottom: 14px;
 }
 
 .small-btn {
-  margin-top: 24px;
+  margin-top: 18px;
+  padding: 11px 16px;
+}
+
+.full {
+  display: block;
+  text-align: center;
+  width: 100%;
 }
 
 .link-grid a {
@@ -679,6 +864,7 @@ footer {
   color: white;
   font-size: 2rem;
   cursor: pointer;
+  z-index: 10;
 }
 
 .modal p {
@@ -712,11 +898,6 @@ footer {
 
 .support-list code {
   color: #ff9ad0;
-}
-
-.full {
-  display: block;
-  text-align: center;
 }
 
 .sakura {
@@ -762,40 +943,22 @@ footer {
 }
 
 @keyframes orbMove {
-  from {
-    transform: translateY(0) translateX(0) scale(1);
-  }
-  to {
-    transform: translateY(-45px) translateX(35px) scale(1.1);
-  }
+  from { transform: translateY(0) translateX(0) scale(1); }
+  to { transform: translateY(-45px) translateX(35px) scale(1.1); }
 }
 
 @keyframes ringSpin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
 }
 
 @keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes loaderPulse {
@@ -812,16 +975,10 @@ footer {
 @media (max-width: 1120px) {
   .feature-grid,
   .team-grid,
-  .link-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .map-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .map-info {
-    position: static;
+  .link-grid,
+  .trainer-layout,
+  .real-map-layout {
+    grid-template-columns: 1fr 1fr;
   }
 
   nav {
@@ -829,86 +986,149 @@ footer {
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 820px) {
+  body {
+    touch-action: pan-y;
+  }
+
+  .noise,
+  .hero-ring,
+  .cursor-sakura-layer,
+  .cursor-petal {
+    display: none !important;
+  }
+
   .navbar {
     position: sticky;
     flex-direction: column;
     gap: 12px;
-    padding: 14px 5%;
+    padding: 12px 5%;
   }
 
   nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 0.84rem;
-    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+    font-size: 0.88rem;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav a,
+  .nav-support {
+    white-space: nowrap;
   }
 
   .hero {
-    padding: 78px 5% 80px;
+    min-height: auto;
+    padding: 62px 5% 80px;
   }
 
   .hero-glass {
-    padding: 42px 20px;
+    padding: 38px 20px;
     border-radius: 26px;
   }
 
-  .hero-stats,
-  .feature-grid,
-  .team-grid,
-  .link-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section {
-    padding: 72px 5%;
-  }
-
-  .japan-map {
-    min-height: 880px;
-    overflow-x: auto;
-  }
-
-  .map-pin {
-    min-width: 36px;
-    padding: 5px 6px;
-  }
-
-  .map-pin span {
-    font-size: 0.64rem;
-  }
-
-  .modal {
-    padding: 30px 22px;
-  }
-
-  .floating-help {
-    width: 50px;
-    height: 50px;
-    right: 16px;
-    bottom: 16px;
-  }
-}
-
-@media (max-width: 440px) {
   h1 {
-    font-size: 3rem;
+    font-size: clamp(3rem, 16vw, 4.4rem);
   }
 
   .hero-text {
     font-size: 1rem;
   }
 
-  .japan-map {
-    min-height: 940px;
+  .hero-stats,
+  .feature-grid,
+  .team-grid,
+  .link-grid,
+  .trainer-layout,
+  .real-map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 70px 5%;
+  }
+
+  .answer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-map-card {
+    left: 14px;
+    bottom: 14px;
+    width: 144px;
+    padding: 12px;
+  }
+
+  .floating-map-card span {
+    font-size: 1.35rem;
+  }
+
+  .floating-map-card strong {
+    font-size: 0.88rem;
+  }
+
+  .floating-map-card small {
+    display: none;
+  }
+
+  .floating-help {
+    width: 50px;
+    height: 50px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .real-japan-map {
+    min-height: 690px;
   }
 
   .map-pin {
-    transform: translate(-50%, -50%) scale(0.9);
+    min-width: 32px;
+    padding: 4px 6px;
+  }
+
+  .map-pin span {
+    font-size: 0.62rem;
+  }
+
+  .map-info {
+    position: static;
+  }
+
+  .modal {
+    padding: 30px 20px;
+  }
+
+  .map-modal {
+    width: 96vw;
+  }
+}
+
+@media (max-width: 460px) {
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .real-japan-map {
+    min-height: 620px;
+  }
+
+  .map-pin {
+    transform: translate(-50%, -50%) scale(0.82);
   }
 
   .map-pin:hover,
   .map-pin.active {
-    transform: translate(-50%, -50%) scale(1.05);
+    transform: translate(-50%, -50%) scale(0.98);
   }
 }

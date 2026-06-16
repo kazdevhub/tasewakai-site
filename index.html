@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta name="description" content="TASEWAKAI is an international Japanese-learning, gaming, culture, and community Discord server founded by Kazu." />
-  <meta name="keywords" content="TASEWAKAI, Japanese learning, Discord server, Kazu, Japan map, prefectures, gaming community, Japanese culture" />
+  <meta name="keywords" content="TASEWAKAI, Japanese learning, Discord server, Kazu, kana trainer, N5 kanji, Japan map, gaming community" />
   <meta name="author" content="TASEWAKAI" />
 
   <title>TASEWAKAI 会 — Japanese × Gaming × Culture</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -21,7 +22,6 @@
   <div class="noise"></div>
   <div class="orb orb-one"></div>
   <div class="orb orb-two"></div>
-  <div class="orb orb-three"></div>
   <div class="sakura-layer" id="sakuraLayer"></div>
   <div class="cursor-sakura-layer" id="cursorSakuraLayer"></div>
 
@@ -31,7 +31,7 @@
     <nav>
       <a href="#about">About</a>
       <a href="#features">Features</a>
-      <a href="#map">Japan Map</a>
+      <a href="#trainer">Trainer</a>
       <a href="#team">Team</a>
       <a href="#media">Media</a>
       <button class="nav-support" onclick="openSupport()">Support</button>
@@ -71,8 +71,15 @@
             Join Discord
           </a>
           <button class="btn ghost-btn" onclick="openHelper()">First time here?</button>
+          <button class="btn map-btn-inline" onclick="openJapanMap()">🗾 Japan Map</button>
         </div>
       </div>
+
+      <button class="floating-map-card" onclick="openJapanMap()" aria-label="Open Japan Map">
+        <span>🗾</span>
+        <strong>Explore Japan</strong>
+        <small>Prefectures & cities</small>
+      </button>
 
       <div class="scroll-hint">Scroll to explore ↓</div>
     </section>
@@ -118,20 +125,20 @@
 
         <article class="feature-card">
           <div class="feature-icon">🗾</div>
-          <h3>Japan Discovery</h3>
-          <p>Explore prefectures, city names, and cultural geography through the interactive Japan map.</p>
+          <h3>Japan Map</h3>
+          <p>Open the floating map and explore prefectures with Japanese names, romaji, and major cities.</p>
         </article>
 
         <article class="feature-card">
-          <div class="feature-icon">✨</div>
-          <h3>Creative Projects</h3>
-          <p>Content, collabs, art, clips, server systems, events, and member-made community ideas.</p>
+          <div class="feature-icon">あ</div>
+          <h3>Kana Trainer</h3>
+          <p>Practice hiragana and katakana directly on the website and earn local EXP.</p>
         </article>
 
         <article class="feature-card">
-          <div class="feature-icon">🛡️</div>
-          <h3>Moderation</h3>
-          <p>A staff team helps keep the server organized, friendly, and safe for members.</p>
+          <div class="feature-icon">漢</div>
+          <h3>N5 Trainer</h3>
+          <p>Practice basic N5 kanji and vocabulary with quick quizzes.</p>
         </article>
 
         <article class="feature-card">
@@ -142,167 +149,56 @@
       </div>
     </section>
 
-    <section id="map" class="section reveal">
-      <p class="section-label">Interactive learning feature</p>
-      <h2>Japan Prefecture Map</h2>
+    <section id="trainer" class="section reveal">
+      <p class="section-label">Learning system</p>
+      <h2>TASEWAKAI Trainer</h2>
       <p class="section-subtitle">
-        Click a glowing prefecture label to see the Japanese name, romaji, and major cities.
-        This is a stylized learning map made for quick exploration, not a perfect geographic atlas.
+        Practice kana, N5 kanji, and basic N5 words. Your points and EXP are saved in your browser.
+        The leaderboard is local for now, perfect for testing before connecting it to a Discord bot or database later.
       </p>
 
-      <div class="map-layout">
-        <div class="japan-map">
-          <div class="map-background-shape"></div>
-          <button class="map-pin" style="left:58%;top:10%;" data-romaji="Hokkaidō" data-jp="北海道" data-cities="Sapporo, Asahikawa, Hakodate" aria-label="Hokkaidō 北海道">
-          <span>北海道</span>
-        </button>
-<button class="map-pin" style="left:62%;top:19%;" data-romaji="Aomori" data-jp="青森" data-cities="Aomori, Hirosaki, Hachinohe" aria-label="Aomori 青森">
-          <span>青森</span>
-        </button>
-<button class="map-pin" style="left:66%;top:23%;" data-romaji="Iwate" data-jp="岩手" data-cities="Morioka, Ichinoseki, Hanamaki" aria-label="Iwate 岩手">
-          <span>岩手</span>
-        </button>
-<button class="map-pin" style="left:70%;top:27%;" data-romaji="Miyagi" data-jp="宮城" data-cities="Sendai, Ishinomaki, Ōsaki" aria-label="Miyagi 宮城">
-          <span>宮城</span>
-        </button>
-<button class="map-pin" style="left:60%;top:24%;" data-romaji="Akita" data-jp="秋田" data-cities="Akita, Yokote, Daisen" aria-label="Akita 秋田">
-          <span>秋田</span>
-        </button>
-<button class="map-pin" style="left:64%;top:29%;" data-romaji="Yamagata" data-jp="山形" data-cities="Yamagata, Tsuruoka, Sakata" aria-label="Yamagata 山形">
-          <span>山形</span>
-        </button>
-<button class="map-pin" style="left:68%;top:34%;" data-romaji="Fukushima" data-jp="福島" data-cities="Fukushima, Kōriyama, Iwaki" aria-label="Fukushima 福島">
-          <span>福島</span>
-        </button>
-<button class="map-pin" style="left:70%;top:41%;" data-romaji="Ibaraki" data-jp="茨城" data-cities="Mito, Tsukuba, Hitachi" aria-label="Ibaraki 茨城">
-          <span>茨城</span>
-        </button>
-<button class="map-pin" style="left:66%;top:40%;" data-romaji="Tochigi" data-jp="栃木" data-cities="Utsunomiya, Oyama, Nikkō" aria-label="Tochigi 栃木">
-          <span>栃木</span>
-        </button>
-<button class="map-pin" style="left:62%;top:41%;" data-romaji="Gunma" data-jp="群馬" data-cities="Maebashi, Takasaki, Isesaki" aria-label="Gunma 群馬">
-          <span>群馬</span>
-        </button>
-<button class="map-pin" style="left:64%;top:46%;" data-romaji="Saitama" data-jp="埼玉" data-cities="Saitama, Kawaguchi, Kawagoe" aria-label="Saitama 埼玉">
-          <span>埼玉</span>
-        </button>
-<button class="map-pin" style="left:72%;top:47%;" data-romaji="Chiba" data-jp="千葉" data-cities="Chiba, Funabashi, Kashiwa" aria-label="Chiba 千葉">
-          <span>千葉</span>
-        </button>
-<button class="map-pin" style="left:66%;top:49%;" data-romaji="Tokyo" data-jp="東京" data-cities="Tokyo, Hachiōji, Machida" aria-label="Tokyo 東京">
-          <span>東京</span>
-        </button>
-<button class="map-pin" style="left:64%;top:52%;" data-romaji="Kanagawa" data-jp="神奈川" data-cities="Yokohama, Kawasaki, Sagamihara" aria-label="Kanagawa 神奈川">
-          <span>神奈川</span>
-        </button>
-<button class="map-pin" style="left:56%;top:36%;" data-romaji="Niigata" data-jp="新潟" data-cities="Niigata, Nagaoka, Jōetsu" aria-label="Niigata 新潟">
-          <span>新潟</span>
-        </button>
-<button class="map-pin" style="left:48%;top:43%;" data-romaji="Toyama" data-jp="富山" data-cities="Toyama, Takaoka, Uozu" aria-label="Toyama 富山">
-          <span>富山</span>
-        </button>
-<button class="map-pin" style="left:43%;top:44%;" data-romaji="Ishikawa" data-jp="石川" data-cities="Kanazawa, Komatsu, Hakusan" aria-label="Ishikawa 石川">
-          <span>石川</span>
-        </button>
-<button class="map-pin" style="left:39%;top:49%;" data-romaji="Fukui" data-jp="福井" data-cities="Fukui, Sabae, Tsuruga" aria-label="Fukui 福井">
-          <span>福井</span>
-        </button>
-<button class="map-pin" style="left:58%;top:51%;" data-romaji="Yamanashi" data-jp="山梨" data-cities="Kōfu, Kai, Fujiyoshida" aria-label="Yamanashi 山梨">
-          <span>山梨</span>
-        </button>
-<button class="map-pin" style="left:54%;top:45%;" data-romaji="Nagano" data-jp="長野" data-cities="Nagano, Matsumoto, Ueda" aria-label="Nagano 長野">
-          <span>長野</span>
-        </button>
-<button class="map-pin" style="left:46%;top:51%;" data-romaji="Gifu" data-jp="岐阜" data-cities="Gifu, Takayama, Ōgaki" aria-label="Gifu 岐阜">
-          <span>岐阜</span>
-        </button>
-<button class="map-pin" style="left:55%;top:56%;" data-romaji="Shizuoka" data-jp="静岡" data-cities="Shizuoka, Hamamatsu, Fuji" aria-label="Shizuoka 静岡">
-          <span>静岡</span>
-        </button>
-<button class="map-pin" style="left:47%;top:57%;" data-romaji="Aichi" data-jp="愛知" data-cities="Nagoya, Toyota, Toyohashi" aria-label="Aichi 愛知">
-          <span>愛知</span>
-        </button>
-<button class="map-pin" style="left:43%;top:60%;" data-romaji="Mie" data-jp="三重" data-cities="Tsu, Yokkaichi, Suzuka" aria-label="Mie 三重">
-          <span>三重</span>
-        </button>
-<button class="map-pin" style="left:38%;top:55%;" data-romaji="Shiga" data-jp="滋賀" data-cities="Ōtsu, Hikone, Kusatsu" aria-label="Shiga 滋賀">
-          <span>滋賀</span>
-        </button>
-<button class="map-pin" style="left:34%;top:55%;" data-romaji="Kyoto" data-jp="京都" data-cities="Kyoto, Uji, Maizuru" aria-label="Kyoto 京都">
-          <span>京都</span>
-        </button>
-<button class="map-pin" style="left:33%;top:59%;" data-romaji="Osaka" data-jp="大阪" data-cities="Osaka, Sakai, Higashiōsaka" aria-label="Osaka 大阪">
-          <span>大阪</span>
-        </button>
-<button class="map-pin" style="left:28%;top:57%;" data-romaji="Hyōgo" data-jp="兵庫" data-cities="Kobe, Himeji, Nishinomiya" aria-label="Hyōgo 兵庫">
-          <span>兵庫</span>
-        </button>
-<button class="map-pin" style="left:37%;top:60%;" data-romaji="Nara" data-jp="奈良" data-cities="Nara, Kashihara, Ikoma" aria-label="Nara 奈良">
-          <span>奈良</span>
-        </button>
-<button class="map-pin" style="left:35%;top:64%;" data-romaji="Wakayama" data-jp="和歌山" data-cities="Wakayama, Tanabe, Hashimoto" aria-label="Wakayama 和歌山">
-          <span>和歌山</span>
-        </button>
-<button class="map-pin" style="left:24%;top:54%;" data-romaji="Tottori" data-jp="鳥取" data-cities="Tottori, Yonago, Kurayoshi" aria-label="Tottori 鳥取">
-          <span>鳥取</span>
-        </button>
-<button class="map-pin" style="left:18%;top:56%;" data-romaji="Shimane" data-jp="島根" data-cities="Matsue, Izumo, Hamada" aria-label="Shimane 島根">
-          <span>島根</span>
-        </button>
-<button class="map-pin" style="left:24%;top:60%;" data-romaji="Okayama" data-jp="岡山" data-cities="Okayama, Kurashiki, Tsuyama" aria-label="Okayama 岡山">
-          <span>岡山</span>
-        </button>
-<button class="map-pin" style="left:18%;top:62%;" data-romaji="Hiroshima" data-jp="広島" data-cities="Hiroshima, Fukuyama, Kure" aria-label="Hiroshima 広島">
-          <span>広島</span>
-        </button>
-<button class="map-pin" style="left:12%;top:64%;" data-romaji="Yamaguchi" data-jp="山口" data-cities="Yamaguchi, Shimonoseki, Ube" aria-label="Yamaguchi 山口">
-          <span>山口</span>
-        </button>
-<button class="map-pin" style="left:31%;top:67%;" data-romaji="Tokushima" data-jp="徳島" data-cities="Tokushima, Anan, Naruto" aria-label="Tokushima 徳島">
-          <span>徳島</span>
-        </button>
-<button class="map-pin" style="left:28%;top:65%;" data-romaji="Kagawa" data-jp="香川" data-cities="Takamatsu, Marugame, Mitoyo" aria-label="Kagawa 香川">
-          <span>香川</span>
-        </button>
-<button class="map-pin" style="left:20%;top:68%;" data-romaji="Ehime" data-jp="愛媛" data-cities="Matsuyama, Imabari, Uwajima" aria-label="Ehime 愛媛">
-          <span>愛媛</span>
-        </button>
-<button class="map-pin" style="left:24%;top:72%;" data-romaji="Kōchi" data-jp="高知" data-cities="Kōchi, Shimanto, Nankoku" aria-label="Kōchi 高知">
-          <span>高知</span>
-        </button>
-<button class="map-pin" style="left:7%;top:68%;" data-romaji="Fukuoka" data-jp="福岡" data-cities="Fukuoka, Kitakyūshū, Kurume" aria-label="Fukuoka 福岡">
-          <span>福岡</span>
-        </button>
-<button class="map-pin" style="left:4%;top:71%;" data-romaji="Saga" data-jp="佐賀" data-cities="Saga, Karatsu, Tosu" aria-label="Saga 佐賀">
-          <span>佐賀</span>
-        </button>
-<button class="map-pin" style="left:1%;top:74%;" data-romaji="Nagasaki" data-jp="長崎" data-cities="Nagasaki, Sasebo, Isahaya" aria-label="Nagasaki 長崎">
-          <span>長崎</span>
-        </button>
-<button class="map-pin" style="left:8%;top:75%;" data-romaji="Kumamoto" data-jp="熊本" data-cities="Kumamoto, Yatsushiro, Amakusa" aria-label="Kumamoto 熊本">
-          <span>熊本</span>
-        </button>
-<button class="map-pin" style="left:12%;top:72%;" data-romaji="Ōita" data-jp="大分" data-cities="Ōita, Beppu, Nakatsu" aria-label="Ōita 大分">
-          <span>大分</span>
-        </button>
-<button class="map-pin" style="left:12%;top:79%;" data-romaji="Miyazaki" data-jp="宮崎" data-cities="Miyazaki, Miyakonojō, Nobeoka" aria-label="Miyazaki 宮崎">
-          <span>宮崎</span>
-        </button>
-<button class="map-pin" style="left:6%;top:82%;" data-romaji="Kagoshima" data-jp="鹿児島" data-cities="Kagoshima, Kirishima, Kanoya" aria-label="Kagoshima 鹿児島">
-          <span>鹿児島</span>
-        </button>
-<button class="map-pin" style="left:32%;top:86%;" data-romaji="Okinawa" data-jp="沖縄" data-cities="Naha, Okinawa City, Uruma" aria-label="Okinawa 沖縄">
-          <span>沖縄</span>
-        </button>
-        </div>
+      <div class="trainer-layout">
+        <aside class="profile-panel">
+          <p class="mini-label">Your progress</p>
+          <h3 id="trainerNameDisplay">Guest Learner</h3>
 
-        <aside class="map-info" id="mapInfo">
-          <p class="mini-label">Selected prefecture</p>
-          <h3 id="prefRomaji">Tokyo</h3>
-          <h4 id="prefJapanese">東京</h4>
-          <p id="prefCities">Tokyo, Hachiōji, Machida</p>
-          <button class="btn ghost-btn small-btn" onclick="randomPrefecture()">Random Prefecture</button>
+          <label class="name-label" for="trainerName">Display name</label>
+          <div class="name-row">
+            <input id="trainerName" placeholder="Enter name" maxlength="18" />
+            <button class="btn ghost-btn small-btn" onclick="saveTrainerName()">Save</button>
+          </div>
+
+          <div class="exp-box">
+            <strong><span id="trainerPoints">0</span> pts</strong>
+            <span>Level <b id="trainerLevel">1</b> · EXP <b id="trainerExp">0</b>/<b id="trainerNextExp">100</b></span>
+            <div class="exp-bar"><div id="expFill"></div></div>
+          </div>
+
+          <button class="btn ghost-btn full" onclick="resetTrainerProgress()">Reset local progress</button>
         </aside>
+
+        <div class="quiz-panel">
+          <div class="trainer-tabs">
+            <button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button>
+            <button class="tab" data-mode="kanji" onclick="setTrainerMode('kanji')">N5 Kanji</button>
+            <button class="tab" data-mode="words" onclick="setTrainerMode('words')">N5 Words</button>
+            <button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button>
+          </div>
+
+          <div id="quizView">
+            <p class="mini-label" id="quizModeLabel">Kana Trainer</p>
+            <div class="quiz-character" id="quizPrompt">あ</div>
+            <p class="quiz-question" id="quizQuestion">Choose the correct reading.</p>
+            <div class="answer-grid" id="answerGrid"></div>
+            <p class="quiz-feedback" id="quizFeedback">Pick an answer to begin.</p>
+          </div>
+
+          <div id="leaderboardView" class="leaderboard hidden">
+            <p class="mini-label">Local leaderboard</p>
+            <h3>Top Learners</h3>
+            <div id="leaderboardList"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -370,12 +266,12 @@
       <h2>Media & Socials</h2>
 
       <div class="link-grid">
-        <a href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.instagram.com/tasewakai_hub/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@kasameya.media" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.youtube.com/@tasewakai" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://www.twitch.tv/tasewakai_kazu" target="_blank" rel="noopener">Twitch</a>
-        <a href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">Kazu Steam</a>
+        <a href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener">💬 Discord</a>
+        <a href="https://www.instagram.com/tasewakai_hub/" target="_blank" rel="noopener">📷 Instagram</a>
+        <a href="https://www.tiktok.com/@kasameya.media" target="_blank" rel="noopener">🎵 TikTok</a>
+        <a href="https://www.youtube.com/@tasewakai" target="_blank" rel="noopener">▶️ YouTube</a>
+        <a href="https://www.twitch.tv/tasewakai_kazu" target="_blank" rel="noopener">🟣 Twitch</a>
+        <a href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">🎮 Kazu Steam</a>
       </div>
     </section>
 
@@ -392,6 +288,52 @@
 
   <button class="floating-help" onclick="openHelper()">?</button>
 
+  <div class="modal-bg" id="mapModal">
+    <div class="modal map-modal">
+      <button class="close" onclick="closeJapanMap()">×</button>
+      <p class="mini-label">Interactive Japan Map</p>
+      <h2>Explore Japan</h2>
+
+      <div class="real-map-layout">
+        <div class="real-japan-map" aria-label="Interactive map of Japan">
+          <svg class="japan-svg" viewBox="0 0 720 980" role="img" aria-label="Stylized map of Japan">
+            <defs>
+              <linearGradient id="islandGlow" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#3a3159"/>
+                <stop offset="55%" stop-color="#201b38"/>
+                <stop offset="100%" stop-color="#4b1741"/>
+              </linearGradient>
+
+              <filter id="softGlow">
+                <feGaussianBlur stdDeviation="4" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <path class="island" d="M455 82 C515 45 595 63 630 112 C666 163 642 230 584 253 C525 277 455 259 418 208 C382 158 396 116 455 82 Z"/>
+            <path class="island" d="M470 255 C528 259 575 288 579 334 C584 388 520 404 492 448 C455 505 488 556 428 610 C373 660 323 628 278 675 C241 715 215 785 155 807 C98 827 58 791 77 742 C96 690 152 676 191 628 C239 570 226 515 283 466 C338 419 392 443 417 394 C447 335 395 291 470 255 Z"/>
+            <path class="island" d="M206 646 C256 631 306 664 309 711 C312 759 251 790 199 778 C148 766 129 719 153 681 C164 663 181 653 206 646 Z"/>
+            <path class="island" d="M102 724 C135 716 166 741 160 774 C154 808 112 827 74 810 C36 793 40 754 68 735 C78 729 89 726 102 724 Z"/>
+            <path class="island" d="M310 835 C348 822 381 847 378 881 C374 920 328 940 291 922 C257 905 258 861 289 843 C296 839 302 837 310 835 Z"/>
+          </svg>
+
+          <div class="pin-layer" id="pinLayer"></div>
+        </div>
+
+        <aside class="map-info">
+          <p class="mini-label">Selected prefecture</p>
+          <h3 id="prefRomaji">Tokyo</h3>
+          <h4 id="prefJapanese">東京</h4>
+          <p id="prefCities">Tokyo, Hachiōji, Machida</p>
+          <button class="btn ghost-btn small-btn" onclick="randomPrefecture()">Random Prefecture</button>
+        </aside>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-bg" id="helperModal">
     <div class="modal helper-modal">
       <button class="close" onclick="closeHelper()">×</button>
@@ -399,7 +341,7 @@
       <h2>Welcome to TASEWAKAI 会</h2>
       <p>
         This website is the public home of TASEWAKAI. It explains what the server is,
-        who helps run it, what the community does, where to join, and now lets you explore Japan's prefectures.
+        who helps run it, what the community does, where to join, and includes small Japanese learning tools.
       </p>
 
       <div class="helper-actions">
