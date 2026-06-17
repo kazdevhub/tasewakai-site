@@ -46,16 +46,20 @@
         </div>
       </div>
 
-      <div class="home-side-card reveal">
-        <img src="assets/icon-cat.png" alt="" />
-        <p class="mini-label">Featured member</p><h3>Christa</h3><strong>Funniest Member</strong>
+      <div class="home-side-card spotlight-card reveal" onclick="triggerSpotlightBurst(this)">
+        <div class="spotlight-art">
+          <img class="lucky-cat" src="assets/icon-lucky-cat.png" alt="" />
+          <span class="cat-bubble">にゃ〜</span>
+          <img class="number-badge" src="assets/badge-number-one.png" alt="" />
+        </div>
+        <p class="mini-label">Community spotlight</p><h3>Christa</h3><strong>#1 Funniest Member</strong>
         <p>The official chaos spark of TASEWAKAI. Certified community mood booster.</p>
       </div>
 
       <div class="home-tools reveal">
-        <button class="tool-card" onclick="openTool('trainer')"><img src="assets/icon-beginner.png" alt="" /><strong>Kana Trainer</strong><small>Earn YEN and EXP</small></button>
-        <button class="tool-card" onclick="openTool('n5')"><img src="assets/icon-jp.png" alt="" /><strong>N5 Trainer</strong><small>Basic kanji and words</small></button>
-        <button class="tool-card beta-tool-card" onclick="openTool('map')"><img src="assets/icon-lock-password.png" alt="" /><strong>Japan Map</strong><small>Beta testers only</small></button>
+        <button class="tool-card" onclick="openTool('trainer')"><img src="assets/icon-kana-a.png" alt="" /><strong>Kana Trainer</strong><small>Earn YEN and EXP</small></button>
+        <button class="tool-card" onclick="openTool('n5')"><img src="assets/icon-nihon.png" alt="" /><strong>JLPT Kanji</strong><small>N5 to N3 practice</small></button>
+        <button class="tool-card beta-tool-card" onclick="openTool('map')"><span class="tool-icon-lock"><img src="assets/icon-japan-regions.png" alt="" /></span><strong>Japan Regions</strong><small>Beta testers only</small></button>
       </div>
     </section>
 
@@ -79,10 +83,10 @@
     <section id="team" class="section reveal">
       <p class="section-label">People behind the project</p><h2>Meet the Team</h2>
       <div class="team-grid">
-        <article class="team-card founder-card kazu-gold"><div class="avatar avatar-img"><img src="assets/icon-cat.png" alt="" /></div><h3>Kazu</h3><p class="role">Founder & Community Director</p><p>Kazu is the founder of TASEWAKAI and the main person behind the server direction, systems, growth, identity, content, and collaborations.</p><a class="mini-link" href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">Kazu's Steam</a></article>
-        <article class="team-card mod-glow"><div class="avatar avatar-img"><img src="assets/icon-fan.png" alt="" /></div><h3>Satoshi</h3><p class="username">satoshi______</p><p class="role">Project Helper & Japanese Support</p><p>Satoshi is calm, friendly, reliable, enjoys gaming, has strong Japanese ability, and supports the server with ideas and cultural knowledge.</p></article>
-        <article class="team-card mod-glow"><div class="avatar avatar-img"><img src="assets/icon-beginner.png" alt="" /></div><h3>Arthur</h3><p class="username">arturio8949</p><p class="role">Staff Member & Content Collaborator</p><p>Arthur is encouraging, positive, and kind. He supports staff work, joins content collaboration, and brings friendly energy.</p></article>
-        <article class="team-card mod-glow"><div class="avatar avatar-img"><img src="assets/icon-tools.png" alt="" /></div><h3>David</h3><p class="username">miku_fravery.</p><p class="role">Moderator & Creative Helper</p><p>David is a serious and dependable moderator with experience in Steam Workshop modding and graphic design.</p></article>
+        <article class="team-card founder-card kazu-gold" onclick="triggerTeamBarrier(this)"><div class="avatar avatar-img"><img src="assets/icon-team-satoshi.png" alt="" /></div><h3>Kazu</h3><button class="discord-copy" onclick="copyDiscordTag(event,'kazu.kai',this)">Discord: kazu.kai</button><p class="role">Founder & Community Director</p><p>Kazu is the founder of TASEWAKAI and the main person behind the server direction, systems, growth, identity, content, and collaborations.</p><a class="mini-link steam-link" href="https://steamcommunity.com/id/kazuuuuuuuuuu/" target="_blank" rel="noopener">Kazu's Steam<span class="steam-particles" aria-hidden="true"><i></i><i></i><i></i></span></a></article>
+        <article class="team-card mod-glow" onclick="triggerTeamBarrier(this)"><div class="avatar avatar-img"><img src="assets/icon-team-settings.png" alt="" /></div><h3>Satoshi</h3><button class="discord-copy" onclick="copyDiscordTag(event,'satoshi______',this)">Discord: satoshi______</button><p class="role">Project Helper & Japanese Support</p><p>Satoshi is calm, friendly, reliable, enjoys gaming, has strong Japanese ability, and supports the server with ideas and cultural knowledge.</p></article>
+        <article class="team-card mod-glow" onclick="triggerTeamBarrier(this)"><div class="avatar avatar-img"><img src="assets/icon-team-settings.png" alt="" /></div><h3>Arthur</h3><button class="discord-copy" onclick="copyDiscordTag(event,'arturio8949',this)">Discord: arturio8949</button><p class="role">Staff Member & Content Collaborator</p><p>Arthur is encouraging, positive, and kind. He supports staff work, joins content collaboration, and brings friendly energy.</p></article>
+        <article class="team-card mod-glow" onclick="triggerTeamBarrier(this)"><div class="avatar avatar-img"><img src="assets/icon-team-settings.png" alt="" /></div><h3>David</h3><button class="discord-copy" onclick="copyDiscordTag(event,'miku_fravery.',this)">Discord: miku_fravery.</button><p class="role">Moderator & Creative Helper</p><p>David is a serious and dependable moderator with experience in Steam Workshop modding and graphic design.</p></article>
       </div>
     </section>
 
@@ -114,7 +118,7 @@
       <div class="quiz-panel"><div class="trainer-tabs"><button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button><button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button><button class="tab" data-mode="logs" onclick="setTrainerMode('logs')">Name Logs</button></div><div id="quizView"><p class="mini-label" id="quizModeLabel">Kana Trainer</p><div class="quiz-character" id="quizPrompt">あ</div><p class="quiz-question" id="quizQuestion">Choose the correct reading.</p><div class="answer-grid" id="answerGrid"></div><p class="quiz-feedback" id="quizFeedback">Pick an answer to begin.</p></div><div id="leaderboardView" class="leaderboard hidden"><p class="mini-label">Local leaderboard</p><h3>Top Learners</h3><div id="leaderboardList"></div></div><div id="logsView" class="leaderboard hidden"><p class="mini-label">Local name logs</p><h3>Name Changes</h3><div id="nameLogsList"></div></div></div></div>
     </div>
 
-    <div id="n5Tool" class="tool-view hidden"><p class="mini-label">Learning tool</p><h2>N5 Kanji & Words Trainer</h2><p class="tool-desc">Practice basic N5 kanji and vocabulary. Correct answers earn YEN + EXP with streak bonuses.</p><div class="quiz-panel standalone-quiz"><div class="trainer-tabs"><button class="tab active" data-mode="kanji" onclick="setTrainerMode('kanji')">N5 Kanji</button><button class="tab" data-mode="words" onclick="setTrainerMode('words')">N5 Words</button><button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button></div><div id="n5QuizMount"></div></div></div>
+    <div id="n5Tool" class="tool-view hidden"><p class="mini-label">Learning tool</p><h2>JLPT Kanji Trainer</h2><p class="tool-desc">Practice N5, N4, and N3 kanji with readings, example words, review queue, boss rounds, and animated YEN + EXP rewards.</p><div class="quiz-panel standalone-quiz jlpt-panel"><div class="trainer-tabs jlpt-tabs"><button class="tab active" data-mode="n5" onclick="setTrainerMode('n5')">N5</button><button class="tab" data-mode="n4" onclick="setTrainerMode('n4')">N4</button><button class="tab" data-mode="n3" onclick="setTrainerMode('n3')">N3</button><button class="tab" data-mode="words" onclick="setTrainerMode('words')">Words</button><button class="tab" data-mode="review" onclick="setTrainerMode('review')">Review</button><button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button></div><div id="n5QuizMount"></div></div></div>
 
     <div id="mapTool" class="tool-view hidden">
       <div id="mapGate" class="beta-gate">
@@ -125,9 +129,9 @@
           </div>
 
           <p class="mini-label">Beta tester feature</p>
-          <h2>Japan Map Access Locked</h2>
+          <h2>Japan Regions Access Locked</h2>
           <p class="tool-desc">
-            The Japan Map is currently closed for beta testing. Enter the beta key to unlock it on this browser.
+            Japan Regions is currently closed for beta testing. Enter the beta key to unlock it on this browser.
           </p>
 
           <div class="access-row">
@@ -148,28 +152,50 @@
       </div>
 
       <div id="mapUnlocked" class="hidden">
-        <p class="mini-label">Japan tool · beta unlocked</p>
-        <h2>Centered Japan Map</h2>
-        <p class="tool-desc">Click the glowing markers to preview prefecture information. Toggle labels if the map feels too crowded.</p>
+        <p class="mini-label">Japan regions · beta unlocked</p>
+        <h2>Japan Regions</h2>
+        <p class="tool-desc">Explore stylized Japanese region pieces with glowing wind motion, writing modes, and short history notes.</p>
         <div class="map-controls">
-          <button class="btn ghost-btn small-btn" onclick="toggleMapLabels()">Toggle labels</button>
-          <button class="btn ghost-btn small-btn" onclick="randomPrefecture()">Random prefecture</button>
+          <button class="btn ghost-btn small-btn map-script-toggle active" data-script="romaji" onclick="setRegionScript('romaji')">Romaji</button>
+          <button class="btn ghost-btn small-btn map-script-toggle" data-script="kanji" onclick="setRegionScript('kanji')">Kanji</button>
+          <button class="btn ghost-btn small-btn map-script-toggle" data-script="hiragana" onclick="setRegionScript('hiragana')">Hiragana</button>
+          <button class="btn ghost-btn small-btn" onclick="previousRegion()">Previous</button>
+          <button class="btn ghost-btn small-btn" onclick="nextRegion()">Next</button>
           <button class="btn ghost-btn small-btn" onclick="lockBetaMap()">Lock beta map</button>
         </div>
-        <div class="map-layout-clean">
-          <div class="uploaded-map-card map-click-card">
-            <div class="map-stage">
-              <img src="assets/japan-map.png" alt="Map of Japan with prefecture borders" />
-              <div class="map-pin-layer" id="mapPinLayer"></div>
+        <div class="map-layout-clean regions-layout">
+          <div class="uploaded-map-card region-showcase-card">
+            <div class="region-stage" id="regionStage">
+              <div class="region-aura"></div>
+              <div class="region-piece-art" id="regionPieceArt">
+                <span class="region-fragment f1"></span>
+                <span class="region-fragment f2"></span>
+                <span class="region-fragment f3"></span>
+              </div>
+              <div class="region-stage-label">
+                <p class="mini-label" id="regionStageLabel">Current region</p>
+                <strong id="regionStageName">Kanto</strong>
+              </div>
+              <div class="region-wind" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
             </div>
           </div>
-          <aside class="map-list">
-            <p class="mini-label">Selected</p>
-            <h3 id="prefRomaji">Tokyo</h3>
-            <h4 id="prefJapanese">東京</h4>
-            <p id="prefCities">Tokyo, Hachiōji, Machida</p>
-            <p class="pref-note">Beta marker overlay preview. Full prefecture shape clicking requires a real SVG with separate prefecture paths.</p>
+          <aside class="map-list region-info-panel">
+            <p class="mini-label" id="mapSelectedType">Selected region</p>
+            <h3 id="regionName">Kanto</h3>
+            <h4 id="regionNative">関東</h4>
+            <p id="regionSummary">Tokyo and its surrounding plains form one of Japan's busiest cultural and economic centers.</p>
+            <p id="regionPrefectures">Tokyo, Kanagawa, Chiba, Saitama, Ibaraki, Tochigi, Gunma</p>
+            <button class="btn join-btn full" onclick="openRegionScreen()">Open history screen</button>
           </aside>
+        </div>
+        <div class="region-screen" id="regionScreen">
+          <div class="region-screen-card">
+            <button class="close" onclick="closeRegionScreen()">×</button>
+            <p class="mini-label" id="regionScreenLabel">Region history</p>
+            <h2 id="regionScreenTitle">Kanto</h2>
+            <h3 id="regionScreenNative">関東</h3>
+            <p id="regionScreenHistory">Kanto grew around Edo, later Tokyo, and became the center of modern Japanese government, rail, media, and pop culture.</p>
+          </div>
         </div>
       </div>
     </div></div></div>
