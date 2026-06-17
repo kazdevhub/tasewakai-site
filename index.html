@@ -22,6 +22,23 @@
   <div class="wind-particle-layer" id="windParticleLayer"></div>
   <div class="sakura-layer" id="sakuraLayer"></div><div class="cursor-sakura-layer" id="cursorSakuraLayer"></div>
 
+  <aside class="player-hud hidden" id="playerHud">
+    <div class="hud-sakura-rain" id="hudSakuraRain"></div>
+    <img class="hud-corner-art hud-corner-branch" src="assets/hud-sakura-branch.png" alt="" />
+    <div class="player-hud-top">
+      <span>
+        <small>学習者 · Learner</small>
+        <strong id="hudName">Guest Learner</strong>
+      </span>
+      <img class="hud-rank" src="assets/hud-torii-sakura.png" alt="" />
+    </div>
+    <div class="hud-row"><span>Lv. <b id="hudLevel">1</b></span><span><b id="hudYen">0</b> YEN</span></div>
+    <div class="hud-progress"><div id="hudExpFill"></div></div>
+    <div class="hud-row subtle"><span id="hudExpText">EXP 0/100</span><span id="hudSakuraText">Sakura I</span></div>
+    <div class="hud-achievement" id="hudAchievement"><img class="hud-badge hidden" id="hudBadge" src="assets/badge-level-10.png" alt="" /><span id="hudBadgeText">Badge at Lv.10</span></div>
+    <button class="hud-store-btn" onclick="openStore()">Snack Store</button>
+  </aside>
+
   <header class="navbar">
     <a class="brand" href="#home">⛩️ TASEWAKAI 会</a>
     <nav><a href="#about">About</a><a href="#website">Website</a><a href="#team">Team</a><a href="#media">Media</a><button class="nav-support" onclick="openSupport()">Support</button></nav>
@@ -70,13 +87,13 @@
 
     <section id="website" class="section reveal">
       <p class="section-label">About this website</p><h2>What is this website for?</h2>
-      <div class="feature-grid">
-        <article class="feature-card"><img src="assets/icon-shrine.png" alt="" /><h3>Official Home</h3><p>Explains what TASEWAKAI is, who runs it, and where people can join safely.</p></article>
-        <article class="feature-card"><img src="assets/icon-bell-1b.png" alt="" /><h3>Support Path</h3><p>Visitors can quickly see who to contact and what they can do on the site.</p></article>
-        <article class="feature-card"><img src="assets/icon-yen-coin.png" alt="" /><h3>YEN Economy</h3><p>Learning tools now reward local YEN, EXP, streaks, and level progress.</p></article>
-        <article class="feature-card"><img src="assets/icon-beginner.png" alt="" /><h3>Learning Tools</h3><p>Kana, N5 words, and kanji trainers help new learners start practicing.</p></article>
-        <article class="feature-card"><img src="assets/icon-fan.png" alt="" /><h3>Japanese Atmosphere</h3><p>Petals, glow effects, shrine visuals, and smooth motion create a Japanese mood.</p></article>
-        <article class="feature-card"><img src="assets/icon-check-badge.png" alt="" /><h3>Pre-alpha Project</h3><p>The website is being built like a real project with versions and patches.</p></article>
+      <div class="feature-grid upgraded-feature-grid">
+        <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Start here</span><img src="assets/feature-shrine.png" alt="" /><h3>Official Home</h3><p>Explains what TASEWAKAI is, who runs it, and where people can join safely.</p></article>
+        <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Help route</span><img src="assets/icon-support.png" alt="" /><h3>Support Path</h3><p>Visitors can quickly see who to contact and what they can do on the site.</p></article>
+        <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Rewards</span><img src="assets/icon-yen-coin.png" alt="" /><h3>YEN Economy</h3><p>Learning tools now reward local YEN, EXP, streaks, and level progress.</p></article>
+        <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Practice</span><img src="assets/feature-learning.png" alt="" /><h3>Learning Tools</h3><p>Kana, JLPT words, and kanji trainers help new learners start practicing.</p></article>
+        <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Atmosphere</span><img src="assets/feature-fireworks.png" alt="" /><h3>Japanese Atmosphere</h3><p>Petals, fireworks, shrine visuals, and smooth motion create a Japanese mood.</p></article>
+        <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Live build</span><img src="assets/feature-project.png" alt="" /><h3>Pre-alpha Project</h3><p>The website is being built like a real project with versions, patches, and playful experiments.</p></article>
       </div>
     </section>
 
@@ -107,9 +124,52 @@
 
   <footer><p>© 2026 TASEWAKAI 会 — Founded by Kazu · pre-alpha 0.5</p></footer>
   <button class="floating-help" onclick="openGuide()">?</button>
+  <div class="trainer-cat-helper hidden" id="trainerCatHelper">
+    <button class="cat-close" onclick="dismissTrainerCat()" aria-label="Close trainer cat">×</button>
+    <div class="cat-speech"><strong>にゃ〜</strong><span id="catPromptText">Try a quick trainer?</span></div>
+    <button class="cat-body" id="catTrainerButton" onclick="openCatTrainerPick()"><img src="assets/icon-lucky-cat.png" alt="" /></button>
+  </div>
 
   <div class="guide-transition" id="guideTransition"><span>風</span><span>鈴</span><span>✦</span></div>
-  <div class="modal-bg" id="guideModal"><div class="modal guide-modal"><button class="close" onclick="closeGuide()">×</button><div class="wind-chimes"><span></span><span></span><span></span></div><p class="mini-label">Website guide</p><h2>Welcome to TASEWAKAI 会</h2><p>This is the public home of TASEWAKAI. You can learn what the server is, meet the team, open trainers, earn YEN, explore Japan, and find official links.</p><div class="guide-grid"><div><img src="assets/icon-shrine.png" alt="" /><strong>Read</strong><span>Learn about the server</span></div><div><img src="assets/icon-beginner.png" alt="" /><strong>Train</strong><span>Practice kana and N5</span></div><div><img src="assets/icon-yen-coin.png" alt="" /><strong>Earn</strong><span>Get YEN and EXP</span></div><div><img src="assets/icon-support.png" alt="" /><strong>Contact</strong><span>Find support contacts</span></div></div><div class="helper-actions"><a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Join Discord</a><button class="btn ghost-btn" onclick="hideGuideForever()">Don’t show again</button></div></div></div>
+  <div class="modal-bg" id="guideModal">
+    <div class="modal guide-modal upgraded-guide">
+      <button class="close" onclick="closeGuide()">×</button>
+      <div class="wind-chimes"><span></span><span></span><span></span></div>
+      <div class="guide-hero">
+        <p class="mini-label">Website guide</p>
+        <h2>Welcome to TASEWAKAI 会</h2>
+        <p>Start with the community story, train Japanese, earn local YEN, or contact staff when you need help.</p>
+      </div>
+      <div class="guide-path">
+        <span>1 Read</span><i></i><span>2 Train</span><i></i><span>3 Earn</span><i></i><span>4 Support</span>
+      </div>
+      <div class="guide-grid upgraded-guide-grid">
+        <button onclick="closeGuide();location.hash='about'"><img src="assets/guide-read.png" alt="" /><strong>Read</strong><span>Learn what TASEWAKAI is</span></button>
+        <button onclick="closeGuide();openTool('trainer')"><img src="assets/guide-train.png" alt="" /><strong>Train</strong><span>Kana and JLPT practice</span></button>
+        <button onclick="closeGuide();openTool('trainer')"><img src="assets/guide-yen.png" alt="" /><strong>Earn</strong><span>Gain YEN and EXP</span></button>
+        <button onclick="closeGuide();openSupport()"><img src="assets/guide-contact.png" alt="" /><strong>Support</strong><span>Copy staff contacts</span></button>
+      </div>
+      <div class="helper-actions guide-actions">
+        <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Join Discord</a>
+        <button class="btn ghost-btn" onclick="hideGuideForever()">Don’t show again</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-bg" id="storeModal">
+    <div class="modal store-modal">
+      <button class="close" onclick="closeStore()">×</button>
+      <p class="mini-label">YEN store</p>
+      <h2>Snack Store</h2>
+      <p class="tool-desc">Buy small Japanese food items with the YEN earned from Kana and JLPT practice.</p>
+      <div class="store-balance"><img src="assets/icon-yen-coin.png" alt="" /><strong><span id="storeBalance">0</span> YEN</strong></div>
+      <div class="store-grid" id="storeGrid"></div>
+      <div class="inventory-wrap">
+        <p class="mini-label">Owned snacks</p>
+        <div class="inventory-row" id="inventoryRow"></div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal-bg" id="toolModal"><div class="modal tool-modal"><button class="close" onclick="closeTool()">×</button>
     <div id="trainerTool" class="tool-view">
