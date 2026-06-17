@@ -128,26 +128,50 @@ document.addEventListener("keydown", (event) => {
 
 /* === pre-alpha 0.5 wind particle patch === */
 const windParticleLayer = document.getElementById("windParticleLayer");
-const windPetalImages = [
-  "assets/bg-sakura-branch.png",
-  "assets/icon-fan.png",
-  "assets/manga-effect.png"
-];
+let windState = { x: 1, y: -0.12, speed: 1, angle: -7 };
+
+function updateWindState() {
+  if (!windParticleLayer) return;
+
+  const t = Date.now() / 1000;
+  const direction = Math.sin(t * 0.16) > -0.72 ? 1 : -1;
+  const vertical = Math.sin(t * 0.31) * 0.24 - 0.08;
+  const strength = 0.82 + Math.sin(t * 0.23 + 1.4) * 0.22;
+  const distanceX = (window.innerWidth + 220) * direction * strength;
+  const distanceY = window.innerHeight * vertical;
+  const angle = Math.atan2(distanceY, distanceX) * 180 / Math.PI;
+
+  windState = { x: direction, y: vertical, speed: strength, angle };
+  windParticleLayer.style.setProperty("--wind-x", `${distanceX}px`);
+  windParticleLayer.style.setProperty("--wind-y", `${distanceY}px`);
+  windParticleLayer.style.setProperty("--wind-x-14", `${distanceX * 0.14}px`);
+  windParticleLayer.style.setProperty("--wind-y-14", `${distanceY * 0.14}px`);
+  windParticleLayer.style.setProperty("--wind-x-36", `${distanceX * 0.36}px`);
+  windParticleLayer.style.setProperty("--wind-y-36", `${distanceY * 0.36}px`);
+  windParticleLayer.style.setProperty("--wind-x-68", `${distanceX * 0.68}px`);
+  windParticleLayer.style.setProperty("--wind-y-68", `${distanceY * 0.68}px`);
+  windParticleLayer.style.setProperty("--wind-tilt", `${angle}deg`);
+}
 
 function spawnWindPetal() {
   if (!windParticleLayer) return;
 
   const petal = document.createElement("div");
-  petal.className = "wind-petal";
-  petal.style.top = (Math.random() * 78 + 8) + "vh";
-  petal.style.left = "-8vw";
-  petal.style.width = (Math.random() * 13 + 12) + "px";
-  petal.style.height = petal.style.width;
-  petal.style.animationDuration = (Math.random() * 4 + 7) + "s";
-  petal.style.animationDelay = (Math.random() * 0.8) + "s";
-  petal.style.backgroundImage = `url("${Math.random() > 0.72 ? "assets/manga-effect.png" : "assets/bg-sakura-branch.png"}")`;
-  petal.style.backgroundSize = Math.random() > 0.72 ? "contain" : "520px";
-  petal.style.backgroundPosition = Math.random() > 0.5 ? "right top" : "left bottom";
+  const size = Math.random() * 12 + 10;
+  const duration = (Math.random() * 3.8 + 6.6) / windState.speed;
+  const enteringFromLeft = windState.x > 0;
+
+  petal.className = `wind-petal ${Math.random() > 0.55 ? "petal-soft" : ""} ${size < 16 ? "petal-small" : ""}`;
+  petal.style.top = (Math.random() * 82 + 5) + "vh";
+  petal.style.left = enteringFromLeft ? "-9vw" : "109vw";
+  petal.style.setProperty("--petal-size", `${size}px`);
+  petal.style.setProperty("--petal-height", `${size * 1.28}px`);
+  petal.style.setProperty("--start-rot", `${Math.random() * 360}deg`);
+  petal.style.setProperty("--spin", `${(windState.x > 0 ? 1 : -1) * (Math.random() * 260 + 480)}deg`);
+  petal.style.setProperty("--flutter", `${Math.random() * 34 + 14}px`);
+  petal.style.setProperty("--flutter-soft", `${Math.random() * 18 + 8}px`);
+  petal.style.animationDuration = duration + "s";
+  petal.style.animationDelay = (Math.random() * 0.35) + "s";
 
   windParticleLayer.appendChild(petal);
   setTimeout(() => petal.remove(), 12000);
@@ -159,12 +183,14 @@ function spawnWindLine() {
   const line = document.createElement("div");
   line.className = "wind-streak";
   line.style.top = (Math.random() * 72 + 12) + "vh";
-  line.style.left = "-10vw";
-  line.style.animationDuration = (Math.random() * 2.5 + 4.5) + "s";
+  line.style.left = windState.x > 0 ? "-10vw" : "110vw";
+  line.style.animationDuration = ((Math.random() * 2.5 + 4.5) / windState.speed) + "s";
 
   windParticleLayer.appendChild(line);
   setTimeout(() => line.remove(), 8000);
 }
 
+updateWindState();
+setInterval(updateWindState, 180);
 setInterval(spawnWindPetal, 950);
 setInterval(spawnWindLine, 1300);

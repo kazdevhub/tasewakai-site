@@ -325,19 +325,54 @@
   z-index: 3;
   pointer-events: none;
   overflow: hidden;
+  --wind-x: 118vw;
+  --wind-y: -80px;
+  --wind-x-14: 16vw;
+  --wind-y-14: -11px;
+  --wind-x-36: 42vw;
+  --wind-y-36: -29px;
+  --wind-x-68: 80vw;
+  --wind-y-68: -54px;
+  --wind-tilt: -8deg;
 }
 
 .wind-petal {
   position: fixed;
-  width: 18px;
-  height: 18px;
+  width: var(--petal-size, 18px);
+  height: var(--petal-height, 23px);
   pointer-events: none;
   opacity: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: drop-shadow(0 0 8px rgba(255, 135, 190, 0.36));
+  border-radius: 78% 12% 74% 18%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.92) 0 9%, transparent 10%),
+    radial-gradient(circle at 52% 62%, rgba(255, 115, 177, 0.35), transparent 44%),
+    linear-gradient(135deg, #ffe3f0 0%, #ff9ac8 48%, #f25d9d 100%);
+  box-shadow: inset -2px -3px 4px rgba(185, 38, 103, 0.18);
+  filter: drop-shadow(0 0 8px rgba(255, 135, 190, 0.38));
+  transform-origin: 52% 78%;
   animation: windPetalFly linear forwards;
+}
+
+.wind-petal::after {
+  content: "";
+  position: absolute;
+  left: 49%;
+  top: 12%;
+  width: 1px;
+  height: 74%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.42), rgba(211,48,111,0.28));
+  transform: rotate(10deg);
+}
+
+.wind-petal.petal-soft {
+  background:
+    radial-gradient(circle at 38% 25%, rgba(255, 255, 255, 0.88) 0 8%, transparent 9%),
+    linear-gradient(135deg, #fff0f7 0%, #ffbad9 58%, #fa7ab0 100%);
+}
+
+.wind-petal.petal-small {
+  filter: drop-shadow(0 0 6px rgba(255, 156, 204, 0.30));
 }
 
 .wind-streak {
@@ -350,6 +385,7 @@
   filter: blur(0.4px);
   opacity: 0;
   animation: windLineFly linear forwards;
+  transform-origin: center;
 }
 
 .hero-glass,
@@ -451,31 +487,36 @@
 @keyframes windPetalFly {
   0% {
     opacity: 0;
-    transform: translate3d(-8vw, 0, 0) rotate(0deg) scale(0.55);
+    transform: translate3d(0, 0, 0) rotate(var(--start-rot, 0deg)) scale(0.55);
   }
   12% {
     opacity: 0.78;
+    transform: translate3d(var(--wind-x-14), calc(var(--wind-y-14) + var(--flutter, 28px)), 0) rotate(calc(var(--start-rot, 0deg) + 95deg)) scale(0.78);
   }
-  60% {
+  34% {
+    transform: translate3d(var(--wind-x-36), calc(var(--wind-y-36) - var(--flutter, 28px)), 0) rotate(calc(var(--start-rot, 0deg) + 210deg)) scale(0.92);
+  }
+  66% {
     opacity: 0.62;
+    transform: translate3d(var(--wind-x-68), calc(var(--wind-y-68) + var(--flutter-soft, 15px)), 0) rotate(calc(var(--start-rot, 0deg) + 390deg)) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translate3d(118vw, -90px, 0) rotate(540deg) scale(1.08);
+    transform: translate3d(var(--wind-x), var(--wind-y), 0) rotate(calc(var(--start-rot, 0deg) + var(--spin, 560deg))) scale(1.08);
   }
 }
 
 @keyframes windLineFly {
   0% {
     opacity: 0;
-    transform: translate3d(-12vw, 0, 0) rotate(-8deg);
+    transform: translate3d(0, 0, 0) rotate(var(--wind-tilt, -8deg));
   }
   15% {
     opacity: 0.55;
   }
   100% {
     opacity: 0;
-    transform: translate3d(112vw, -60px, 0) rotate(-8deg);
+    transform: translate3d(var(--wind-x), var(--wind-y), 0) rotate(var(--wind-tilt, -8deg));
   }
 }
 
