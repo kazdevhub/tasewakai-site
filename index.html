@@ -32,10 +32,20 @@
       </span>
       <img class="hud-rank" src="assets/hud-torii-sakura.png" alt="" />
     </div>
+    <div class="hud-save-panel">
+      <div class="hud-save-row"><input id="hudNameInput" placeholder="Save name" maxlength="18" /><button onclick="saveHudName()">Save</button></div>
+      <small id="hudSaveStatus"><img class="status-inline-icon" src="assets/status-note.png" alt="" /> Auto-save ready on this browser.</small>
+    </div>
     <div class="hud-row"><span>Lv. <b id="hudLevel">1</b></span><span><b id="hudYen">0</b> YEN</span></div>
     <div class="hud-progress"><div id="hudExpFill"></div></div>
     <div class="hud-row subtle"><span id="hudExpText">EXP 0/100</span><span id="hudSakuraText">Sakura I</span></div>
     <div class="hud-achievement" id="hudAchievement"><img class="hud-badge hidden" id="hudBadge" src="assets/badge-level-10.png" alt="" /><span id="hudBadgeText">Badge at Lv.10</span></div>
+    <div class="hud-update-note">Update: leaderboard moved here</div>
+    <button class="hud-leaderboard-toggle" onclick="toggleHudLeaderboard()">Leaderboard <span id="hudLeaderboardState">On</span></button>
+    <div class="hud-leaderboard" id="hudLeaderboard">
+      <div class="hud-leaderboard-head"><span>Top Learners</span><small>local</small></div>
+      <div id="hudLeaderboardList"></div>
+    </div>
     <button class="hud-store-btn" onclick="openStore()">Snack Store</button>
   </aside>
 
@@ -57,6 +67,11 @@
           <div><strong>Kazu</strong><span>Founder</span></div>
           <div><strong class="counter" data-target="1000">0</strong><span>Next Milestone</span></div>
         </div>
+        <div class="milestone-panel" data-current="911" data-goal="1000">
+          <div class="milestone-head"><span>Road to 1000</span><strong id="milestoneText">911 / 1000</strong></div>
+          <div class="milestone-track"><div id="milestoneFill"></div></div>
+          <p id="milestoneNote">Update: 1000 member party meter added.</p>
+        </div>
         <div class="hero-buttons">
           <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Join Discord</a>
           <button class="btn ghost-btn" onclick="openGuide()">What can I do here?</button>
@@ -73,9 +88,20 @@
         <p>The official chaos spark of TASEWAKAI. Certified community mood booster.</p>
       </div>
 
+      <div class="beta-testers-card reveal">
+        <img class="beta-testers-icon" src="assets/icon-beta-review.png" alt="" />
+        <p class="mini-label">Beta testers</p>
+        <h3>Access Crew</h3>
+        <div class="beta-tester-list">
+          <span><img src="assets/status-success.png" alt="" /> Satoshi</span>
+          <span><img src="assets/status-success.png" alt="" /> Arthur</span>
+        </div>
+        <small>Update: beta tester space added.</small>
+      </div>
+
       <div class="home-tools reveal">
         <button class="tool-card" onclick="openTool('trainer')"><img src="assets/icon-kana-a.png" alt="" /><strong>Kana Trainer</strong><small>Earn YEN and EXP</small></button>
-        <button class="tool-card" onclick="openTool('n5')"><img src="assets/icon-nihon.png" alt="" /><strong>JLPT Kanji</strong><small>N5 to N3 practice</small></button>
+        <button class="tool-card jlpt-home-card" onclick="openTool('n5')"><span class="tool-update-note">Update: cleaner trainer</span><span class="jlpt-card-head"><img src="assets/icon-nihon.png" alt="" /><span><strong>JLPT Kanji</strong><small>N5 to N3 practice</small></span></span><span class="jlpt-preview-row"><b>N5</b><b>N4</b><b>N3</b></span><span class="jlpt-preview-text">Smart card rotation · Review queue · YEN + EXP</span></button>
         <button class="tool-card beta-tool-card" onclick="openTool('map')"><span class="tool-icon-lock"><img src="assets/icon-japan-regions.png" alt="" /></span><strong>Japan Regions</strong><small>Beta testers only</small></button>
       </div>
     </section>
@@ -174,11 +200,11 @@
   <div class="modal-bg" id="toolModal"><div class="modal tool-modal"><button class="close" onclick="closeTool()">×</button>
     <div id="trainerTool" class="tool-view">
       <p class="mini-label">Learning tool</p><h2>Kana Trainer</h2><p class="tool-desc">Practice kana and earn local YEN + EXP. One name can be used, and it can only be changed once per week.</p>
-      <div class="trainer-layout"><aside class="profile-panel"><p class="mini-label">Your economy</p><h3 id="trainerNameDisplay">Guest Learner</h3><label class="name-label" for="trainerName">Display name</label><div class="name-row"><input id="trainerName" placeholder="Enter name" maxlength="18" /><button class="btn ghost-btn small-btn" onclick="saveTrainerName()">Save</button></div><p class="name-lock-info" id="nameLockInfo">Name can be changed once per week.</p><div class="economy-box"><div><img src="assets/icon-yen-coin.png" alt="" /><strong><span id="trainerYen">0</span> YEN</strong></div><div><strong><span id="trainerPoints">0</span> pts</strong><span>Level <b id="trainerLevel">1</b> · Streak <b id="trainerStreak">0</b></span></div><div class="exp-bar"><div id="expFill"></div></div><small>EXP <b id="trainerExp">0</b>/<b id="trainerNextExp">100</b></small></div><p class="security-note" id="securityStatus">Economy integrity: checking...</p><button class="btn ghost-btn full" onclick="resetTrainerProgress()">Reset local progress</button></aside>
-      <div class="quiz-panel"><div class="trainer-tabs"><button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button><button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button><button class="tab" data-mode="logs" onclick="setTrainerMode('logs')">Name Logs</button></div><div id="quizView"><p class="mini-label" id="quizModeLabel">Kana Trainer</p><div class="quiz-character" id="quizPrompt">あ</div><p class="quiz-question" id="quizQuestion">Choose the correct reading.</p><div class="answer-grid" id="answerGrid"></div><p class="quiz-feedback" id="quizFeedback">Pick an answer to begin.</p></div><div id="leaderboardView" class="leaderboard hidden"><p class="mini-label">Local leaderboard</p><h3>Top Learners</h3><div id="leaderboardList"></div></div><div id="logsView" class="leaderboard hidden"><p class="mini-label">Local name logs</p><h3>Name Changes</h3><div id="nameLogsList"></div></div></div></div>
+      <div class="trainer-layout"><aside class="profile-panel"><p class="mini-label">Your economy</p><h3 id="trainerNameDisplay">Guest Learner</h3><label class="name-label" for="trainerName">Display name</label><div class="name-row"><input id="trainerName" placeholder="Enter name" maxlength="18" /><button class="btn ghost-btn small-btn" onclick="saveTrainerName()">Save</button></div><p class="name-lock-info" id="nameLockInfo">Name can be changed once per week. Saving a name adds you to the HUD leaderboard.</p><div class="economy-box"><div><img src="assets/icon-yen-coin.png" alt="" /><strong><span id="trainerYen">0</span> YEN</strong></div><div><strong><span id="trainerPoints">0</span> pts</strong><span>Level <b id="trainerLevel">1</b> · Streak <b id="trainerStreak">0</b></span></div><div class="exp-bar"><div id="expFill"></div></div><small>EXP <b id="trainerExp">0</b>/<b id="trainerNextExp">100</b></small></div><p class="security-note" id="securityStatus">Economy integrity: checking...</p><button class="btn ghost-btn full" onclick="resetTrainerProgress()">Reset local progress</button></aside>
+      <div class="quiz-panel"><div class="trainer-tabs"><button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button><button class="tab" data-mode="logs" onclick="setTrainerMode('logs')">Name Logs</button></div><div id="quizView"><p class="mini-label" id="quizModeLabel">Kana Trainer</p><div class="quiz-character" id="quizPrompt">あ</div><p class="quiz-question" id="quizQuestion">Choose the correct reading.</p><div class="answer-grid" id="answerGrid"></div><p class="quiz-feedback" id="quizFeedback">Pick an answer to begin.</p></div><div id="logsView" class="leaderboard hidden"><p class="mini-label">Local name logs</p><h3>Name Changes</h3><div id="nameLogsList"></div></div></div></div>
     </div>
 
-    <div id="n5Tool" class="tool-view hidden"><p class="mini-label">Learning tool</p><h2>JLPT Kanji Trainer</h2><p class="tool-desc">Practice N5, N4, and N3 kanji with readings, example words, review queue, boss rounds, and animated YEN + EXP rewards.</p><div class="quiz-panel standalone-quiz jlpt-panel"><div class="trainer-tabs jlpt-tabs"><button class="tab active" data-mode="n5" onclick="setTrainerMode('n5')">N5</button><button class="tab" data-mode="n4" onclick="setTrainerMode('n4')">N4</button><button class="tab" data-mode="n3" onclick="setTrainerMode('n3')">N3</button><button class="tab" data-mode="words" onclick="setTrainerMode('words')">Words</button><button class="tab" data-mode="review" onclick="setTrainerMode('review')">Review</button><button class="tab" data-mode="leaderboard" onclick="setTrainerMode('leaderboard')">Leaderboard</button></div><div id="n5QuizMount"></div></div></div>
+    <div id="n5Tool" class="tool-view hidden"><p class="mini-label">Learning tool</p><h2>JLPT Kanji Trainer</h2><p class="tool-desc">Practice N5, N4, and N3 kanji with readings, example words, review queue, boss rounds, and animated YEN + EXP rewards.</p><p class="tool-update-note modal-update-note">Update: leaderboard removed here; trainer now focuses on clean card practice.</p><div class="quiz-panel standalone-quiz jlpt-panel"><div class="trainer-tabs jlpt-tabs"><button class="tab active" data-mode="n5" onclick="setTrainerMode('n5')">N5</button><button class="tab" data-mode="n4" onclick="setTrainerMode('n4')">N4</button><button class="tab" data-mode="n3" onclick="setTrainerMode('n3')">N3</button><button class="tab" data-mode="words" onclick="setTrainerMode('words')">Words</button><button class="tab" data-mode="review" onclick="setTrainerMode('review')">Review</button></div><div id="n5QuizMount"></div></div></div>
 
     <div id="mapTool" class="tool-view hidden">
       <div id="mapGate" class="beta-gate">
@@ -201,7 +227,7 @@
             </button>
           </div>
 
-          <p class="access-message" id="betaAccessMessage">Beta testers only · key required.</p>
+          <p class="access-message" id="betaAccessMessage"><img class="status-inline-icon" src="assets/status-construction.png" alt="" /> Beta testers only · key required.</p>
 
           <div class="beta-perks">
             <div><img src="assets/icon-check-badge.png" alt="" /><span>Map preview access</span></div>
