@@ -29,24 +29,26 @@
       <span>
         <small>学習者 · Learner</small>
         <strong id="hudName">Guest Learner</strong>
+        <em id="hudRankTitle">Kana Sprout</em>
       </span>
-      <img class="hud-rank" src="assets/hud-torii-sakura.png" alt="" />
+      <img class="hud-rank" src="assets/hud-passport-id.png" alt="" />
     </div>
     <div class="hud-save-panel">
       <div class="hud-save-row"><input id="hudNameInput" placeholder="Save name" maxlength="18" /><button onclick="saveHudName()">Save</button></div>
       <small id="hudSaveStatus"><img class="status-inline-icon" src="assets/status-note.png" alt="" /> Auto-save ready on this browser.</small>
     </div>
-    <div class="hud-row"><span>Lv. <b id="hudLevel">1</b></span><span><b id="hudYen">0</b> YEN</span></div>
+    <div class="hud-row hud-stat-row"><span class="hud-level-pill">Lv. <b id="hudLevel">1</b></span><span class="hud-yen-pill"><img src="assets/icon-yen-coin.png" alt="" /><b id="hudYen">0</b> YEN</span></div>
     <div class="hud-progress"><div id="hudExpFill"></div></div>
     <div class="hud-row subtle"><span id="hudExpText">EXP 0/100</span><span id="hudSakuraText">Sakura I</span></div>
-    <div class="hud-achievement" id="hudAchievement"><img class="hud-badge hidden" id="hudBadge" src="assets/badge-level-10.png" alt="" /><span id="hudBadgeText">Badge at Lv.10</span></div>
-    <div class="hud-update-note">Update: leaderboard moved here</div>
-    <button class="hud-leaderboard-toggle" onclick="toggleHudLeaderboard()">Leaderboard <span id="hudLeaderboardState">On</span></button>
+    <div class="hud-next-exp" id="hudNextExp">100 EXP to Lv.2</div>
+    <div class="hud-achievement" id="hudAchievement"><img class="hud-badge hidden" id="hudBadge" src="assets/badge-silver-star.png" alt="" /><span id="hudBadgeText">Badge at Lv.10</span></div>
+    <div class="hud-update-note">Update: gold YEN + badge icons added</div>
+    <div class="hud-leaderboard-bar"><strong>Top Learners</strong><button class="hud-leaderboard-toggle" onclick="toggleHudLeaderboard()">Board <span id="hudLeaderboardState">On</span></button></div>
     <div class="hud-leaderboard" id="hudLeaderboard">
-      <div class="hud-leaderboard-head"><span>Top Learners</span><small>local</small></div>
+      <div class="hud-leaderboard-head"><span><img src="assets/hud-leader-trophy.png" alt="" /> Top Learners</span><small>local</small></div>
       <div id="hudLeaderboardList"></div>
     </div>
-    <button class="hud-store-btn" onclick="openStore()">Snack Store</button>
+    <button class="hud-store-btn" onclick="openStore()"><img src="assets/store-konbini-24.png" alt="" /><span>Snack Store</span><small id="hudStoreHint">Earn YEN to shop</small></button>
   </aside>
 
   <header class="navbar">
@@ -165,16 +167,17 @@
       <div class="guide-hero">
         <p class="mini-label">Website guide</p>
         <h2>Welcome to TASEWAKAI 会</h2>
-        <p>Start with the community story, train Japanese, earn local YEN, or contact staff when you need help.</p>
+        <p>Start with the community story, train Japanese, earn local YEN and EXP, then use your progress in the snack store and leaderboard.</p>
+        <p class="guide-update-note">Update: clearer first-visitor guide added.</p>
       </div>
       <div class="guide-path">
         <span>1 Read</span><i></i><span>2 Train</span><i></i><span>3 Earn</span><i></i><span>4 Support</span>
       </div>
       <div class="guide-grid upgraded-guide-grid">
-        <button onclick="closeGuide();location.hash='about'"><img src="assets/guide-read.png" alt="" /><strong>Read</strong><span>Learn what TASEWAKAI is</span></button>
-        <button onclick="closeGuide();openTool('trainer')"><img src="assets/guide-train.png" alt="" /><strong>Train</strong><span>Kana and JLPT practice</span></button>
-        <button onclick="closeGuide();openTool('trainer')"><img src="assets/guide-yen.png" alt="" /><strong>Earn</strong><span>Gain YEN and EXP</span></button>
-        <button onclick="closeGuide();openSupport()"><img src="assets/guide-contact.png" alt="" /><strong>Support</strong><span>Copy staff contacts</span></button>
+        <button onclick="closeGuide();location.hash='about'"><img src="assets/welcome-read-book.png" alt="" /><strong>Read</strong><span>Understand the server story, rules, team, and safe links.</span></button>
+        <button onclick="closeGuide();openTool('trainer')"><img src="assets/welcome-pin.png" alt="" /><strong>Train</strong><span>Pin your first goal: kana, JLPT kanji, streaks, and review.</span></button>
+        <button onclick="closeGuide();openTool('trainer')"><img src="assets/guide-yen.png" alt="" /><strong>Earn</strong><span>Correct answers give YEN, EXP, levels, badges, and store progress.</span></button>
+        <button onclick="closeGuide();openSupport()"><img src="assets/welcome-support-agent.png" alt="" /><strong>Support</strong><span>Find staff contacts fast when you need help or access.</span></button>
       </div>
       <div class="helper-actions guide-actions">
         <a class="btn join-btn" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Join Discord</a>

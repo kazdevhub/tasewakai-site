@@ -3111,3 +3111,324 @@
 @keyframes dameRedPanelPulse {
   35% { box-shadow: 0 0 38px rgba(255,38,74,.32), inset 0 0 34px rgba(255,0,42,.14); }
 }
+
+/* === Update: player passport HUD === */
+.player-hud {
+  border-color: rgba(255,210,122,.28);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(66,255,167,.12), transparent 24%),
+    radial-gradient(circle at 8% 16%, rgba(255,63,145,.14), transparent 30%),
+    linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.035)),
+    rgba(18,12,32,.76);
+}
+
+.player-hud-top {
+  align-items: flex-start;
+}
+
+.player-hud-top small {
+  color: rgba(255,210,122,.92);
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.player-hud-top strong {
+  font-size: 1.14rem;
+  line-height: 1.2;
+}
+
+.player-hud-top em {
+  display: inline-flex;
+  margin-top: 5px;
+  padding: 4px 8px;
+  border: 1px solid rgba(255,210,122,.26);
+  border-radius: 999px;
+  color: var(--gold);
+  background: rgba(255,210,122,.08);
+  font-size: .67rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.hud-rank {
+  animation: hudBadgeFloat 3.8s ease-in-out infinite;
+}
+
+.hud-stat-row {
+  align-items: center;
+  margin-top: 12px;
+}
+
+.hud-level-pill,
+.hud-yen-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  background: rgba(0,0,0,.18);
+}
+
+.hud-yen-pill {
+  color: var(--gold);
+  box-shadow: inset 0 0 18px rgba(255,210,122,.05);
+}
+
+.hud-yen-pill img {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255,210,122,.35));
+}
+
+.hud-progress {
+  position: relative;
+  height: 10px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,.38);
+}
+
+.hud-progress div {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #ff5ca8, #ffd27a, #42ffa7);
+}
+
+.hud-progress div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+  transform: translateX(-110%);
+  animation: hudExpShine 2.4s ease-in-out infinite;
+}
+
+.hud-next-exp {
+  margin: 5px 0 10px;
+  color: rgba(255,255,255,.72);
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.hud-leaderboard-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 6px 8px 6px 10px;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 999px;
+  background: rgba(255,255,255,.055);
+}
+
+.hud-leaderboard-bar strong {
+  color: var(--gold);
+  font-size: .72rem;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+.hud-leaderboard-toggle {
+  width: auto;
+  margin: 0;
+  padding: 6px 9px;
+  min-height: 28px;
+  font-size: .68rem;
+}
+
+.hud-leaderboard {
+  animation: hudDrawerIn .24s ease both;
+}
+
+.hud-store-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-height: 52px;
+  isolation: isolate;
+}
+
+.hud-store-btn::after {
+  content: "";
+  position: absolute;
+  inset: 7px 12px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255,255,255,.22), transparent 55%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity .24s;
+}
+
+.hud-store-btn:hover::after {
+  opacity: 1;
+  animation: hudStoreGlow .9s ease-in-out infinite alternate;
+}
+
+.hud-store-btn small {
+  color: rgba(255,255,255,.76);
+  font-size: .66rem;
+  font-weight: 800;
+}
+
+.hud-pop {
+  animation: hudPop .56s ease;
+}
+
+@keyframes hudBadgeFloat {
+  50% { transform: translateY(-3px) rotate(3deg); filter: drop-shadow(0 0 14px rgba(255,210,122,.35)); }
+}
+
+@keyframes hudExpShine {
+  0%,42% { transform: translateX(-120%); }
+  72%,100% { transform: translateX(120%); }
+}
+
+@keyframes hudDrawerIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hudStoreGlow {
+  to { transform: scale(1.04); opacity: .9; }
+}
+
+@keyframes hudPop {
+  45% { transform: scale(1.12); filter: drop-shadow(0 0 12px rgba(255,210,122,.55)); }
+}
+
+/* === Update: gold yen, passport, and konbini store icons === */
+.hud-rank {
+  width: 54px;
+  height: 54px;
+  padding: 4px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,210,122,.1));
+  box-shadow: inset 0 0 14px rgba(255,255,255,.08), 0 0 18px rgba(87,183,255,.16);
+}
+
+.hud-yen-pill img,
+.store-balance img,
+.economy-box img {
+  filter: drop-shadow(0 0 9px rgba(255,210,122,.55));
+}
+
+.hud-yen-pill.hud-pop img,
+#trainerYen.hud-pop {
+  animation: yenCoinTwinkle .58s ease;
+}
+
+.hud-leaderboard-head span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.hud-leaderboard-head img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255,210,122,.38));
+}
+
+.hud-achievement.rare {
+  border-color: rgba(124,255,181,.38);
+  background: linear-gradient(135deg, rgba(124,255,181,.16), rgba(255,210,122,.1));
+}
+
+.hud-achievement.legend {
+  border-color: rgba(255,210,122,.58);
+  background:
+    radial-gradient(circle at 18% 30%, rgba(255,210,122,.18), transparent 28%),
+    linear-gradient(135deg, rgba(255,63,145,.16), rgba(255,210,122,.14));
+  box-shadow: inset 0 0 18px rgba(255,210,122,.12), 0 0 22px rgba(255,210,122,.16);
+}
+
+.hud-store-btn {
+  position: relative;
+  min-height: 58px;
+  padding: 9px 18px 9px 64px;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.hud-store-btn::before {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -30%;
+  width: 42%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.32), transparent);
+  transform: rotate(14deg);
+  animation: konbiniButtonShine 3.2s ease-in-out infinite;
+  z-index: -1;
+}
+
+.hud-store-btn img {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 10px rgba(87,183,255,.34));
+  transition: transform .24s ease, filter .24s ease;
+}
+
+.hud-store-btn:hover img {
+  transform: translateY(-54%) rotate(-4deg) scale(1.08);
+  filter: drop-shadow(0 0 13px rgba(255,210,122,.48));
+}
+
+.hud-store-btn span,
+.hud-store-btn small {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes yenCoinTwinkle {
+  35% { transform: scale(1.16) rotate(-8deg); filter: drop-shadow(0 0 14px rgba(255,210,122,.8)); }
+}
+
+@keyframes konbiniButtonShine {
+  0%, 42% { transform: translateX(0) rotate(14deg); opacity: 0; }
+  56% { opacity: .85; }
+  78%, 100% { transform: translateX(360%) rotate(14deg); opacity: 0; }
+}
+
+/* === Update: welcome guide meaning pass === */
+.guide-update-note {
+  display: inline-flex;
+  width: auto;
+  margin-top: 14px;
+  padding: 8px 13px;
+  border: 1px solid rgba(255,210,122,.28);
+  border-radius: 999px;
+  color: var(--gold) !important;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .3px;
+  background: rgba(255,210,122,.08);
+}
+
+.upgraded-guide-grid button {
+  text-align: left;
+}
+
+.upgraded-guide-grid button img {
+  filter: drop-shadow(0 0 12px rgba(255,210,122,.16));
+  transition: transform .24s ease, filter .24s ease;
+}
+
+.upgraded-guide-grid button:hover img {
+  transform: translateY(-3px) rotate(-3deg) scale(1.08);
+  filter: drop-shadow(0 0 15px rgba(255,210,122,.42));
+}
+
+.upgraded-guide-grid button span {
+  font-size: .86rem;
+}
