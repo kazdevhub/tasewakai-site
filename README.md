@@ -1,2 +1,0 @@
-# TASEWAKAI
-Official website repository.
