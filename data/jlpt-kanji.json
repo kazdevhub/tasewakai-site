@@ -1,0 +1,372 @@
+{
+  "n5": [
+    {
+      "q": "日",
+      "a": "sun / day",
+      "on": "ニチ・ジツ",
+      "kun": "ひ・か",
+      "strokes": 4,
+      "example": "日本 / にほん / Japan",
+      "note": "A core beginner kanji used for days, dates, and Japan itself."
+    },
+    {
+      "q": "月",
+      "a": "moon / month",
+      "on": "ゲツ・ガツ",
+      "kun": "つき",
+      "strokes": 4,
+      "example": "月曜日 / げつようび / Monday",
+      "note": "Used for the moon, calendar months, and weekday names."
+    },
+    {
+      "q": "木",
+      "a": "tree / wood",
+      "on": "モク・ボク",
+      "kun": "き",
+      "strokes": 4,
+      "example": "木曜日 / もくようび / Thursday",
+      "note": "Picture a tree trunk with branches. It appears in wood, trees, and Thursday."
+    },
+    {
+      "q": "水",
+      "a": "water",
+      "on": "スイ",
+      "kun": "みず",
+      "strokes": 4,
+      "example": "水曜日 / すいようび / Wednesday",
+      "note": "Think of water flowing outward from the middle stroke."
+    },
+    {
+      "q": "火",
+      "a": "fire",
+      "on": "カ",
+      "kun": "ひ",
+      "strokes": 4,
+      "example": "火曜日 / かようび / Tuesday",
+      "note": "Part of the weekday cycle and many fire or heat words."
+    },
+    {
+      "q": "人",
+      "a": "person",
+      "on": "ジン・ニン",
+      "kun": "ひと",
+      "strokes": 2,
+      "example": "日本人 / にほんじん / Japanese person",
+      "note": "Two simple strokes form a standing person."
+    },
+    {
+      "q": "学",
+      "a": "study",
+      "on": "ガク",
+      "kun": "まなぶ",
+      "strokes": 8,
+      "example": "学生 / がくせい / student",
+      "note": "A must-know school and learning kanji."
+    },
+    {
+      "q": "山",
+      "a": "mountain",
+      "on": "サン",
+      "kun": "やま",
+      "strokes": 3,
+      "example": "富士山 / ふじさん / Mt. Fuji",
+      "note": "The shape looks like mountain peaks."
+    }
+  ],
+  "n4": [
+    {
+      "q": "駅",
+      "a": "station",
+      "on": "エキ",
+      "kun": "-",
+      "strokes": 14,
+      "example": "駅前 / えきまえ / in front of the station",
+      "note": "A practical travel kanji. Look for it on maps and train signs."
+    },
+    {
+      "q": "電",
+      "a": "electricity",
+      "on": "デン",
+      "kun": "-",
+      "strokes": 13,
+      "example": "電車 / でんしゃ / train",
+      "note": "Electric rain over a field: electricity powers trains and devices."
+    },
+    {
+      "q": "道",
+      "a": "road / way",
+      "on": "ドウ",
+      "kun": "みち",
+      "strokes": 12,
+      "example": "北海道 / ほっかいどう / Hokkaido",
+      "note": "A path radical plus a head: the way someone walks."
+    },
+    {
+      "q": "会",
+      "a": "meet / association",
+      "on": "カイ",
+      "kun": "あう",
+      "strokes": 6,
+      "example": "会社 / かいしゃ / company",
+      "note": "Useful for meetings, groups, and communities."
+    },
+    {
+      "q": "店",
+      "a": "shop",
+      "on": "テン",
+      "kun": "みせ",
+      "strokes": 8,
+      "example": "店員 / てんいん / shop clerk",
+      "note": "A practical kanji for stores and shopping."
+    },
+    {
+      "q": "買",
+      "a": "buy",
+      "on": "バイ",
+      "kun": "かう",
+      "strokes": 12,
+      "example": "買い物 / かいもの / shopping",
+      "note": "One of the most useful daily-life action kanji."
+    },
+    {
+      "q": "旅",
+      "a": "travel",
+      "on": "リョ",
+      "kun": "たび",
+      "strokes": 10,
+      "example": "旅行 / りょこう / trip",
+      "note": "Core travel kanji."
+    },
+    {
+      "q": "族",
+      "a": "family / tribe",
+      "on": "ゾク",
+      "kun": "-",
+      "strokes": 11,
+      "example": "家族 / かぞく / family",
+      "note": "Shows up in family and group identity words."
+    }
+  ],
+  "n3": [
+    {
+      "q": "経験",
+      "a": "experience",
+      "on": "ケイケン",
+      "kun": "-",
+      "strokes": 24,
+      "example": "経験がある / けいけんがある / to have experience",
+      "note": "Common in work, life stories, and introductions."
+    },
+    {
+      "q": "環境",
+      "a": "environment",
+      "on": "カンキョウ",
+      "kun": "-",
+      "strokes": 31,
+      "example": "自然環境 / しぜんかんきょう / natural environment",
+      "note": "Useful for news, school essays, and society topics."
+    },
+    {
+      "q": "文化",
+      "a": "culture",
+      "on": "ブンカ",
+      "kun": "-",
+      "strokes": 8,
+      "example": "日本文化 / にほんぶんか / Japanese culture",
+      "note": "A core word for society and identity."
+    },
+    {
+      "q": "歴史",
+      "a": "history",
+      "on": "レキシ",
+      "kun": "-",
+      "strokes": 19,
+      "example": "歴史を学ぶ / れきしをまなぶ / study history",
+      "note": "Useful in school, travel, and culture contexts."
+    },
+    {
+      "q": "原因",
+      "a": "cause / reason",
+      "on": "ゲンイン",
+      "kun": "-",
+      "strokes": 16,
+      "example": "事故の原因 / じこのげんいん / cause of an accident",
+      "note": "Very common for explanations and news."
+    },
+    {
+      "q": "結果",
+      "a": "result",
+      "on": "ケッカ",
+      "kun": "-",
+      "strokes": 20,
+      "example": "試験の結果 / しけんのけっか / exam result",
+      "note": "Pairs naturally with cause, effort, and tests."
+    },
+    {
+      "q": "連絡",
+      "a": "contact / communication",
+      "on": "レンラク",
+      "kun": "-",
+      "strokes": 22,
+      "example": "連絡する / れんらくする / to contact",
+      "note": "Daily practical word for messaging someone."
+    },
+    {
+      "q": "準備",
+      "a": "preparation",
+      "on": "ジュンビ",
+      "kun": "-",
+      "strokes": 25,
+      "example": "準備できた / じゅんびできた / ready",
+      "note": "Common for events, school, travel, and work."
+    }
+  ],
+  "n2": [
+    {
+      "q": "責任",
+      "a": "responsibility",
+      "on": "セキニン",
+      "kun": "-",
+      "strokes": 17,
+      "example": "責任を持つ / せきにんをもつ / take responsibility",
+      "note": "Important for work, school, and serious conversations."
+    },
+    {
+      "q": "制度",
+      "a": "system / institution",
+      "on": "セイド",
+      "kun": "-",
+      "strokes": 19,
+      "example": "教育制度 / きょういくせいど / education system",
+      "note": "Appears in society, news, and policy topics."
+    },
+    {
+      "q": "資源",
+      "a": "resources",
+      "on": "シゲン",
+      "kun": "-",
+      "strokes": 26,
+      "example": "自然資源 / しぜんしげん / natural resources",
+      "note": "Useful for environment and economics vocabulary."
+    },
+    {
+      "q": "評価",
+      "a": "evaluation",
+      "on": "ヒョウカ",
+      "kun": "-",
+      "strokes": 27,
+      "example": "高く評価する / たかくひょうかする / to value highly",
+      "note": "Common in school, work, reviews, and opinions."
+    },
+    {
+      "q": "技術",
+      "a": "technology / skill",
+      "on": "ギジュツ",
+      "kun": "-",
+      "strokes": 18,
+      "example": "日本の技術 / にほんのぎじゅつ / Japanese technology",
+      "note": "A strong N2 word for ability and technical fields."
+    },
+    {
+      "q": "複雑",
+      "a": "complex",
+      "on": "フクザツ",
+      "kun": "-",
+      "strokes": 32,
+      "example": "複雑な問題 / ふくざつなもんだい / complex problem",
+      "note": "A useful adjective for systems, feelings, and problems."
+    },
+    {
+      "q": "解決",
+      "a": "solution / settlement",
+      "on": "カイケツ",
+      "kun": "-",
+      "strokes": 19,
+      "example": "問題を解決する / もんだいをかいけつする / solve a problem",
+      "note": "Pairs naturally with problems and conflict."
+    },
+    {
+      "q": "影響",
+      "a": "influence / effect",
+      "on": "エイキョウ",
+      "kun": "-",
+      "strokes": 32,
+      "example": "大きな影響 / おおきなえいきょう / major influence",
+      "note": "Very common in essays, news, and analysis."
+    }
+  ],
+  "n1": [
+    {
+      "q": "概念",
+      "a": "concept",
+      "on": "ガイネン",
+      "kun": "-",
+      "strokes": 27,
+      "example": "基本的な概念 / きほんてきながいねん / basic concept",
+      "note": "Abstract academic vocabulary for explanations and theory."
+    },
+    {
+      "q": "矛盾",
+      "a": "contradiction",
+      "on": "ムジュン",
+      "kun": "-",
+      "strokes": 14,
+      "example": "矛盾している / むじゅんしている / be contradictory",
+      "note": "A high-level logic and argument word."
+    },
+    {
+      "q": "抽象",
+      "a": "abstraction",
+      "on": "チュウショウ",
+      "kun": "-",
+      "strokes": 19,
+      "example": "抽象的な表現 / ちゅうしょうてきなひょうげん / abstract expression",
+      "note": "Useful for academic writing and discussion."
+    },
+    {
+      "q": "妥協",
+      "a": "compromise",
+      "on": "ダキョウ",
+      "kun": "-",
+      "strokes": 15,
+      "example": "妥協点を探す / だきょうてんをさがす / seek a compromise",
+      "note": "Common in negotiations and social topics."
+    },
+    {
+      "q": "偏見",
+      "a": "prejudice / bias",
+      "on": "ヘンケン",
+      "kun": "-",
+      "strokes": 18,
+      "example": "偏見をなくす / へんけんをなくす / eliminate prejudice",
+      "note": "Important for social discussion and essays."
+    },
+    {
+      "q": "繁栄",
+      "a": "prosperity",
+      "on": "ハンエイ",
+      "kun": "-",
+      "strokes": 30,
+      "example": "国の繁栄 / くにのはんえい / national prosperity",
+      "note": "A formal word often used in speeches and writing."
+    },
+    {
+      "q": "謙虚",
+      "a": "humility",
+      "on": "ケンキョ",
+      "kun": "-",
+      "strokes": 30,
+      "example": "謙虚な態度 / けんきょなたいど / humble attitude",
+      "note": "A respected personality word in formal contexts."
+    },
+    {
+      "q": "顕著",
+      "a": "remarkable / noticeable",
+      "on": "ケンチョ",
+      "kun": "-",
+      "strokes": 29,
+      "example": "顕著な変化 / けんちょなへんか / remarkable change",
+      "note": "Great for advanced observation and analysis."
+    }
+  ]
+}
