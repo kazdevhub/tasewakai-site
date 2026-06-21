@@ -64,16 +64,16 @@ const jlptWordDeck=[
 ];
 const jlptFallbackDeck={
   n2:[
-    {q:"è²¬ä»»",a:"responsibility",on:"ã‚»ã‚­ãƒ‹ãƒ³",kun:"ã›ã‚ã‚‹ãƒ»ã¾ã‹ã›ã‚‹",example:"è²¬ä»»ã‚’æŒã¤ / ã›ãã«ã‚“ã‚’ã‚‚ã¤ / to take responsibility",note:"A serious N2 word for duties, promises, and trust.",strokes:20},
-    {q:"åˆ¶åº¦",a:"system / institution",on:"ã‚»ã‚¤ãƒ‰",kun:"ã¤ãã‚‹ãƒ»ãŸã³",example:"æ•™è‚²åˆ¶åº¦ / ãã‚‡ã†ã„ãã›ã„ã© / education system",note:"Useful for society, school, work, and news topics.",strokes:18},
-    {q:"è³‡æº",a:"resources",on:"ã‚·ã‚²ãƒ³",kun:"ã‚‚ã¨",example:"è‡ªç„¶è³‡æº / ã—ãœã‚“ã—ã’ã‚“ / natural resources",note:"Appears often in economy, environment, and news language.",strokes:26},
-    {q:"è©•ä¾¡",a:"evaluation / assessment",on:"ãƒ’ãƒ§ã‚¦ã‚«",kun:"ã‚ãŸã„",example:"é«˜ãè©•ä¾¡ã™ã‚‹ / ãŸã‹ãã²ã‚‡ã†ã‹ã™ã‚‹ / to highly value",note:"A common work, school, and review word.",strokes:19}
+    {q:"責任",a:"responsibility",on:"セキニン",kun:"せめる・まかせる",example:"責任を持つ / せきにんをもつ / to take responsibility",note:"A serious N2 word for duties, promises, and trust.",strokes:20},
+    {q:"制度",a:"system / institution",on:"セイド",kun:"つくる・たび",example:"教育制度 / きょういくせいど / education system",note:"Useful for society, school, work, and news topics.",strokes:18},
+    {q:"資源",a:"resources",on:"シゲン",kun:"もと",example:"自然資源 / しぜんしげん / natural resources",note:"Appears often in economy, environment, and news language.",strokes:26},
+    {q:"評価",a:"evaluation / assessment",on:"ヒョウカ",kun:"あたい",example:"高く評価する / たかくひょうかする / to highly value",note:"A common work, school, and review word.",strokes:19}
   ],
   n1:[
-    {q:"æ¦‚å¿µ",a:"concept / idea",on:"ã‚¬ã‚¤ãƒãƒ³",kun:"ãŠãŠã‚€ã­",example:"åŸºæœ¬æ¦‚å¿µ / ãã»ã‚“ãŒã„ã­ã‚“ / basic concept",note:"Academic N1 vocabulary for abstract discussion.",strokes:28},
-    {q:"çŸ›ç›¾",a:"contradiction",on:"ãƒ ã‚¸ãƒ¥ãƒ³",kun:"ã»ã“ãƒ»ãŸã¦",example:"çŸ›ç›¾ã—ã¦ã„ã‚‹ / ã‚€ã˜ã‚…ã‚“ã—ã¦ã„ã‚‹ / to be contradictory",note:"Great for essays, debates, and advanced explanations.",strokes:14},
-    {q:"è¬™è™š",a:"humility / modesty",on:"ã‚±ãƒ³ã‚­ãƒ§",kun:"ã¸ã‚Šãã ã‚‹",example:"è¬™è™šãªæ…‹åº¦ / ã‘ã‚“ãã‚‡ãªãŸã„ã© / humble attitude",note:"A high-level word for character and behavior.",strokes:30},
-    {q:"é¡•è‘—",a:"remarkable / noticeable",on:"ã‚±ãƒ³ãƒãƒ§",kun:"ã‚ã‚‰ã‚ã‚Œã‚‹",example:"é¡•è‘—ãªå¤‰åŒ– / ã‘ã‚“ã¡ã‚‡ãªã¸ã‚“ã‹ / noticeable change",note:"Useful in reports, news, and formal writing.",strokes:29}
+    {q:"概念",a:"concept / idea",on:"ガイネン",kun:"おおむね",example:"基本概念 / きほんがいねん / basic concept",note:"Academic N1 vocabulary for abstract discussion.",strokes:28},
+    {q:"矛盾",a:"contradiction",on:"ムジュン",kun:"ほこ・たて",example:"矛盾している / むじゅんしている / to be contradictory",note:"Great for essays, debates, and advanced explanations.",strokes:14},
+    {q:"謙虚",a:"humility / modesty",on:"ケンキョ",kun:"へりくだる",example:"謙虚な態度 / けんきょなたいど / humble attitude",note:"A high-level word for character and behavior.",strokes:30},
+    {q:"顕著",a:"remarkable / noticeable",on:"ケンチョ",kun:"あらわれる",example:"顕著な変化 / けんちょなへんか / noticeable change",note:"Useful in reports, news, and formal writing.",strokes:29}
   ]
 };
 let jlptKanjiLoaded=false;
@@ -295,7 +295,7 @@ const LOCAL_PHRASES=[
 ];
 const phraseCategoryKeywords={Travel:"é§…",School:"å­¦æ ¡",Friends:"å‹é”",Restaurant:"ãƒ¬ã‚¹ãƒˆãƒ©ãƒ³","Daily Life":"ä»Šæ—¥","Gaming / Discord":"ã‚²ãƒ¼ãƒ "};
 const phraseCategoryIcons={All:"All",School:"School",Travel:"Travel",Friends:"Friends",Restaurant:"Food","Gaming / Discord":"Game","Daily Life":"Daily"};
-function decodeMojibakePass(value){if(typeof value!=="string"||!/[ÃÂâ]|[ãåæ][\u0080-\uffff]/.test(value))return value;const bytes=[];for(const ch of value){const code=ch.charCodeAt(0),byte=code<=255?code:cp1252SingleBytes[ch]??cp1252Bytes[ch];if(byte===undefined)return value;bytes.push(byte)}try{const decoded=new TextDecoder("utf-8",{fatal:false}).decode(new Uint8Array(bytes));return decoded.includes("ï¿½")?value:decoded}catch(error){return value}}
+function decodeMojibakePass(value){if(typeof value!=="string"||!/[ÃÂâãåæçèéäöï]/.test(value))return value;const bytes=[];for(const ch of value){const code=ch.charCodeAt(0),byte=code<=255?code:cp1252SingleBytes[ch]??cp1252Bytes[ch];if(byte===undefined)return value;bytes.push(byte)}try{const decoded=new TextDecoder("utf-8",{fatal:false}).decode(new Uint8Array(bytes));return decoded.includes("ï¿½")||decoded.includes("\ufffd")?value:decoded}catch(error){return value}}
 function decodeMojibakeText(value){if(typeof value!=="string")return value;let current=value;for(let i=0;i<4;i++){const next=decodeMojibakePass(current);if(next===current)break;current=next}return current}
 function repairDataText(value){if(Array.isArray(value)){value.forEach((item,index)=>value[index]=repairDataText(item));return value}if(value&&typeof value==="object"){Object.keys(value).forEach(key=>{const fixedKey=decodeMojibakeText(key),fixedValue=repairDataText(value[key]);if(fixedKey!==key){delete value[key];value[fixedKey]=fixedValue}else value[key]=fixedValue});return value}return decodeMojibakeText(value)}
 function repairJapaneseTextData(){[kanaQuestions,kanjiQuestions,wordQuestions,jlptDeck,jlptWordDeck,prefPins,popularCityPins,prefExplanations,japanRegions].forEach(repairDataText)}
@@ -326,16 +326,16 @@ const expandedJlptCards={
     {q:"æ–‡åŒ–",a:"culture",on:"ãƒ–ãƒ³ã‚«",kun:"ãµã¿ãƒ»ã°ã‘ã‚‹",example:"æ—¥æœ¬æ–‡åŒ– / ã«ã»ã‚“ã¶ã‚“ã‹ / Japanese culture",note:"Central to TASEWAKAI themes.",strokes:8}
   ],
   n2:[
-    {q:"æ‰¿èª",a:"approval / recognition",on:"ã‚·ãƒ§ã‚¦ãƒ‹ãƒ³",kun:"ã†ã‘ãŸã¾ã‚ã‚‹ãƒ»ã¿ã¨ã‚ã‚‹",example:"ç”³è«‹ã‚’æ‰¿èªã™ã‚‹ / ã—ã‚“ã›ã„ã‚’ã—ã‚‡ã†ã«ã‚“ã™ã‚‹ / approve an application",note:"Formal word for approval and trust.",strokes:18},
-    {q:"å½±éŸ¿",a:"influence / effect",on:"ã‚¨ã‚¤ã‚­ãƒ§ã‚¦",kun:"ã‹ã’ãƒ»ã²ã³ã",example:"æ–‡åŒ–ã«å½±éŸ¿ã™ã‚‹ / ã¶ã‚“ã‹ã«ãˆã„ãã‚‡ã†ã™ã‚‹ / influence culture",note:"Common in essays and news.",strokes:32},
-    {q:"æ”¹å–„",a:"improvement",on:"ã‚«ã‚¤ã‚¼ãƒ³",kun:"ã‚ã‚‰ãŸã‚ã‚‹ãƒ»ã‚ˆã„",example:"ã‚µãƒ¼ãƒ“ã‚¹ã‚’æ”¹å–„ã™ã‚‹ / ã‚µãƒ¼ãƒ“ã‚¹ã‚’ã‹ã„ãœã‚“ã™ã‚‹ / improve a service",note:"Useful for projects and feedback.",strokes:23},
-    {q:"çŠ¶æ³",a:"situation",on:"ã‚¸ãƒ§ã‚¦ã‚­ãƒ§ã‚¦",kun:"ã‹ãŸã¡",example:"çŠ¶æ³ã‚’ç¢ºèªã™ã‚‹ / ã˜ã‚‡ã†ãã‚‡ã†ã‚’ã‹ãã«ã‚“ã™ã‚‹ / check the situation",note:"Practical for reports and moderation.",strokes:19}
+    {q:"承認",a:"approval / recognition",on:"ショウニン",kun:"うけたまわる・みとめる",example:"申請を承認する / しんせいをしょうにんする / approve an application",note:"Formal word for approval and trust.",strokes:18},
+    {q:"影響",a:"influence / effect",on:"エイキョウ",kun:"かげ・ひびく",example:"文化に影響する / ぶんかにえいきょうする / influence culture",note:"Common in essays and news.",strokes:32},
+    {q:"改善",a:"improvement",on:"カイゼン",kun:"あらためる・よい",example:"サービスを改善する / サービスをかいぜんする / improve a service",note:"Useful for projects and feedback.",strokes:23},
+    {q:"状況",a:"situation",on:"ジョウキョウ",kun:"かたち",example:"状況を確認する / じょうきょうをかくにんする / check the situation",note:"Practical for reports and moderation.",strokes:19}
   ],
   n1:[
-    {q:"è²¢çŒ®",a:"contribution",on:"ã‚³ã‚¦ã‚±ãƒ³",kun:"ã¿ã¤ã",example:"åœ°åŸŸã«è²¢çŒ®ã™ã‚‹ / ã¡ã„ãã«ã“ã†ã‘ã‚“ã™ã‚‹ / contribute to the community",note:"Advanced word for meaningful community work.",strokes:23},
-    {q:"ç¶™æ‰¿",a:"inheritance / succession",on:"ã‚±ã‚¤ã‚·ãƒ§ã‚¦",kun:"ã¤ããƒ»ã†ã‘ãŸã¾ã‚ã‚‹",example:"æ–‡åŒ–ã‚’ç¶™æ‰¿ã™ã‚‹ / ã¶ã‚“ã‹ã‚’ã‘ã„ã—ã‚‡ã†ã™ã‚‹ / inherit culture",note:"Elegant N1 word for culture and tradition.",strokes:25},
-    {q:"æ´žå¯Ÿ",a:"insight",on:"ãƒ‰ã‚¦ã‚µãƒ„",kun:"ã»ã‚‰ãƒ»ã¿ã‚‹",example:"æ·±ã„æ´žå¯Ÿ / ãµã‹ã„ã©ã†ã•ã¤ / deep insight",note:"Useful for analysis and advanced discussion.",strokes:25},
-    {q:"èºé€²",a:"rapid progress",on:"ãƒ¤ã‚¯ã‚·ãƒ³",kun:"ãŠã©ã‚‹ãƒ»ã™ã™ã‚€",example:"ãƒãƒ¼ãƒ ãŒèºé€²ã™ã‚‹ / ãƒãƒ¼ãƒ ãŒã‚„ãã—ã‚“ã™ã‚‹ / the team advances rapidly",note:"A strong word for growth and success.",strokes:32}
+    {q:"貢献",a:"contribution",on:"コウケン",kun:"みつぐ",example:"地域に貢献する / ちいきにこうけんする / contribute to the community",note:"Advanced word for meaningful community work.",strokes:23},
+    {q:"継承",a:"inheritance / succession",on:"ケイショウ",kun:"つぐ・うけたまわる",example:"文化を継承する / ぶんかをけいしょうする / inherit culture",note:"Elegant N1 word for culture and tradition.",strokes:25},
+    {q:"洞察",a:"insight",on:"ドウサツ",kun:"ほら・みる",example:"深い洞察 / ふかいどうさつ / deep insight",note:"Useful for analysis and advanced discussion.",strokes:25},
+    {q:"躍進",a:"rapid progress",on:"ヤクシン",kun:"おどる・すすむ",example:"チームが躍進する / チームがやくしんする / the team advances rapidly",note:"A strong word for growth and success.",strokes:32}
   ]
 };
 const grammarQuestions=[
@@ -378,18 +378,23 @@ resetCorruptedLearningDecks();
 function cleanTextNodeValue(value){if(typeof value!=="string"||!value.trim())return value;const fixed=decodeMojibakeText(value);if(!looksCorruptedText(fixed))return fixed;return fixed.replace(/[ÃÂâðŸ][^\s<>{}]{0,12}/g,"").replace(/[ãåæ][\u0080-\uffff][^\s<>{}]{0,12}/g,"").replace(/[\u0080-\u009f�]/g,"").replace(/\s{2,}/g," ").trim()||""}
 function cleanVisibleMojibake(root=document.body){if(!root)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(node){if(!node.nodeValue||!looksCorruptedText(node.nodeValue))return NodeFilter.FILTER_REJECT;const parent=node.parentElement;if(parent&&["SCRIPT","STYLE","TEXTAREA","INPUT"].includes(parent.tagName))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT}});const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{node.nodeValue=cleanTextNodeValue(node.nodeValue)})}
 function installMojibakeGuard(){if(!document.body){document.addEventListener("DOMContentLoaded",installMojibakeGuard,{once:true});return}if(window.__tasewakaiMojibakeGuard)return;window.__tasewakaiMojibakeGuard=true;let scheduled=false;const run=()=>{scheduled=false;cleanVisibleMojibake()};const observer=new MutationObserver(()=>{if(!scheduled){scheduled=true;requestAnimationFrame(run)}});cleanVisibleMojibake();observer.observe(document.body,{childList:true,subtree:true,characterData:true})}
-installMojibakeGuard();function addUniqueQuestions(target,items){const seen=new Set(target.map(item=>`${decodeMojibakeText(item.q)}|${decodeMojibakeText(item.a)}`));items.forEach(item=>{const key=`${item.q}|${item.a}`;if(!seen.has(key)){target.push(item);seen.add(key)}})}
+installMojibakeGuard();function addUniqueQuestions(target,items){const seen=new Set(target.map(item=>`${safeLearningText(item.q,"")}|${safeLearningText(item.a,"")}`));items.forEach(item=>{const cleanItem=normalizeLearningCard(item);const key=`${safeLearningText(cleanItem?.q,"")}|${safeLearningText(cleanItem?.a,"")}`;if(cleanItem&&cleanItem.q&&cleanItem.q!=="?"&&!seen.has(key)){target.push(cleanItem);seen.add(key)}})}
 function shuffle(items){return items.map(value=>({value,sort:Math.random()})).sort((a,b)=>a.sort-b.sort).map(item=>item.value)}
 function expandLocalLearningData(){repairDataText(expandedKanjiQuestions);repairDataText(expandedWordQuestions);repairDataText(expandedJlptCards);repairDataText(jlptWordDeck);addUniqueQuestions(kanjiQuestions,expandedKanjiQuestions);addUniqueQuestions(wordQuestions,expandedWordQuestions);Object.entries(expandedJlptCards).forEach(([level,cards])=>{jlptDeck[level]??=[];addUniqueQuestions(jlptDeck[level],cards)});repairDataText(grammarQuestions);repairDataText(jlptDeck);repairDataText(kanjiQuestions);repairDataText(wordQuestions)}
 expandLocalLearningData();
 let trainerMode="kana",currentQuestion=null,lockAnswer=false,mapLayerMode="regions",lastRewardAt=0,lastJlptQuestionKey="",hintUsedThisQuestion=false;
 let jlptCorrectCount=Number(localStorage.getItem("tasewakaiJlptCorrectCount")||"0");
 let reviewQueue=JSON.parse(localStorage.getItem("tasewakaiJlptReviewQueue")||"[]");
+reviewQueue=reviewQueue.map(normalizeLearningCard).filter(card=>card&&card.q&&card.q!=="?");
+localStorage.setItem("tasewakaiJlptReviewQueue",JSON.stringify(reviewQueue));
 let jlptBossState=JSON.parse(localStorage.getItem("tasewakaiJlptBossState")||"{}");
 jlptBossState.hp??=100;jlptBossState.index??=0;jlptBossState.defeated??=0;
 let jlptAdventure=JSON.parse(localStorage.getItem("tasewakaiJlptAdventure")||"{}");
 jlptAdventure.phase??="learning";jlptAdventure.learnedSet??=0;jlptAdventure.reviewCorrect??=0;jlptAdventure.successCards??=0;jlptAdventure.bossReady??=false;jlptAdventure.freeHints??=0;jlptAdventure.xpBoost??=0;
 jlptAdventure.knownCards??=[];jlptAdventure.skippedCards??=[];jlptAdventure.trainingOnly??=false;jlptAdventure.sessionMode??="guided";
+jlptAdventure.knownCards=jlptAdventure.knownCards.map(key=>decodeMojibakeText(String(key))).filter(key=>!looksCorruptedText(key));
+jlptAdventure.skippedCards=jlptAdventure.skippedCards.map(key=>decodeMojibakeText(String(key))).filter(key=>!looksCorruptedText(key));
+saveJlptAdventure();
 const jlptBosses=["Forest Spirit","Shrine Guardian","Mountain Keeper","Dragon Scholar","Imperial Sage"];
 const jlptWorlds={n5:"N5 Forest",n4:"N4 Village",n3:"N3 Mountains",n2:"N2 Capital",n1:"N1 Imperial Palace",words:"Vocabulary Road",review:"Review Path"};
 const jlptCompanions={
