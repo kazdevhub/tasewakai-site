@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="TASEWAKAI is an international Japanese-learning, gaming, culture, and community Discord server founded by Kazu." />
   <title>TASEWAKAI 会 — Japanese × Gaming × Culture</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=kana-library-1" />
 </head>
 <body>
   <div class="preloader" id="preloader">
@@ -17,7 +17,7 @@
     <p>TASEWAKAI 会</p><small>風 loading...</small>
   </div>
 
-  <div class="noise"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
+  <div class="noise"></div><div class="seigaiha-bg" aria-hidden="true"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
   <div class="furin-scene" id="furinScene" aria-hidden="true">
     <div class="furin furin-left" style="--sway-delay:-.8s;--paper-delay:-1.4s;">
       <span class="furin-string"></span><span class="furin-bell"></span><span class="furin-clapper"></span><span class="furin-paper"></span>
@@ -126,25 +126,64 @@
     <section id="home" class="hero">
       <div class="hero-ring"></div>
       <div class="hero-glass reveal">
-        <div class="version-row alpha-launch-row">
-          <span class="alpha-banner-atmosphere" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b></b><b></b></span>
-          <span class="alpha-mini-furin" aria-hidden="true"><i></i><i></i><i></i></span>
-          <div class="version-badge alpha-version-badge">alpha 1.5</div>
-          <span class="alpha-evolution-badge">New 1.5 evolution update</span>
-          <button class="beta-badge" onclick="openTool('map')"><img src="assets/icon-lock-password.png" alt="" /> Beta tester gate</button>
+        <div class="version-row tase-header2" aria-label="TASEWAKAI launcher status">
+          <span class="header2-depth header2-depth-back" aria-hidden="true"></span>
+          <span class="header2-depth header2-depth-mid" aria-hidden="true"></span>
+          <span class="header2-pattern" aria-hidden="true"></span>
+          <span class="header2-fog fog-a" aria-hidden="true"></span>
+          <span class="header2-fog fog-b" aria-hidden="true"></span>
+          <span class="header2-light light-a" aria-hidden="true"></span>
+          <span class="header2-light light-b" aria-hidden="true"></span>
+          <span class="header2-streak streak-a" aria-hidden="true"></span>
+          <span class="header2-streak streak-b" aria-hidden="true"></span>
+          <span class="header2-lantern" aria-hidden="true"><i></i><b></b><em></em></span>
+          <span class="header2-chime" aria-hidden="true"><i></i><b></b><em></em></span>
+          <span class="header2-branch" aria-hidden="true"></span>
+          <span class="header2-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <div class="header2-front">
+            <div class="header2-pill-row">
+              <div class="version-badge alpha-version-badge header2-pill active">alpha 2.0</div>
+              <span class="alpha-evolution-badge header2-pill">New 2.0 atlas update</span>
+              <button class="beta-badge header2-pill" onclick="openTool('map')"><img src="assets/icon-lock-password.png" alt="" /> Beta tester gate</button>
+            </div>
+            <p class="eyebrow header2-tagline">日本語 × Gaming × Culture × Community</p>
+          </div>
         </div>
-        <p class="eyebrow">日本語 × Gaming × Culture × Community</p>
         <h1 class="hero-title"><span class="hero-title-main">TASEWAKAI</span><span class="hero-title-kanji">会</span></h1>
         <p class="hero-text">An international Discord community for Japanese learning, gaming, cultural exchange, creative projects, and real community moments.</p>
         <div class="hero-stats">
           <div><strong class="counter" id="memberCounter" data-target="911">0</strong><span>Members</span></div>
           <div><strong>Kazu</strong><span>Founder</span></div>
-          <div><strong class="counter" data-target="1000">0</strong><span>Next Milestone</span></div>
+          <div><strong id="nextMilestoneCounter">89</strong><span>To 1,000</span></div>
         </div>
-        <div class="milestone-panel" data-current="911" data-goal="1000">
-          <div class="milestone-head"><span>Road to 1000</span><strong id="milestoneText">911 / 1000</strong></div>
-          <div class="milestone-track"><div id="milestoneFill"></div></div>
-          <p id="milestoneNote">Update: live Discord member meter added.</p>
+        <div class="milestone-panel road-1000-panel" data-current="911" data-goal="1000">
+          <span class="milestone-aura" aria-hidden="true"></span>
+          <span class="milestone-sparkle milestone-sparkle-a" aria-hidden="true"></span>
+          <span class="milestone-sparkle milestone-sparkle-b" aria-hidden="true"></span>
+          <div class="milestone-head">
+            <div>
+              <span>Road to 1000</span>
+              <strong id="milestoneText">911 / 1,000</strong>
+            </div>
+            <div class="milestone-percent" id="milestonePercent">91%</div>
+          </div>
+          <div class="milestone-track-wrap">
+            <div class="milestone-marker-row" aria-hidden="true">
+              <span style="--mark: 25%"></span>
+              <span style="--mark: 50%"></span>
+              <span style="--mark: 75%"></span>
+              <span style="--mark: 100%"></span>
+            </div>
+            <div class="milestone-track" id="milestoneTrack">
+              <div id="milestoneFill"><span class="milestone-trail"></span></div>
+              <span class="milestone-endpoint" id="milestoneEndpoint" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="milestone-meta">
+            <span id="milestoneRemaining">89 members left</span>
+            <span id="milestoneGoalLabel">Goal: 1,000</span>
+          </div>
+          <p id="milestoneNote">Live Discord member meter ready.</p>
           <div class="discord-live-status" id="discordLiveStatus"><span></span> Discord connection checking...</div>
         </div>
         <div class="hero-buttons">
@@ -153,14 +192,26 @@
         </div>
       </div>
 
-      <div class="home-side-card spotlight-card reveal" onclick="triggerSpotlightBurst(this)">
+      <div class="home-side-card japan-news-card reveal" onclick="openJapanNewsModal()">
         <div class="spotlight-art">
           <img class="lucky-cat" src="assets/icon-lucky-cat.png" alt="" />
           <span class="cat-bubble">にゃ〜</span>
           <img class="number-badge" src="assets/badge-number-one.png" alt="" />
         </div>
-        <p class="mini-label">Community spotlight</p><h3>Christa</h3><strong>#1 Funniest Member</strong>
-        <p>The official chaos spark of TASEWAKAI. Certified community mood booster.</p>
+        <span class="news-orbit" aria-hidden="true"></span>
+        <div class="news-card-top">
+          <span class="news-live-dot"></span>
+          <p class="mini-label">Japan signal</p>
+          <button class="news-refresh-mini" type="button" onclick="event.stopPropagation();loadJapanNews(true)">Refresh</button>
+        </div>
+        <h3>Japan News</h3>
+        <strong id="japanNewsLead">Loading live headlines...</strong>
+        <p id="japanNewsSummary">Important Japan-only stories, refreshed from live sources when available.</p>
+        <div class="news-mini-list" id="japanNewsMiniList">
+          <span>Checking Japan feed...</span>
+          <span>Preparing reader window...</span>
+        </div>
+        <button class="news-open-btn" type="button">Open News Window</button>
       </div>
 
       <div class="beta-testers-card access-crew-card reveal">
@@ -180,7 +231,7 @@
             <span><img src="assets/status-success.png" alt="" /> Arthur</span>
           </div>
           <button class="access-read-more" onclick="openBetaCrew()">Read crew dossier</button>
-          <small>Update: alpha 1.5 access pass upgraded.</small>
+          <small>Update: alpha 2.0 access pass upgraded.</small>
         </div>
       </div>
 
@@ -198,7 +249,7 @@
         </button>
         <button class="tool-card artifact-card jlpt-artifact" onclick="openTool('n5')">
           <span class="artifact-card-glow"></span>
-          <span class="tool-update-note">Update: alpha 1.5 N1 path</span>
+          <span class="tool-update-note">Update: alpha 2.0 N1 path</span>
           <span class="artifact-badge">Kanji road</span>
           <span class="artifact-object kanji-scroll"><img src="assets/feature-kanji-premium.png" alt="" /><i>日本</i></span>
           <span class="artifact-torii-mark"><img src="assets/artifact-torii.gif" alt="" /></span>
@@ -217,6 +268,7 @@
           <strong>Japan Regions</strong>
           <small>Explore Japan Piece by Piece</small>
           <span class="atlas-card-desc">Discover every region of Japan through interactive region fragments, writing systems, culture, history, food, and landmarks.</span>
+          <span class="atlas-card-flow" aria-hidden="true"><b>Open</b><i>→</i><b>Explore</b><i>→</i><b>Test</b></span>
           <span class="atlas-card-progress"><b>0 / 9</b><em>Regions Discovered</em></span>
           <span class="atlas-card-preview">Hokkaidō • Tōhoku • Kantō <em>+ 6 more regions</em></span>
           <span class="atlas-card-cta">Open Atlas →</span>
@@ -260,7 +312,7 @@
         <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Rewards</span><img src="assets/icon-yen-coin.png" alt="" /><h3>YEN Economy</h3><p>Learning tools now reward local YEN, EXP, streaks, and level progress.</p></article>
         <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Practice</span><img src="assets/feature-learning.png" alt="" /><h3>Learning Tools</h3><p>Kana, JLPT words, and kanji trainers help new learners start practicing.</p></article>
         <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Atmosphere</span><img src="assets/feature-fireworks.png" alt="" /><h3>Japanese Atmosphere</h3><p>Petals, fireworks, shrine visuals, and smooth motion create a Japanese mood.</p></article>
-        <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Live build</span><img src="assets/feature-project.png" alt="" /><h3>Pre-alpha Project</h3><p>The website is being built like a real project with versions, patches, and playful experiments.</p></article>
+        <article class="feature-card feature-tile" onclick="triggerFeatureBurst(event,this)"><span class="feature-pill">Live build</span><img src="assets/feature-project.png" alt="" /><h3>Alpha 2.0 Project</h3><p>The website is being built like a real project with versions, patches, and playful experiments.</p></article>
       </div>
     </section>
 
@@ -302,15 +354,26 @@
     </section>
   </main>
 
-  <footer><p>© 2026 TASEWAKAI 会 — Founded by Kazu · alpha 1.5</p></footer>
-  <button class="floating-help" onclick="openGuide()">?</button>
+  <footer><p>© 2026 TASEWAKAI 会 — Founded by Kazu · alpha 2.0</p></footer>
+  <button class="floating-help" id="floatingHelp" onclick="openGuide()">?</button>
   <div class="trainer-cat-helper hidden" id="trainerCatHelper">
     <button class="cat-close" onclick="dismissTrainerCat()" aria-label="Close trainer cat">×</button>
     <div class="cat-speech"><strong>にゃ〜</strong><span id="catPromptText">Try a quick trainer?</span></div>
     <button class="cat-body" id="catTrainerButton" onclick="openCatTrainerPick()"><img src="assets/icon-lucky-cat.png" alt="" /></button>
   </div>
 
-  <div class="guide-transition" id="guideTransition"><span>風</span><span>鈴</span><span>✦</span></div>
+  <div class="guide-transition" id="guideTransition">
+    <div class="guide-loader-premium" aria-hidden="true">
+      <span class="guide-loader-aura"></span>
+      <span class="guide-loader-ring"></span>
+      <span class="guide-loader-ring second"></span>
+      <span class="guide-loader-orbit"><i></i><i></i><i></i></span>
+      <strong>?</strong>
+      <em>Guide System</em>
+      <small>Preparing routes</small>
+      <span class="guide-loader-progress"></span>
+    </div>
+  </div>
   <div class="modal-bg" id="guideModal">
     <div class="modal guide-modal upgraded-guide">
       <button class="close" onclick="closeGuide()">×</button>
@@ -391,7 +454,7 @@
           <h3>Arthur</h3>
           <p>Arthur helps review community-facing updates, member experience, content presentation, and the overall feeling of the TASEWAKAI learning world.</p>
           <ul>
-            <li>Beta tester for exclusive alpha 1.5 features.</li>
+            <li>Beta tester for exclusive alpha 2.0 features.</li>
             <li>Reviews community progression, rewards, and polish.</li>
             <li>Supports friendly onboarding and feature direction.</li>
           </ul>
@@ -409,7 +472,7 @@
     <div id="trainerTool" class="tool-view">
       <p class="mini-label">Learning tool</p><h2>Kana Trainer</h2><p class="tool-desc">Practice kana and earn local YEN + EXP. One name can be used, and it can only be changed once per week.</p>
       <div class="trainer-layout"><aside class="profile-panel"><p class="mini-label">Your economy</p><h3 id="trainerNameDisplay">Guest Learner</h3><label class="name-label" for="trainerName">Display name</label><div class="name-row"><input id="trainerName" placeholder="Enter name" maxlength="18" /><button class="btn ghost-btn small-btn" onclick="saveTrainerName()">Save</button></div><p class="name-lock-info" id="nameLockInfo">Name can be changed once per week. Saving a name adds you to the HUD leaderboard.</p><div class="economy-box"><div><img src="assets/icon-yen-coin.png" alt="" /><strong><span id="trainerYen">0</span> YEN</strong></div><div><strong><span id="trainerPoints">0</span> pts</strong><span>Level <b id="trainerLevel">1</b> · Streak <b id="trainerStreak">0</b></span></div><div class="exp-bar"><div id="expFill"></div></div><small>EXP <b id="trainerExp">0</b>/<b id="trainerNextExp">100</b></small></div><p class="security-note" id="securityStatus">Economy integrity: checking...</p><button class="btn ghost-btn full" onclick="resetTrainerProgress()">Reset local progress</button></aside>
-      <div class="quiz-panel"><div class="trainer-tabs"><button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button><button class="tab" data-mode="logs" onclick="setTrainerMode('logs')">Name Logs</button></div><div id="quizView"><p class="mini-label" id="quizModeLabel">Kana Trainer</p><div class="quiz-character" id="quizPrompt">あ</div><p class="quiz-question" id="quizQuestion">Choose the correct reading.</p><div class="answer-grid" id="answerGrid"></div><p class="quiz-feedback" id="quizFeedback">Pick an answer to begin.</p></div><div id="logsView" class="leaderboard hidden"><p class="mini-label">Local name logs</p><h3>Name Changes</h3><div id="nameLogsList"></div></div></div></div>
+      <div class="quiz-panel"><div class="trainer-tabs"><button class="tab active" data-mode="kana" onclick="setTrainerMode('kana')">Kana</button><button class="tab" data-mode="logs" onclick="setTrainerMode('logs')">Name Logs</button></div><div id="quizView"><p class="mini-label" id="quizModeLabel">Kana Trainer</p><div class="quiz-character" id="quizPrompt">あ</div><p class="quiz-question" id="quizQuestion">Choose the correct reading.</p><div class="answer-grid" id="answerGrid"></div><p class="quiz-feedback" id="quizFeedback">Pick an answer to begin.</p><section class="kana-library"><div class="kana-library-head"><div><p class="mini-label">Kana library</p><h3>Complete Kana Atlas</h3><small>Modern kana are added to practice. Historical kana are reference-only.</small></div><div class="kana-library-tabs"><button class="active" data-kana-tab="all" onclick="setKanaLibraryTab('all')">All</button><button data-kana-tab="hiragana" onclick="setKanaLibraryTab('hiragana')">Hiragana</button><button data-kana-tab="katakana" onclick="setKanaLibraryTab('katakana')">Katakana</button><button data-kana-tab="marks" onclick="setKanaLibraryTab('marks')">Dakuon</button><button data-kana-tab="history" onclick="setKanaLibraryTab('history')">History</button></div></div><div class="kana-section-grid" id="kanaLibraryGrid"></div></section></div><div id="logsView" class="leaderboard hidden"><p class="mini-label">Local name logs</p><h3>Name Changes</h3><div id="nameLogsList"></div></div></div></div>
     </div>
 
     <div id="n5Tool" class="tool-view hidden"><p class="mini-label">Learning tool</p><h2>JLPT Kanji Trainer</h2><p class="tool-desc">Practice N5 to N1 kanji through learning cards, known-card skipping, training-only sessions, short reviews, random events, optional boss milestones, and animated YEN + EXP rewards.</p><p class="tool-update-note modal-update-note">Update: N1 kanji path + training-only mode added.</p><div class="quiz-panel standalone-quiz jlpt-panel"><div class="trainer-tabs jlpt-tabs"><button class="tab active" data-mode="n5" onclick="setTrainerMode('n5')">N5</button><button class="tab" data-mode="n4" onclick="setTrainerMode('n4')">N4</button><button class="tab" data-mode="n3" onclick="setTrainerMode('n3')">N3</button><button class="tab" data-mode="n2" onclick="setTrainerMode('n2')">N2</button><button class="tab" data-mode="n1" onclick="setTrainerMode('n1')">N1</button><button class="tab" data-mode="words" onclick="setTrainerMode('words')">Words</button><button class="tab" data-mode="review" onclick="setTrainerMode('review')">Review</button></div><div id="n5QuizMount"></div></div></div>
@@ -550,17 +613,30 @@
       </div>
 
       <div id="mapUnlocked" class="hidden">
-        <p class="mini-label">Japan regions · beta unlocked</p>
-        <h2>Japan Regions</h2>
-        <p class="tool-desc">Collect glowing Japanese region fragments with wind motion, writing modes, and rich cultural history notes.</p>
-        <div class="map-controls">
+        <div class="region-window-head">
+          <div>
+            <p class="mini-label">Japan regions · alpha 2.0 atlas</p>
+            <h2>Region Review Window</h2>
+            <p class="tool-desc">Review each Japanese region with history, native writing, culture notes, and quick tests for kanji and hiragana memory.</p>
+          </div>
+          <button class="btn region-random-test-btn" onclick="startRandomRegionTest()">Random test</button>
+        </div>
+        <div class="region-window-steps" aria-label="Japan Regions guide">
+          <span><b>Review</b><small>Pick a fragment</small></span>
+          <i>→</i>
+          <span><b>Study</b><small>History and Japanese</small></span>
+          <i>→</i>
+          <span><b>Test</b><small>Kanji and hiragana</small></span>
+        </div>
+        <div class="map-controls region-mode-controls">
           <button class="btn ghost-btn small-btn map-script-toggle active" data-script="romaji" onclick="setRegionScript('romaji')">Romaji</button>
           <button class="btn ghost-btn small-btn map-script-toggle" data-script="kanji" onclick="setRegionScript('kanji')">Kanji</button>
           <button class="btn ghost-btn small-btn map-script-toggle" data-script="hiragana" onclick="setRegionScript('hiragana')">Hiragana</button>
-          <button class="btn ghost-btn small-btn" onclick="previousRegion()">Previous</button>
-          <button class="btn ghost-btn small-btn" onclick="nextRegion()">Next</button>
           <button class="btn ghost-btn small-btn" onclick="lockBetaMap()">Lock beta atlas</button>
         </div>
+        <div class="region-review-window">
+          <button class="region-arrow region-arrow-prev" onclick="previousRegion()" aria-label="Previous region">‹</button>
+          <button class="region-arrow region-arrow-next" onclick="nextRegion()" aria-label="Next region">›</button>
         <div class="map-layout-clean regions-layout">
           <div class="uploaded-map-card region-showcase-card">
             <div class="region-stage" id="regionStage">
@@ -588,8 +664,16 @@
               <span><b id="regionCollectibleRank">Fragment 1</b><small>Atlas piece</small></span>
             </div>
             <p id="regionPrefectures">Prefectures: Hokkaido</p>
-            <button class="btn join-btn full" onclick="openRegionScreen()">Open history screen</button>
+            <div class="region-detail-grid">
+              <article><span>History</span><p id="regionInlineHistory">Hokkaido became formally developed as Japan's northern frontier during the Meiji period.</p></article>
+              <article><span>Japanese</span><p><b id="regionInlineKanji">北海道</b><small id="regionInlineHiragana">ほっかいどう</small></p></article>
+              <article><span>Interesting fact</span><p id="regionInlineFacts">Hokkaido is Japan's largest prefecture by area.</p></article>
+            </div>
+            <button class="btn join-btn full" onclick="openRegionScreen()">Open full review</button>
+            <button class="btn region-test-btn full" onclick="testRegionKnowledge()">Test selected region</button>
+            <div class="region-quiz-box hidden" id="regionQuizBox"></div>
           </aside>
+        </div>
         </div>
         <div class="region-screen" id="regionScreen">
           <div class="region-screen-card">
@@ -611,6 +695,7 @@
     </div></div></div>
 
   <div class="modal-bg" id="supportModal"><div class="modal"><button class="close" onclick="closeSupport()">×</button><p class="mini-label">Need help?</p><h2>⛩️ TASEWAKAI Support</h2><p>If something happens in the Discord server and you are not sure who to contact, use this list.</p><div class="support-list"><div><strong>Kazu</strong><span>Founder — serious problems, partnerships, server direction, content and collaborations.</span><code>Discord: kazu.kai</code></div><div><strong>Satoshi</strong><span>Project help, Japanese support, community help, and general guidance.</span><code>Discord: satoshi______</code></div><div><strong>Arthur</strong><span>Staff support, encouragement, community help, and content collaboration.</span><code>Discord: arturio8949</code></div><div><strong>David</strong><span>Moderation, reports, team support, design/modding-related help.</span><code>Discord: miku_fravery.</code></div></div><a class="btn join-btn full" href="https://discord.gg/P26h5nPSXD" target="_blank" rel="noopener"><img src="assets/discord.png" alt="" /> Open Discord</a></div></div>
-  <script src="script.js?v=jlpt-text-fix-2"></script>
+  <div class="modal-bg japan-news-modal-bg" id="japanNewsModal"><div class="modal japan-news-modal"><button class="close" onclick="closeJapanNewsModal()">Ã—</button><div class="news-modal-hero"><span class="news-shine"></span><div><p class="mini-label">Japan-only live reader</p><h2>Japan News Window</h2><p>Short signal cards from Japan. Expand a story when you want the full brief.</p></div><button class="btn ghost-btn small-btn" onclick="loadJapanNews(true)">Refresh feed</button></div><div class="news-modal-status" id="japanNewsStatus">Preparing Japan feed...</div><div class="news-category-tabs" id="japanNewsCategories"></div><div class="news-feed-grid" id="japanNewsFeed"></div></div></div>
+  <script src="script.js?v=kana-library-1"></script>
 </body>
 </html>
